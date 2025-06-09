@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: require('path').resolve(__dirname, '../../'),
-  },
-  transpilePackages: ['@ai/ui', '@ai/db', '@ai/agents'],
+  transpilePackages: [],
   env: {
     TENANT_ID: 'ces',
     TENANT_NAME: 'Campaign Effectiveness System',

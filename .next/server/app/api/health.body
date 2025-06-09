@@ -1,0 +1,1 @@
+{"timestamp":"2025-06-09T16:24:50.769Z","tenant":"ces","status":"healthy","version":"0.1.0","checks":{"api":"ok","database":"ok","cache":"ok","external_services":"ok"},"uptime":1.360291708,"memory":{"rss":73596928,"heapTotal":22904832,"heapUsed":15660888,"external":3499266,"arrayBuffers":73693},"environment":"production"}
