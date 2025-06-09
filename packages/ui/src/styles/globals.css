@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TBWA Brand Colors System */
+:root {
+  /* Primary Brand Colors */
+  --tbwa-turquoise: #00B5AD;
+  --tbwa-charcoal: #333333;
+  
+  /* Extended Palette */
+  --tbwa-turquoise-light: #1AC7C0;
+  --tbwa-turquoise-dark: #008B85;
+  --tbwa-charcoal-light: #4A4A4A;
+  --tbwa-charcoal-dark: #1A1A1A;
+  
+  /* Neutral Grays */
+  --tbwa-neutral-50: #F8F9FA;
+  --tbwa-neutral-100: #F1F3F4;
+  --tbwa-neutral-200: #E8EAED;
+  --tbwa-neutral-300: #DADCE0;
+  --tbwa-neutral-400: #BDC1C6;
+  --tbwa-neutral-500: #9AA0A6;
+  --tbwa-neutral-600: #80868B;
+  --tbwa-neutral-700: #5F6368;
+  --tbwa-neutral-800: #3C4043;
+  --tbwa-neutral-900: #202124;
+  
+  /* Semantic Colors */
+  --tbwa-success: #34A853;
+  --tbwa-warning: #FBBC04;
+  --tbwa-error: #EA4335;
+  --tbwa-info: #4285F4;
+  
+  /* Chat Interface Specific */
+  --tbwa-chat-bg: var(--tbwa-neutral-50);
+  --tbwa-chat-surface: #FFFFFF;
+  --tbwa-chat-user-bubble: var(--tbwa-turquoise);
+  --tbwa-chat-assistant-bubble: var(--tbwa-neutral-100);
+  --tbwa-chat-text: var(--tbwa-charcoal);
+  --tbwa-chat-text-muted: var(--tbwa-neutral-600);
+  --tbwa-chat-border: var(--tbwa-neutral-200);
+  --tbwa-chat-focus: var(--tbwa-turquoise);
+}
+
+/* Dark mode theme */
+[data-theme="dark"] {
+  --tbwa-chat-bg: var(--tbwa-charcoal-dark);
+  --tbwa-chat-surface: var(--tbwa-charcoal);
+  --tbwa-chat-user-bubble: var(--tbwa-turquoise-dark);
+  --tbwa-chat-assistant-bubble: var(--tbwa-charcoal-light);
+  --tbwa-chat-text: var(--tbwa-neutral-100);
+  --tbwa-chat-text-muted: var(--tbwa-neutral-400);
+  --tbwa-chat-border: var(--tbwa-charcoal-light);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  color: var(--tbwa-chat-text);
+  background: var(--tbwa-chat-bg);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* TBWA Brand Utility Classes */
+@layer utilities {
+  /* Background Colors */
+  .bg-tbwa-turquoise {
+    background-color: var(--tbwa-turquoise);
+  }
+  
+  .bg-tbwa-turquoise-light {
+    background-color: var(--tbwa-turquoise-light);
+  }
+  
+  .bg-tbwa-turquoise-dark {
+    background-color: var(--tbwa-turquoise-dark);
+  }
+  
+  .bg-tbwa-charcoal {
+    background-color: var(--tbwa-charcoal);
+  }
+  
+  .bg-tbwa-charcoal-light {
+    background-color: var(--tbwa-charcoal-light);
+  }
+  
+  .bg-tbwa-charcoal-dark {
+    background-color: var(--tbwa-charcoal-dark);
+  }
+  
+  .bg-tbwa-neutral {
+    background-color: var(--tbwa-chat-bg);
+  }
+  
+  .bg-tbwa-surface {
+    background-color: var(--tbwa-chat-surface);
+  }
+
+  /* Text Colors */
+  .text-tbwa-turquoise {
+    color: var(--tbwa-turquoise);
+  }
+  
+  .text-tbwa-charcoal {
+    color: var(--tbwa-charcoal);
+  }
+  
+  .text-tbwa-muted {
+    color: var(--tbwa-chat-text-muted);
+  }
+
+  /* Border Colors */
+  .border-tbwa-turquoise {
+    border-color: var(--tbwa-turquoise);
+  }
+  
+  .border-tbwa-neutral {
+    border-color: var(--tbwa-chat-border);
+  }
+
+  /* Focus States */
+  .focus-tbwa {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    --tw-ring-color: var(--tbwa-chat-focus);
+  }
+
+  /* Chat-specific utilities */
+  .chat-bubble-user {
+    background-color: var(--tbwa-chat-user-bubble);
+    color: white;
+  }
+  
+  .chat-bubble-assistant {
+    background-color: var(--tbwa-chat-assistant-bubble);
+    color: var(--tbwa-chat-text);
+  }
+  
+  .chat-input {
+    background-color: var(--tbwa-chat-surface);
+    border-color: var(--tbwa-chat-border);
+    color: var(--tbwa-chat-text);
+  }
+  
+  .chat-input:focus {
+    border-color: var(--tbwa-chat-focus);
+    --tw-ring-color: var(--tbwa-chat-focus);
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Button Variants */
+  .btn-tbwa-primary {
+    @apply bg-tbwa-turquoise text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-tbwa-primary:hover {
+    background-color: var(--tbwa-turquoise-dark);
+  }
+  
+  .btn-tbwa-secondary {
+    @apply bg-tbwa-neutral-200 text-tbwa-charcoal font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-tbwa-secondary:hover {
+    background-color: var(--tbwa-neutral-300);
+  }
+  
+  .btn-tbwa-ghost {
+    @apply text-tbwa-charcoal font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-tbwa-ghost:hover {
+    background-color: var(--tbwa-neutral-100);
+  }
+
+  /* Card Components */
+  .card-tbwa {
+    @apply bg-tbwa-surface border border-tbwa-neutral rounded-xl shadow-sm;
+  }
+  
+  .card-tbwa-hover {
+    @apply card-tbwa transition-shadow duration-200 hover:shadow-md;
+  }
+
+  /* Chat Message Animations */
+  .message-enter {
+    @apply opacity-0 transform translate-y-4;
+    animation: messageSlideIn 0.3s ease-out forwards;
+  }
+  
+  @keyframes messageSlideIn {
+    to {
+      opacity: 1;
+      transform: translate-y(0);
+    }
+  }
+
+  /* Reasoning Trace Expansion */
+  .reasoning-collapsible {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .reasoning-expanded {
+    @apply max-h-96 opacity-100;
+  }
+  
+  .reasoning-collapsed {
+    @apply max-h-0 opacity-0 overflow-hidden;
+  }
+
+  /* Source Reference Links */
+  .source-link {
+    @apply inline-flex items-center gap-1 text-sm text-tbwa-turquoise hover:text-tbwa-turquoise-dark transition-colors duration-200;
+  }
+  
+  .source-link:hover {
+    @apply underline;
+  }
+
+  /* Dashboard Link Button */
+  .dashboard-link {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 bg-tbwa-turquoise/10 text-tbwa-turquoise rounded-lg font-medium text-sm transition-colors duration-200;
+  }
+  
+  .dashboard-link:hover {
+    @apply bg-tbwa-turquoise/20;
+  }
+
+  /* Loading States */
+  .loading-dots {
+    @apply inline-flex gap-1;
+  }
+  
+  .loading-dot {
+    @apply w-2 h-2 bg-tbwa-neutral-400 rounded-full;
+    animation: loadingDot 1.4s ease-in-out infinite both;
+  }
+  
+  .loading-dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .loading-dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  @keyframes loadingDot {
+    0%, 80%, 100% {
+      transform: scale(0.6);
+      opacity: 0.4;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Scrollbar Styling */
+  .scrollbar-tbwa {
+    scrollbar-width: thin;
+    scrollbar-color: var(--tbwa-neutral-300) transparent;
+  }
+  
+  .scrollbar-tbwa::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-tbwa::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-tbwa::-webkit-scrollbar-thumb {
+    background-color: var(--tbwa-neutral-300);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-tbwa::-webkit-scrollbar-thumb:hover {
+    background-color: var(--tbwa-neutral-400);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    @apply px-4;
+  }
+  
+  .chat-input {
+    @apply text-base; /* Prevent zoom on iOS */
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --tbwa-chat-border: var(--tbwa-charcoal);
+    --tbwa-chat-text-muted: var(--tbwa-charcoal-light);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .message-enter {
+    animation: none;
+  }
+  
+  .reasoning-collapsible {
+    transition: none;
+  }
+  
+  .loading-dot {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .chat-input,
+  .btn-tbwa-primary,
+  .btn-tbwa-secondary,
+  .btn-tbwa-ghost {
+    @apply hidden;
+  }
+  
+  .chat-bubble-user,
+  .chat-bubble-assistant {
+    @apply border border-gray-300 break-inside-avoid;
+  }
+}

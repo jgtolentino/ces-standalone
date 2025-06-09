@@ -1,0 +1,35 @@
+pulser_version: 4.0.0
+tenant: ces
+orchestrator:
+  enableBackgroundAgents: true
+  agents:
+    - name: Claudia
+      type: chat
+      model: gpt-4o
+      capabilities: ["migration", "analysis", "code_review"]
+    - name: Edge
+      type: task
+      model: gpt-4o
+      capabilities: ["deployment", "infrastructure"]
+    - name: Echo
+      type: sync
+      model: gpt-4o
+      capabilities: ["data_sync", "real_time"]
+    - name: Kalaw
+      type: orchestrator
+      model: gpt-4o
+      capabilities: ["workflow", "coordination"]
+    - name: Maya
+      type: insights
+      model: gpt-4o
+      capabilities: ["analytics", "reporting"]
+deployment:
+  platform: vercel
+  environment: production
+  build_command: "pnpm --filter=\"@ai/db\" --filter=\"@ai/ui\" --filter=\"@ai/agents\" --filter=\"@ai/chat-ui\" --filter=\"@ai/dashboard-ui\" build && npm run build"
+mcp:
+  enabled: true
+  tools:
+    - agent_executor
+    - database_connector
+    - azure_integration

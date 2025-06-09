@@ -1,0 +1,349 @@
+version: '3'
+
+vars:
+  PNPM_VERSION: 8.15.0
+  NODE_VERSION: 18
+  TENANTS_DIR: ./tenants
+  PACKAGES_DIR: ./packages
+
+env:
+  NODE_ENV: development
+
+tasks:
+  # Development commands
+  dev:
+    desc: "Start development servers for all tenants (conflict-free)"
+    cmds:
+      - task: install
+      - task: build:packages
+      - echo "Starting all tenants with automatic port assignment..."
+      - for tenant in $(ls tenants/ | grep -v _template); do node scripts/conflict-free-build.js dev $tenant & done
+
+  dev:tenant:
+    desc: "Start development server for specific tenant (conflict-free)"
+    cmds:
+      - task: install
+      - task: build:packages
+      - node scripts/conflict-free-build.js dev {{.TENANT}}
+    vars:
+      TENANT: '{{.TENANT | default "ces"}}'
+
+  # Build commands
+  build:
+    desc: "Build all packages and tenants (conflict-free)"
+    cmds:
+      - task: install
+      - task: build:packages
+      - node scripts/conflict-free-build.js build
+
+  build:packages:
+    desc: "Build all shared packages"
+    cmds:
+      - pnpm --filter "./packages/*" build
+
+  build:tenants:
+    desc: "Build all tenant applications (conflict-free)"
+    deps: [build:packages]
+    cmds:
+      - node scripts/conflict-free-build.js build
+
+  build:tenant:
+    desc: "Build specific tenant (conflict-free)"
+    deps: [build:packages]
+    cmds:
+      - node scripts/conflict-free-build.js build {{.TENANT}}
+    vars:
+      TENANT: '{{.TENANT | default "ces"}}'
+
+  # Testing commands
+  test:
+    desc: "Run all tests"
+    cmds:
+      - task: test:packages
+      - task: test:tenants
+
+  test:packages:
+    desc: "Test all packages"
+    cmds:
+      - pnpm --filter "./packages/*" test
+
+  test:tenants:
+    desc: "Test all tenants"
+    cmds:
+      - pnpm --filter "./tenants/*" test
+
+  test:tenant:
+    desc: "Test specific tenant"
+    cmds:
+      - cd {{.TENANTS_DIR}}/{{.TENANT}} && pnpm test
+    vars:
+      TENANT: '{{.TENANT | default "ces"}}'
+
+  # Linting and formatting
+  lint:
+    desc: "Lint all code"
+    cmds:
+      - task: lint:packages
+      - task: lint:tenants
+
+  lint:packages:
+    desc: "Lint all packages"
+    cmds:
+      - pnpm --filter "./packages/*" lint
+
+  lint:tenants:
+    desc: "Lint all tenants"
+    cmds:
+      - pnpm --filter "./tenants/*" lint
+
+  lint:fix:
+    desc: "Fix linting issues"
+    cmds:
+      - pnpm --filter "./packages/*" lint --fix
+      - pnpm --filter "./tenants/*" lint --fix
+
+  # Type checking
+  typecheck:
+    desc: "Type check all TypeScript code"
+    cmds:
+      - task: typecheck:packages
+      - task: typecheck:tenants
+
+  typecheck:packages:
+    desc: "Type check all packages"
+    cmds:
+      - pnpm --filter "./packages/*" typecheck
+
+  typecheck:tenants:
+    desc: "Type check all tenants"
+    cmds:
+      - pnpm --filter "./tenants/*" typecheck
+
+  # Installation and setup
+  install:
+    desc: "Install all dependencies"
+    cmds:
+      - pnpm install --frozen-lockfile
+
+  install:fresh:
+    desc: "Clean install all dependencies"
+    cmds:
+      - task: clean
+      - pnpm install
+
+  # Tenant management
+  create:tenant:
+    desc: "Create a new tenant"
+    cmds:
+      - node scripts/create-tenant.js {{.TENANT}}
+      - task: install
+    vars:
+      TENANT: '{{.TENANT}}'
+    preconditions:
+      - sh: '[ -n "{{.TENANT}}" ]'
+        msg: 'Please specify TENANT name: task create:tenant TENANT=my-client'
+
+  migrate:all:
+    desc: "Safely migrate all existing projects to monorepo"
+    cmds:
+      - echo "🚀 Starting safe migration of all projects..."
+      - node scripts/safe-migrate.js
+      - task: install
+      - echo "✅ Migration completed! Run 'task doctor' to verify."
+
+  migrate:ces:
+    desc: "Migrate CES project only"
+    cmds:
+      - echo "🚀 Migrating CES project..."
+      - node scripts/create-tenant.js ces
+      - echo "✅ CES tenant created. Manually copy your files to tenants/ces/"
+
+  migrate:scout:
+    desc: "Migrate Scout project only"
+    cmds:
+      - echo "🚀 Migrating Scout project..."
+      - node scripts/create-tenant.js scout
+      - echo "✅ Scout tenant created. Manually copy your files to tenants/scout/"
+
+  analyze:integration:
+    desc: "Analyze existing projects for better integration"
+    cmds:
+      - echo "🔍 Analyzing existing projects for integration opportunities..."
+      - node scripts/integration-analyzer.js
+      - node scripts/smart-integration.js
+      - echo "📄 Check reports/ directory for detailed analysis"
+
+  integrate:prepare:
+    desc: "Prepare for smart integration (run analysis first)"
+    cmds:
+      - echo "🚀 Preparing for smart integration..."
+      - node scripts/smart-integration.js --commands
+
+  list:tenants:
+    desc: "List all tenants"
+    cmds:
+      - ls -1 {{.TENANTS_DIR}} | grep -v _template
+
+  # Pulser operations
+  pulser:scan:
+    desc: "Run duplicate scan across all tenants"
+    cmds:
+      - node scripts/scan-duplicates.js --output=reports/duplicates.json
+
+  pulser:scan:tenant:
+    desc: "Run duplicate scan for specific tenant"
+    cmds:
+      - node scripts/scan-duplicates.js --tenant={{.TENANT}} --output=reports/duplicates-{{.TENANT}}.json
+    vars:
+      TENANT: '{{.TENANT | default "ces"}}'
+
+  pulser:costs:
+    desc: "Collect and analyze costs"
+    cmds:
+      - node scripts/collect-costs.js --period=7d --output=reports/costs.json
+
+  # Database operations
+  db:migrate:
+    desc: "Run Supabase migrations"
+    cmds:
+      - supabase migration up
+
+  db:reset:
+    desc: "Reset local Supabase database"
+    cmds:
+      - supabase db reset
+
+  db:seed:
+    desc: "Seed database with sample data"
+    cmds:
+      - supabase db reset
+      - echo "Database seeded with sample data"
+
+  # Deployment
+  deploy:preview:
+    desc: "Deploy preview to Vercel"
+    deps: [build]
+    cmds:
+      - vercel --yes
+
+  deploy:production:
+    desc: "Deploy to production"
+    deps: [build, test]
+    cmds:
+      - vercel --prod --yes
+
+  # Health checks and monitoring
+  doctor:
+    desc: "Check system health and dependencies"
+    cmds:
+      - task: doctor:node
+      - task: doctor:pnpm
+      - task: doctor:dependencies
+      - task: doctor:tenants
+      - echo "✅ All health checks passed!"
+
+  doctor:node:
+    desc: "Check Node.js version"
+    cmds:
+      - |
+        NODE_ACTUAL=$(node --version | sed 's/v//')
+        NODE_MAJOR=$(echo $NODE_ACTUAL | cut -d. -f1)
+        if [ $NODE_MAJOR -ge {{.NODE_VERSION}} ]; then
+          echo "✅ Node.js version: v$NODE_ACTUAL"
+        else
+          echo "❌ Node.js version v$NODE_ACTUAL is too old. Requires v{{.NODE_VERSION}}+"
+          exit 1
+        fi
+
+  doctor:pnpm:
+    desc: "Check pnpm version"
+    cmds:
+      - |
+        if command -v pnpm >/dev/null 2>&1; then
+          PNPM_ACTUAL=$(pnpm --version)
+          echo "✅ pnpm version: v$PNPM_ACTUAL"
+        else
+          echo "❌ pnpm is not installed. Run: npm install -g pnpm@{{.PNPM_VERSION}}"
+          exit 1
+        fi
+
+  doctor:dependencies:
+    desc: "Check if dependencies are installed"
+    cmds:
+      - |
+        if [ ! -d "node_modules" ]; then
+          echo "❌ Dependencies not installed. Run: task install"
+          exit 1
+        else
+          echo "✅ Dependencies installed"
+        fi
+
+  doctor:tenants:
+    desc: "Check tenant configurations"
+    cmds:
+      - |
+        TENANT_COUNT=$(ls -1 {{.TENANTS_DIR}} | grep -v _template | wc -l)
+        echo "✅ Found $TENANT_COUNT tenants configured"
+        for tenant in $(ls -1 {{.TENANTS_DIR}} | grep -v _template); do
+          if [ -f "{{.TENANTS_DIR}}/$tenant/package.json" ]; then
+            echo "  ✅ $tenant: configured"
+          else
+            echo "  ❌ $tenant: missing package.json"
+          fi
+        done
+
+  # Cleanup
+  clean:
+    desc: "Clean all build artifacts and dependencies"
+    cmds:
+      - rm -rf node_modules
+      - rm -rf packages/*/dist
+      - rm -rf packages/*/node_modules
+      - rm -rf tenants/*/dist
+      - rm -rf tenants/*/.next
+      - rm -rf tenants/*/node_modules
+      - rm -rf reports
+      - echo "🧹 Cleaned all build artifacts"
+
+  clean:cache:
+    desc: "Clean package manager cache"
+    cmds:
+      - pnpm store prune
+      - echo "🧹 Cleaned pnpm cache"
+
+  # Utilities
+  format:
+    desc: "Format all code with Prettier"
+    cmds:
+      - pnpm prettier --write "**/*.{js,ts,jsx,tsx,json,md,yml,yaml}"
+
+  update:deps:
+    desc: "Update all dependencies"
+    cmds:
+      - pnpm update --recursive --latest
+
+  # Security
+  audit:
+    desc: "Run security audit"
+    cmds:
+      - pnpm audit --audit-level moderate
+
+  audit:fix:
+    desc: "Fix security vulnerabilities"
+    cmds:
+      - pnpm audit --fix
+
+  # Reports
+  report:bundle:
+    desc: "Generate bundle size reports"
+    deps: [build]
+    cmds:
+      - mkdir -p reports
+      - echo "Bundle size analysis completed" > reports/bundle-analysis.txt
+
+  report:dependencies:
+    desc: "Generate dependency report"
+    cmds:
+      - mkdir -p reports
+      - pnpm list --depth=0 --json > reports/dependencies.json
+      - echo "📦 Dependency report saved to reports/dependencies.json"

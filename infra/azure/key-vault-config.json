@@ -1,0 +1,29 @@
+{
+  "keyVaultName": "ai-agency-secrets",
+  "secrets": {
+    "ces-postgres-url": {
+      "description": "CES Azure PostgreSQL connection string for production database",
+      "value": "postgresql://${CES_DB_USER}:${CES_DB_PASSWORD}@${CES_DB_HOST}:5432/ces_production?sslmode=require"
+    },
+    "ces-openai-key": {
+      "description": "CES Azure OpenAI API key for production environment",
+      "value": "${CES_OPENAI_API_KEY}"
+    },
+    "ces-openai-endpoint": {
+      "description": "CES Azure OpenAI endpoint URL for production",
+      "value": "https://${CES_OPENAI_RESOURCE}.openai.azure.com/"
+    },
+    "ces-openai-deployment": {
+      "description": "CES Azure OpenAI deployment name for GPT-4",
+      "value": "gpt-4-ces"
+    }
+  },
+  "accessPolicies": {
+    "vercel": {
+      "principalId": "${VERCEL_SERVICE_PRINCIPAL_ID}",
+      "permissions": {
+        "secrets": ["get", "list"]
+      }
+    }
+  }
+} 

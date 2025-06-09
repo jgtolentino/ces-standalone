@@ -1,0 +1,39 @@
+{
+  "name": "@ai/agents-tbwa-orchestrator",
+  "version": "0.1.0",
+  "description": "TBWA-specific AI agent orchestrator with reasoning traces",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@ai/agents-ces-drive-scraper": "workspace:*",
+    "@ai/agents-scout-alert-bot": "workspace:*",
+    "@ai/agents-memory-sync": "workspace:*",
+    "@ai/db": "workspace:*",
+    "openai": "^4.67.3",
+    "zod": "^3.23.8",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/uuid": "^10.0.0",
+    "tsup": "^8.3.5",
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.13"
+  }
+}

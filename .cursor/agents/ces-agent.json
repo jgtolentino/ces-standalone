@@ -1,0 +1,25 @@
+{
+  "agent": "Claudia",
+  "tenant": "ces",
+  "model": "gpt-4o",
+  "actions": ["migrate", "analyze", "sync", "infer", "deploy"],
+  "runtimes": ["Pulser", "DeepSeek", "Claude"],
+  "capabilities": {
+    "database": ["azure_postgresql", "supabase"],
+    "ai_services": ["azure_openai", "claude_api"],
+    "deployment": ["vercel", "azure_functions"],
+    "monitoring": ["azure_insights", "sentry"]
+  },
+  "configuration": {
+    "pulser_version": "4.0.0",
+    "environment": "production",
+    "auto_sync": true,
+    "background_agents": true
+  },
+  "tools": [
+    "agent_executor",
+    "database_connector", 
+    "azure_integration",
+    "deployment_manager"
+  ]
+}

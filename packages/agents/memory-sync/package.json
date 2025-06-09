@@ -1,0 +1,31 @@
+{
+  "name": "@ai/memory-sync",
+  "version": "0.1.0",
+  "description": "Persistent memory system for AI agents with cross-agent communication",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "sync": "node dist/sync.js",
+    "cleanup": "node dist/cleanup.js"
+  },
+  "dependencies": {
+    "@ai/db": "workspace:*",
+    "@ai/agents": "workspace:*",
+    "zod": "^3.22.0",
+    "uuid": "^9.0.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.16.11",
+    "@types/uuid": "^9.0.7",
+    "@types/node-cron": "^3.0.8",
+    "tsup": "^8.0.0",
+    "eslint": "catalog:"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/ces/(.*)",
+      "destination": "/tenants/ces/$1"
+    },
+    {
+      "source": "/scout/(.*)", 
+      "destination": "/tenants/scout/$1"
+    },
+    {
+      "source": "/acme/(.*)",
+      "destination": "/tenants/acme/$1"
+    },
+    {
+      "source": "/tenant4/(.*)",
+      "destination": "/tenants/tenant4/$1"
+    },
+    {
+      "source": "/tenant5/(.*)",
+      "destination": "/tenants/tenant5/$1"
+    },
+    {
+      "source": "/tenant23/(.*)",
+      "destination": "/tenants/tenant23/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options", 
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/health-check",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/cleanup-temp-files",
+      "schedule": "0 2 * * *"
+    }
+  ],
+  "functions": {
+    "tenants/*/edge/*.ts": {
+      "runtime": "@vercel/edge"
+    }
+  },
+  "env": {
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "PULSER_API_KEY": "@pulser_api_key",
+    "CES_AZURE_POSTGRES_URL": "@Microsoft.KeyVault(SecretUri=https://ai-agency-secrets.vault.azure.net/secrets/ces-postgres-url)",
+    "AZURE_OPENAI_API_KEY": "@Microsoft.KeyVault(SecretUri=https://ai-agency-secrets.vault.azure.net/secrets/ces-openai-key)",
+    "AZURE_OPENAI_ENDPOINT": "@Microsoft.KeyVault(SecretUri=https://ai-agency-secrets.vault.azure.net/secrets/ces-openai-endpoint)",
+    "AZURE_OPENAI_DEPLOYMENT_NAME": "@Microsoft.KeyVault(SecretUri=https://ai-agency-secrets.vault.azure.net/secrets/ces-openai-deployment)"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@ai/ces-drive-scraper",
+  "version": "0.1.0",
+  "description": "CES tenant Google Drive file scraper and monitor",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "scrape": "node dist/scraper.js",
+    "monitor": "node dist/monitor.js"
+  },
+  "dependencies": {
+    "@ai/db": "workspace:*",
+    "@ai/agents": "workspace:*",
+    "googleapis": "^128.0.0",
+    "zod": "^3.22.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.16.11",
+    "@types/node-cron": "^3.0.8",
+    "tsup": "^8.0.0",
+    "eslint": "catalog:"
+  }
+}

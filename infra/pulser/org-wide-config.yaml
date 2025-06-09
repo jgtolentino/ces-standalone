@@ -1,0 +1,124 @@
+name: "AI Agency Org-Wide Pipelines"
+version: "3.2"
+description: "Organization-wide Pulser pipelines for cost monitoring, duplicate scanning, and health checks"
+
+# Global environment variables
+env:
+  PULSER_VERSION: "3.2"
+  ORG_NAME: "AI Agency"
+  MONITORING_ENABLED: "true"
+
+# Shared pipeline templates
+templates:
+  dup_scan:
+    name: "Duplicate Content Scanner"
+    description: "Scans for duplicate content across tenant repositories"
+    steps:
+      - name: "scan_duplicates"
+        action: "execute"
+        command: "node scripts/scan-duplicates.js"
+        args:
+          - "--tenant=${TENANT_SLUG}"
+          - "--threshold=0.8"
+          - "--output=reports/duplicates.json"
+      - name: "report_findings"
+        action: "notify"
+        condition: "has_duplicates"
+        webhook: "${SLACK_WEBHOOK_URL}/duplicates"
+
+  cost_monitor:
+    name: "Cost Monitoring Pipeline"
+    description: "Monitors and reports on infrastructure costs across all tenants"
+    schedule: "0 8 * * MON"
+    steps:
+      - name: "collect_metrics"
+        action: "execute"
+        command: "node scripts/collect-costs.js"
+        args:
+          - "--period=7d"
+          - "--format=json"
+      - name: "analyze_trends"
+        action: "analyze"
+        model: "cost-analysis"
+        input: "metrics.json"
+      - name: "send_report"
+        action: "notify"
+        webhook: "${SLACK_WEBHOOK_URL}/costs"
+        template: "weekly-cost-report"
+
+  health_check:
+    name: "Health Check Pipeline"
+    description: "Performs health checks across all tenant deployments"
+    schedule: "*/15 * * * *"
+    steps:
+      - name: "check_endpoints"
+        action: "http_check"
+        endpoints:
+          - "https://ai-agency.vercel.app/ces/health"
+          - "https://ai-agency.vercel.app/scout/health"
+          - "https://ai-agency.vercel.app/acme/health"
+      - name: "check_database"
+        action: "db_check"
+        connection: "${SUPABASE_URL}"
+        queries:
+          - "SELECT 1"
+          - "SELECT COUNT(*) FROM tenants"
+      - name: "alert_failures"
+        action: "notify"
+        condition: "has_failures"
+        webhook: "${SLACK_WEBHOOK_URL}/alerts"
+
+# Agent configurations
+agents:
+  duplicate_scanner:
+    type: "utility"
+    description: "Scans for duplicate code and content"
+    capabilities:
+      - "file_analysis"
+      - "content_comparison"
+      - "similarity_detection"
+    
+  cost_analyzer:
+    type: "analytics" 
+    description: "Analyzes infrastructure costs and usage patterns"
+    capabilities:
+      - "cost_aggregation"
+      - "trend_analysis"
+      - "optimization_suggestions"
+    
+  health_monitor:
+    type: "monitoring"
+    description: "Monitors system health and availability"
+    capabilities:
+      - "endpoint_monitoring"
+      - "database_checks"
+      - "alerting"
+
+# Notification channels
+notifications:
+  slack:
+    duplicates: "${SLACK_WEBHOOK_URL}/duplicates"
+    costs: "${SLACK_WEBHOOK_URL}/costs"
+    alerts: "${SLACK_WEBHOOK_URL}/alerts"
+    general: "${SLACK_WEBHOOK_URL}/general"
+  
+  email:
+    admin: "${ADMIN_EMAIL}"
+    ops: "${OPS_EMAIL}"
+
+# Security and access controls
+security:
+  api_key_required: true
+  tenant_isolation: true
+  audit_logging: true
+  
+access_control:
+  org_admin:
+    - "view_all_tenants"
+    - "manage_pipelines"
+    - "access_reports"
+  
+  tenant_admin:
+    - "view_own_tenant"
+    - "manage_tenant_pipelines"
+    - "access_tenant_reports"

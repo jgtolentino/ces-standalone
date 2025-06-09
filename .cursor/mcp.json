@@ -1,0 +1,66 @@
+{
+  "tools": [
+    {
+      "name": "Agent Executor",
+      "description": "Run Claude-style CLI agents with Pulser 4.0.0 orchestration",
+      "path": "scripts/agentRunner.ts",
+      "input": { 
+        "type": "taskPrompt", 
+        "fields": ["prompt", "tenant", "agent"] 
+      },
+      "output": { 
+        "type": "taskResult", 
+        "fields": ["output", "cost", "agent", "executionTime"] 
+      }
+    },
+    {
+      "name": "Database Connector",
+      "description": "Execute queries across multi-tenant databases",
+      "path": "packages/db/src/tenant-database-factory.ts",
+      "input": {
+        "type": "query",
+        "fields": ["sql", "tenant", "params"]
+      },
+      "output": {
+        "type": "queryResult",
+        "fields": ["data", "rowCount", "executionTime"]
+      }
+    },
+    {
+      "name": "Azure Integration",
+      "description": "Interact with Azure services (OpenAI, PostgreSQL, AD)",
+      "path": "scripts/azureConnector.ts",
+      "input": {
+        "type": "azureRequest",
+        "fields": ["service", "operation", "parameters"]
+      },
+      "output": {
+        "type": "azureResponse",
+        "fields": ["result", "cost", "latency"]
+      }
+    }
+  ],
+  "agents": [
+    {
+      "name": "Claudia",
+      "description": "Main chat and analysis agent",
+      "model": "gpt-4o",
+      "tenant": "ces",
+      "capabilities": ["chat", "analysis", "migration", "code_review"]
+    },
+    {
+      "name": "Edge",
+      "description": "Deployment and infrastructure agent",
+      "model": "gpt-4o", 
+      "tenant": "ces",
+      "capabilities": ["deployment", "infrastructure", "monitoring"]
+    },
+    {
+      "name": "Echo",
+      "description": "Real-time sync and data agent",
+      "model": "gpt-4o",
+      "tenant": "ces", 
+      "capabilities": ["data_sync", "real_time", "webhooks"]
+    }
+  ]
+}

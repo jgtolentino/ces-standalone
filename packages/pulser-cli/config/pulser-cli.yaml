@@ -1,0 +1,164 @@
+# Unified Pulser CLI Configuration
+name: "Pulser CLI Unified System"
+version: "4.0.0"
+description: "Unified AI orchestration with local and cloud capabilities"
+
+# Execution modes
+execution_modes:
+  local:
+    enabled: true
+    provider: "ollama"
+    endpoint: "http://localhost:11434"
+    models:
+      fast: "tinyllama:latest"
+      code: "codellama:7b-code"
+      advanced: "deepseek-coder:6.7b-instruct-q4_K_M"
+      default: "tinyllama:latest"
+    timeout: 30000
+    
+  cloud:
+    enabled: true
+    provider: "pulser"
+    api_url: "${PULSER_API_URL:-http://localhost:3001/api}"
+    tenant_isolation: true
+    timeout: 60000
+    
+  hybrid:
+    enabled: true
+    routing_strategy: "intelligent"  # cost, latency, capability, intelligent
+    local_fallback: true
+    cost_threshold: 0.6  # Use local if cost savings > 60%
+    quality_threshold: 0.1  # Switch if quality difference < 10%
+
+# CLI behavior
+cli:
+  default_mode: "hybrid"
+  session_management: true
+  session_dir: "${HOME}/.pulser/sessions"
+  cache_dir: "${HOME}/.pulser/cache"
+  log_dir: "${HOME}/.pulser/logs"
+  multi_modal: true
+  caching: true
+  progress_indicators: true
+  max_tokens: 2048
+  temperature: 0.7
+  verbose: false
+
+# Agent configurations
+agents:
+  builtin:
+    explain:
+      execution: "local"
+      model: "codellama:7b-code"
+      description: "Code explanation and documentation"
+      capabilities: ["code_analysis", "documentation"]
+      
+    fix:
+      execution: "hybrid"
+      local_model: "codellama:7b-code"
+      cloud_pipeline: "code-analysis"
+      description: "Code fixing and optimization"
+      capabilities: ["code_fixing", "optimization"]
+      
+    test:
+      execution: "cloud"
+      pipeline: "test-generation"
+      description: "Test generation and validation"
+      capabilities: ["test_generation", "validation"]
+      
+    chat:
+      execution: "hybrid"
+      local_model: "tinyllama:latest"
+      cloud_pipeline: "chat-orchestration"
+      description: "Interactive chat with context"
+      capabilities: ["conversation", "context_management"]
+      
+  custom:
+    enabled: true
+    discovery_paths:
+      - "./tenants/*/pulser/agents/"
+      - "${HOME}/.pulser/agents/"
+      - "./packages/agents/src/"
+
+# Pipeline routing
+routing:
+  strategy: "intelligent"
+  factors:
+    - cost_efficiency
+    - response_latency
+    - model_capability
+    - data_sensitivity
+    - user_preference
+  
+  rules:
+    - condition: "simple_query AND local_available"
+      action: "execute_local"
+      priority: 100
+      
+    - condition: "complex_analysis OR tenant_data_required"
+      action: "execute_cloud"
+      priority: 90
+      
+    - condition: "code_related AND privacy_sensitive"
+      action: "execute_local"
+      priority: 95
+      
+    - condition: "cross_tenant_analysis"
+      action: "execute_cloud"
+      priority: 80
+      
+    - condition: "local_unavailable"
+      action: "execute_cloud"
+      priority: 70
+
+# Performance and optimization
+performance:
+  local_health_check_interval: 30000  # 30 seconds
+  cloud_health_check_interval: 60000  # 1 minute
+  cache_ttl: 3600  # 1 hour
+  max_concurrent_requests: 5
+  retry_attempts: 3
+  retry_delay: 1000  # 1 second
+
+# Security and privacy
+security:
+  local_only_patterns:
+    - "private_key"
+    - "password"
+    - "secret"
+    - "token"
+  
+  tenant_data_patterns:
+    - "customer_data"
+    - "sales_data"
+    - "campaign_data"
+    - "analytics_data"
+  
+  log_level: "info"  # debug, info, warn, error
+  sanitize_logs: true
+
+# Integration settings
+integration:
+  tenants:
+    enabled: true
+    auto_discovery: true
+    config_path: "./tenants/*/pulser/cli-config.yaml"
+  
+  monorepo:
+    enabled: true
+    workspace_root: "./"
+    package_discovery: true
+  
+  external_apis:
+    enabled: true
+    timeout: 30000
+    retries: 3
+
+# Feature flags
+features:
+  cross_tenant_analysis: true
+  learning_optimization: true
+  cost_tracking: true
+  performance_monitoring: true
+  session_sharing: false  # Disabled for privacy
+  collaborative_sessions: false

@@ -1,0 +1,88 @@
+{
+  "name": "@ai/pulser-cli",
+  "version": "4.0.0",
+  "description": "Unified AI orchestration CLI with local and cloud capabilities",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "pulser": "./cli/pulser.js",
+    "bruno": "./cli/bruno.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./agents/*": "./agents/*",
+    "./config/*": "./config/*"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "install-global": "npm link",
+    "cli": "node cli/pulser.js",
+    "bruno": "node cli/bruno.js",
+    "demo": "node demo/agent-showcase.js",
+    "demo:agents": "node demo/agent-showcase.js"
+  },
+  "dependencies": {
+    "@ai/ui": "workspace:*",
+    "@ai/db": "workspace:*",
+    "@ai/agents": "workspace:*",
+    "ollama": "^0.5.8",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "inquirer": "^12.6.3",
+    "ora": "^8.1.0",
+    "boxen": "^8.0.1",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^3.3.2",
+    "ws": "^8.18.0",
+    "uuid": "^9.0.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "yargs": "^17.7.2",
+    "yaml": "^2.6.1",
+    "lodash": "^4.17.21",
+    "debug": "^4.4.0",
+    "minimatch": "^10.0.1",
+    "semver": "^7.6.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.16.11",
+    "@types/uuid": "^9.0.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/mime-types": "^2.1.4",
+    "@types/ws": "^8.5.13",
+    "@types/yargs": "^17.0.33",
+    "@types/lodash": "^4.17.13",
+    "@types/debug": "^4.1.12",
+    "@types/semver": "^7.5.9",
+    "@ai/eslint-config": "workspace:*",
+    "eslint": "^8.57.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "ai",
+    "cli",
+    "pulser",
+    "orchestration",
+    "agents",
+    "local",
+    "cloud",
+    "ollama"
+  ]
+}

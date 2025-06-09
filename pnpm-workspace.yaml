@@ -1,0 +1,9 @@
+packages:
+  # All tenant applications
+  - 'tenants/*'
+  
+  # Shared packages and libraries
+  - 'packages/*'
+  
+  # Development and build tools
+  - 'tools/*'

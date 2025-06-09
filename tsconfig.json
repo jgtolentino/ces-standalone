@@ -1,0 +1,74 @@
+{
+  "extends": "./packages/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@ai/*": ["packages/*/src"],
+      "@ai/ui": ["packages/ui/src"],
+      "@ai/db": ["packages/db/src"],
+      "@ai/agents": ["packages/agents/src"],
+      "@ai/utils": ["packages/utils/src"],
+      "@ai/config": ["packages/config/src"]
+    },
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "types": ["node"]
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "tenants/*/src/**/*",
+    "scripts/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "references": [
+    {
+      "path": "./packages/ui"
+    },
+    {
+      "path": "./packages/db"
+    },
+    {
+      "path": "./packages/agents"
+    },
+    {
+      "path": "./packages/utils"
+    },
+    {
+      "path": "./packages/config"
+    },
+    {
+      "path": "./packages/eslint-config"
+    },
+    {
+      "path": "./packages/typescript-config"
+    }
+  ]
+}
