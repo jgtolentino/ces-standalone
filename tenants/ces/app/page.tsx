@@ -54,16 +54,16 @@ export default function CESHomePage() {
         
         const data = await response.json();
         
-        // Set metrics from API aggregates
+        // Set metrics from API aggregates with safe defaults
         setMetrics({
-          totalCampaigns: data.aggregates.totalCampaigns,
-          activeCampaigns: data.aggregates.activeCampaigns,
-          totalReach: data.aggregates.totalReach,
-          averageROI: data.aggregates.averageROI,
-          conversionRate: data.aggregates.overallConversionRate,
-          totalSpend: data.aggregates.totalSpend,
-          impressions: data.aggregates.totalImpressions,
-          clicks: data.aggregates.totalClicks
+          totalCampaigns: data.aggregates?.totalCampaigns || 0,
+          activeCampaigns: data.aggregates?.activeCampaigns || 0,
+          totalReach: data.aggregates?.totalReach || 0,
+          averageROI: data.aggregates?.averageROI || 0,
+          conversionRate: data.aggregates?.overallConversionRate || 0,
+          totalSpend: data.aggregates?.totalSpend || 0,
+          impressions: data.aggregates?.totalImpressions || 0,
+          clicks: data.aggregates?.totalClicks || 0
         });
         
         // Map campaign data to expected format
@@ -105,12 +105,14 @@ export default function CESHomePage() {
   }, []);
 
   const formatNumber = (num: number) => {
+    if (!num || isNaN(num)) return '0';
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
     if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
-    return String(num ?? '');
+    return String(Math.round(num));
   };
 
   const formatCurrency = (amount: number) => {
+    if (!amount || isNaN(amount)) return '$0';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -200,7 +202,7 @@ export default function CESHomePage() {
             <TrendingUp className="w-4 h-4 text-orange-400" />
             <div className="metric-label">CTR</div>
           </div>
-          <div className="metric-value">{((metrics.clicks / metrics.impressions) * 100).toFixed(2)}%</div>
+          <div className="metric-value">{metrics.impressions > 0 ? ((metrics.clicks / metrics.impressions) * 100).toFixed(2) : '0.00'}%</div>
         </div>
       </div>
 
@@ -250,7 +252,7 @@ export default function CESHomePage() {
                 <div>
                   <div className="text-gray-400">Period</div>
                   <div className="font-medium text-white text-xs">
-                    {new Date(campaign.startDate).toLocaleDateString()} - {new Date(campaign.endDate).toLocaleDateString()}
+                    {campaign.startDate ? new Date(campaign.startDate).toLocaleDateString() : 'N/A'} - {campaign.endDate ? new Date(campaign.endDate).toLocaleDateString() : 'N/A'}
                   </div>
                 </div>
               </div>
