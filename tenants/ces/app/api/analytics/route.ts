@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCampaignMetrics, analyzeCreativePerformance } from '@ai/agents';
-import { executeQuery } from '@ai/db';
+import { getCampaignMetrics, analyzeCreativePerformance } from '../../../lib/campaign-agents';
+import { executeQuery } from '../../../lib/database';
 
 export async function GET(request: NextRequest) {
   try {
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
       `;
       
       try {
-        return await executeQuery('ces', query);
+        return await executeQuery(query);
       } catch (error) {
         console.warn(`Could not fetch time series for ${metric}:`, error);
         return [];
@@ -49,27 +49,27 @@ export async function GET(request: NextRequest) {
     const previousPeriodEnd = currentPeriodStart;
 
     const [currentCampaigns, previousCampaigns] = await Promise.all([
-      getCampaignMetrics(undefined, currentPeriodStart, currentPeriodEnd),
-      getCampaignMetrics(undefined, previousPeriodStart, previousPeriodEnd)
+      getCampaignMetrics(),
+      getCampaignMetrics()
     ]);
 
     // Calculate current period totals
-    const currentTotals = currentCampaigns.reduce((acc, campaign) => ({
+    const currentTotals = currentCampaigns.campaigns.reduce((acc, campaign) => ({
       impressions: acc.impressions + campaign.impressions,
       clicks: acc.clicks + campaign.clicks,
       conversions: acc.conversions + campaign.conversions,
       spent: acc.spent + campaign.spent,
-      roi: acc.roi + campaign.roi
-    }), { impressions: 0, clicks: 0, conversions: 0, spent: 0, roi: 0 });
+      revenue: acc.revenue + campaign.revenue
+    }), { impressions: 0, clicks: 0, conversions: 0, spent: 0, revenue: 0 });
 
     // Calculate previous period totals
-    const previousTotals = previousCampaigns.reduce((acc, campaign) => ({
+    const previousTotals = previousCampaigns.campaigns.reduce((acc, campaign) => ({
       impressions: acc.impressions + campaign.impressions,
       clicks: acc.clicks + campaign.clicks,
       conversions: acc.conversions + campaign.conversions,
       spent: acc.spent + campaign.spent,
-      roi: acc.roi + campaign.roi
-    }), { impressions: 0, clicks: 0, conversions: 0, spent: 0, roi: 0 });
+      revenue: acc.revenue + campaign.revenue
+    }), { impressions: 0, clicks: 0, conversions: 0, spent: 0, revenue: 0 });
 
     const calculateChange = (current: number, previous: number) => 
       previous > 0 ? ((current - previous) / previous) * 100 : 0;
@@ -112,14 +112,14 @@ export async function GET(request: NextRequest) {
           timeSeries: await getTimeSeriesData('spent', days)
         },
         roi: {
-          current: currentCampaigns.length > 0 ? currentTotals.roi / currentCampaigns.length : 0,
-          previous: previousCampaigns.length > 0 ? previousTotals.roi / previousCampaigns.length : 0,
+          current: currentCampaigns.campaigns.length > 0 ? currentTotals.revenue / currentCampaigns.campaigns.length : 0,
+          previous: previousCampaigns.campaigns.length > 0 ? previousTotals.revenue / previousCampaigns.campaigns.length : 0,
           change: calculateChange(
-            currentCampaigns.length > 0 ? currentTotals.roi / currentCampaigns.length : 0,
-            previousCampaigns.length > 0 ? previousTotals.roi / previousCampaigns.length : 0
+            currentCampaigns.campaigns.length > 0 ? currentTotals.revenue / currentCampaigns.campaigns.length : 0,
+            previousCampaigns.campaigns.length > 0 ? previousTotals.revenue / previousCampaigns.campaigns.length : 0
           ),
-          trend: (currentCampaigns.length > 0 ? currentTotals.roi / currentCampaigns.length : 0) >
-                (previousCampaigns.length > 0 ? previousTotals.roi / previousCampaigns.length : 0) ? 'up' : 'down',
+          trend: (currentCampaigns.campaigns.length > 0 ? currentTotals.revenue / currentCampaigns.campaigns.length : 0) >
+                (previousCampaigns.campaigns.length > 0 ? previousTotals.revenue / previousCampaigns.campaigns.length : 0) ? 'up' : 'down',
           timeSeries: await getTimeSeriesData('roi', days)
         }
       },
@@ -293,8 +293,8 @@ export async function GET(request: NextRequest) {
     // Filter by campaign if requested
     if (campaignId) {
       const campaignData = await getCampaignMetrics(campaignId);
-      if (campaignData.length > 0) {
-        (analyticsData as any).campaignSpecific = campaignData[0];
+      if (campaignData.campaigns.length > 0) {
+        (analyticsData as any).campaignSpecific = campaignData.campaigns[0];
       }
     }
 
@@ -328,7 +328,7 @@ async function getChannelPerformance(startDate: string, endDate: string) {
   `;
   
   try {
-    return await executeQuery('ces', query, [startDate, endDate]);
+    return await executeQuery(query, [startDate, endDate]);
   } catch (error) {
     console.warn('Could not fetch channel performance:', error);
     return [];

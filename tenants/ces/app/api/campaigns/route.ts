@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCampaignMetrics } from '@ai/agents';
-import { executeQuery } from '@ai/db';
+import { getCampaignMetrics } from '../../../lib/campaign-agents';
+import { executeQuery } from '../../../lib/database';
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,27 +12,21 @@ export async function GET(request: NextRequest) {
     const offset = parseInt(searchParams.get('offset') || '0');
 
     // Get real campaign data from Azure PostgreSQL
-    const campaigns = await getCampaignMetrics(
-      undefined, // No specific campaign ID
-      startDate || undefined,
-      endDate || undefined,
-      status || undefined
-    );
+    const campaigns = await getCampaignMetrics();
 
     // Apply pagination
-    const totalCampaigns = campaigns.length;
-    const paginatedCampaigns = campaigns.slice(offset, offset + limit);
+    const totalCampaigns = campaigns.campaigns.length;
+    const paginatedCampaigns = campaigns.campaigns.slice(offset, offset + limit);
 
     // Calculate aggregate metrics from real data
-    const activeCampaigns = campaigns.filter(c => c.status === 'active').length;
-    const totalSpend = campaigns.reduce((sum, c) => sum + c.spent, 0);
-    const totalReach = campaigns.reduce((sum, c) => sum + c.reach, 0);
-    const totalImpressions = campaigns.reduce((sum, c) => sum + c.impressions, 0);
-    const totalClicks = campaigns.reduce((sum, c) => sum + c.clicks, 0);
-    const totalConversions = campaigns.reduce((sum, c) => sum + c.conversions, 0);
+    const activeCampaigns = campaigns.campaigns.filter(c => c.status === 'active').length;
+    const totalSpend = campaigns.campaigns.reduce((sum, c) => sum + c.spent, 0);
+    const totalImpressions = campaigns.campaigns.reduce((sum, c) => sum + c.impressions, 0);
+    const totalClicks = campaigns.campaigns.reduce((sum, c) => sum + c.clicks, 0);
+    const totalConversions = campaigns.campaigns.reduce((sum, c) => sum + c.conversions, 0);
     
-    const averageROI = campaigns.length > 0 
-      ? campaigns.reduce((sum, c) => sum + c.roi, 0) / campaigns.length 
+    const averageRevenue = campaigns.campaigns.length > 0 
+      ? campaigns.campaigns.reduce((sum, c) => sum + c.revenue, 0) / campaigns.campaigns.length 
       : 0;
     
     const overallCTR = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
@@ -50,11 +44,10 @@ export async function GET(request: NextRequest) {
         totalCampaigns,
         activeCampaigns,
         totalSpend,
-        totalReach,
         totalImpressions,
         totalClicks,
         totalConversions,
-        averageROI: Math.round(averageROI * 100) / 100,
+        averageRevenue: Math.round(averageRevenue * 100) / 100,
         overallCTR: Math.round(overallCTR * 100) / 100,
         overallConversionRate: Math.round(overallConversionRate * 100) / 100
       },
@@ -96,7 +89,7 @@ export async function POST(request: NextRequest) {
       ) RETURNING *;
     `;
 
-    const result = await executeQuery('ces', insertQuery, [
+    const result = await executeQuery(insertQuery, [
       body.campaign_name,
       body.status || 'draft',
       body.channel,
@@ -107,12 +100,12 @@ export async function POST(request: NextRequest) {
       body.campaign_type || 'brand_awareness'
     ]);
 
-    if (result.length === 0) {
+    if (result.rows.length === 0) {
       throw new Error('Failed to create campaign');
     }
 
     return NextResponse.json({
-      campaign: result[0],
+      campaign: result.rows[0],
       message: 'Campaign created successfully'
     }, { status: 201 });
 

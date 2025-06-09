@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: require('path').resolve(__dirname, '../../'),
-  },
   transpilePackages: ['@ai/ui', '@ai/db', '@ai/agents'],
   env: {
     TENANT_ID: 'ces',
