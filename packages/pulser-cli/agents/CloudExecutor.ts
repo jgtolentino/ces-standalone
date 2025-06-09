@@ -15,7 +15,7 @@ export class CloudExecutor {
 
   constructor(config: { apiUrl?: string; authToken?: string } = {}) {
     this.pulserApiUrl = config.apiUrl || 'https://api.pulser.ai';
-    this.authToken = config.authToken || process.env.PULSER_API_TOKEN;
+    this.authToken = config.authToken || process.env.PULSER_API_TOKEN || undefined;
   }
 
   async execute(context: ExecutionContext): Promise<{
@@ -53,7 +53,7 @@ export class CloudExecutor {
       };
     } catch (error) {
       log('Cloud execution failed:', error);
-      throw new Error(`Cloud execution failed: ${error.message}`);
+      throw new Error(`Cloud execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -87,11 +87,12 @@ export class CloudExecutor {
 
       return data;
     } catch (error) {
-      if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
+      const err = error as any;
+      if (err.code === 'ECONNREFUSED' || err.code === 'ENOTFOUND') {
         throw new Error(`Cannot connect to Pulser API at ${this.pulserApiUrl}. Check your network connection and API URL.`);
       }
       
-      if (error.message.includes('401')) {
+      if (err.message && err.message.includes('401')) {
         throw new Error('Authentication failed. Please check your PULSER_API_TOKEN.');
       }
       
@@ -105,8 +106,8 @@ export class CloudExecutor {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': this.authToken ? `Bearer ${this.authToken}` : undefined
-        }.filter(Boolean),
+          ...(this.authToken && { 'Authorization': `Bearer ${this.authToken}` })
+        },
         body: JSON.stringify({
           model,
           input: request.input,
@@ -138,8 +139,8 @@ export class CloudExecutor {
       const response = await fetch(`${this.pulserApiUrl}/v1/health`, {
         method: 'GET',
         headers: {
-          'Authorization': this.authToken ? `Bearer ${this.authToken}` : undefined
-        }.filter(Boolean)
+          ...(this.authToken && { 'Authorization': `Bearer ${this.authToken}` })
+        }
       });
 
       const latency = Date.now() - startTime;

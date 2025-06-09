@@ -1,0 +1,22 @@
+{
+  "name": "pulser-dev-env",
+  "description": "Pulser 4.0 development with MCP tools and CLI orchestration",
+  "image": "nvidia/cuda:12.1.1-devel-ubuntu22.04",
+  "shell": "bash",
+  "accelerator": "GPU",
+  "command": "/bin/bash",
+  "secrets": [],
+  "mounts": [
+    {
+      "source": "~/Documents/GitHub/ai-agency",
+      "target": "/workspace/ai-agency",
+      "mode": "rw"
+    }
+  ],
+  "env": {
+    "PULSER_MODE": "dev",
+    "PULSER_ORCHESTRATOR": "true",
+    "TENANT_ID": "ces",
+    "NODE_ENV": "development"
+  }
+}

@@ -35,7 +35,7 @@ export class LocalExecutor {
       };
     } catch (error) {
       log('Local execution failed:', error);
-      throw new Error(`Local execution failed: ${error.message}`);
+      throw new Error(`Local execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -85,7 +85,8 @@ export class LocalExecutor {
       const data = await response.json();
       return data.response || 'No response from model';
     } catch (error) {
-      if (error.code === 'ECONNREFUSED') {
+      const err = error as any;
+      if (err.code === 'ECONNREFUSED') {
         throw new Error('Ollama service not running. Please start Ollama with: ollama serve');
       }
       throw error;

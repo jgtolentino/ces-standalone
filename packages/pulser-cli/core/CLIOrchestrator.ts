@@ -31,7 +31,7 @@ export class CLIOrchestrator {
     this.sessionManager = sessionManager;
     this.localExecutor = new LocalExecutor();
     this.cloudExecutor = new CloudExecutor();
-    this.hybridExecutor = new HybridExecutor(this.localExecutor, this.cloudExecutor);
+    this.hybridExecutor = new HybridExecutor();
   }
 
   async execute(request: CLIRequest): Promise<ExecutionResponse> {
@@ -53,10 +53,10 @@ export class CLIOrchestrator {
         plan,
         metadata: {
           executionTime,
-          tokenCount: response.tokenCount,
-          cost: response.cost,
-          model: response.model,
-          cacheHit: response.cacheHit
+          ...(response.tokenCount !== undefined && { tokenCount: response.tokenCount }),
+          ...(response.cost !== undefined && { cost: response.cost }),
+          ...(response.model !== undefined && { model: response.model }),
+          ...(response.cacheHit !== undefined && { cacheHit: response.cacheHit })
         }
       };
 
@@ -92,9 +92,9 @@ export class CLIOrchestrator {
             plan: fallbackPlan,
             metadata: {
               executionTime,
-              tokenCount: fallbackResponse.tokenCount,
-              cost: fallbackResponse.cost,
-              model: fallbackResponse.model
+              ...(fallbackResponse.tokenCount !== undefined && { tokenCount: fallbackResponse.tokenCount }),
+              ...(fallbackResponse.cost !== undefined && { cost: fallbackResponse.cost }),
+              ...(fallbackResponse.model !== undefined && { model: fallbackResponse.model })
             }
           };
         } catch (fallbackError) {
@@ -102,7 +102,7 @@ export class CLIOrchestrator {
         }
       }
 
-      throw new Error(`Execution failed: ${error.message}`);
+      throw new Error(`Execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -170,7 +170,7 @@ export class CLIOrchestrator {
       input: JSON.stringify(parameters),
       command: 'pipeline',
       mode: 'cloud',
-      tenant
+      ...(tenant && { tenant })
     };
 
     // Override the routing to force pipeline execution
@@ -193,9 +193,9 @@ export class CLIOrchestrator {
       plan,
       metadata: {
         executionTime: 0, // Will be set by caller
-        tokenCount: response.tokenCount,
-        cost: response.cost,
-        model: response.model
+        ...(response.tokenCount !== undefined && { tokenCount: response.tokenCount }),
+        ...(response.cost !== undefined && { cost: response.cost }),
+        ...(response.model !== undefined && { model: response.model })
       }
     };
   }

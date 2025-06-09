@@ -112,7 +112,7 @@ export abstract class BaseAgent {
 
     } catch (error) {
       log(`Agent ${this.name} execution failed:`, error);
-      throw new Error(`Agent execution failed: ${error.message}`);
+      throw new Error(`Agent execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -200,7 +200,7 @@ export abstract class BaseAgent {
       metadata: {
         agent: this.name,
         executionMode: mode,
-        model,
+        ...(model && { model }),
         confidence,
         executionTime: 0 // Will be set by execute()
       }
@@ -226,7 +226,7 @@ export abstract class BaseAgent {
       const data = await response.json();
       return data.response;
     } catch (error) {
-      throw new Error(`Ollama execution failed: ${error.message}`);
+      throw new Error(`Ollama execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -248,7 +248,7 @@ export abstract class BaseAgent {
       const result = await response.json();
       return result.content;
     } catch (error) {
-      throw new Error(`Pulser pipeline execution failed: ${error.message}`);
+      throw new Error(`Pulser pipeline execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 

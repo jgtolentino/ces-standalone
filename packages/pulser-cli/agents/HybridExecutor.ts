@@ -52,7 +52,7 @@ export class HybridExecutor {
       };
     } catch (error) {
       log('Hybrid execution failed:', error);
-      throw new Error(`Hybrid execution failed: ${error.message}`);
+      throw new Error(`Hybrid execution failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 

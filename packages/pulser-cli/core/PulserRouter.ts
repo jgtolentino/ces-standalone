@@ -133,7 +133,7 @@ export class PulserRouter {
     return plan;
   }
 
-  private async assessCapabilities(): Promise<SystemCapabilities> {
+  async assessCapabilities(): Promise<SystemCapabilities> {
     const [localCapabilities, cloudCapabilities] = await Promise.all([
       this.assessLocalCapabilities(),
       this.assessCloudCapabilities()

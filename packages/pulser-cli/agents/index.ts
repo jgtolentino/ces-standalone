@@ -8,28 +8,11 @@ export type {
   ExecutionContext
 } from './BaseAgent.js';
 
-// Concrete Agents
-export { CodeReviewAgent } from './CodeReviewAgent.js';
-
 // Executors
 export { LocalExecutor } from './LocalExecutor.js';
 export { CloudExecutor } from './CloudExecutor.js';
 export { HybridExecutor } from './HybridExecutor.js';
 export type { HybridStrategy } from './HybridExecutor.js';
-
-// Orchestration
-export { AgentOrchestrator } from './AgentOrchestrator.js';
-export type { AgentRegistry, OrchestrationConfig } from './AgentOrchestrator.js';
-
-// Utility function to create a pre-configured orchestrator
-export function createOrchestrator(config?: OrchestrationConfig): AgentOrchestrator {
-  return new AgentOrchestrator(config);
-}
-
-// Agent factory functions
-export function createCodeReviewAgent(config?: any): CodeReviewAgent {
-  return new CodeReviewAgent(config);
-}
 
 // Export type guards
 export function isAgentResponse(obj: any): obj is AgentResponse {

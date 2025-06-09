@@ -13,6 +13,9 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "incremental": false,
+    "composite": false,
+    "exactOptionalPropertyTypes": false,
     "paths": {
       "@ai/*": ["../*/src"]
     }
