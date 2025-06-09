@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  productionBrowserSourceMaps: true,
   transpilePackages: ['@ai/ui', '@ai/db', '@ai/agents'],
   env: {
     TENANT_ID: 'ces',

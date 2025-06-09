@@ -22,7 +22,6 @@
     "@supabase/supabase-js": "^2.47.9",
     "clsx": "^2.0.0",
     "class-variance-authority": "^0.7.0",
-    "@types/lucide-react": "^3.0.0",
     "recharts": "^2.8.0"
   },
   "devDependencies": {

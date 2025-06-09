@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'CES - Campaign Effectiveness System',
   description: 'AI-powered campaign performance analytics and optimization platform',
   keywords: 'campaign analytics, marketing effectiveness, AI insights, performance tracking',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
