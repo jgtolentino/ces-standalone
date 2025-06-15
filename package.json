@@ -14,16 +14,22 @@
     "qa:full": "node scripts/qa/scout-qa.js full-suite"
   },
   "dependencies": {
-    "next": "^14.2.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@radix-ui/react-slot": "^1.2.3",
     "@types/node": "^20.16.11",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "typescript": "^5.6.3",
-    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "js-yaml": "^4.1.0",
     "lucide-react": "^0.263.1",
-    "js-yaml": "^4.1.0"
+    "next": "^14.2.15",
+    "postcss": "^8.5.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.6.3"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",

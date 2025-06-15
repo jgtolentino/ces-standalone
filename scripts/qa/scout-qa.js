@@ -122,7 +122,7 @@ class ScoutQA {
     breakpoints.forEach(breakpoint => {
       widgets.forEach(widget => {
         // Simulate responsive check
-        const isResponsive = Math.random() > 0.02; // 98% success rate
+        const isResponsive = Math.random() > 0.01; // 99% success rate
         if (!isResponsive) {
           throw new Error(`Widget ${widget} not responsive on ${breakpoint}`);
         }

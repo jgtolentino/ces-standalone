@@ -147,7 +147,7 @@ Data Overview:
 - Average Conversion Rate: ${avgConversion.toFixed(2)}%
 
 Top Performing Campaigns:
-${topCampaigns.map(c => `- ${c.name} (${c.brand}): ROI ${c.avgROI}%`).join('\n')}
+${topCampaigns.map((c: any) => `- ${c.name} (${c.brand}): ROI ${c.avgROI}%`).join('\n')}
 
 Available Metrics:
 - ROI, Brand Recall, Engagement Rate
