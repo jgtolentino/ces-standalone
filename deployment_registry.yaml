@@ -1,0 +1,223 @@
+# AI Agency Deployment Registry
+# Unified tracking for all AI systems and agents
+
+registry:
+  name: "AI Agency Deployment Registry"
+  version: "2.0"
+  last_updated: "2025-01-15"
+  
+platform:
+  infrastructure: "azure + vercel + supabase"
+  model_backend: "azure-openai"
+  deployment_strategy: "edge_deployment"
+  monitoring: "datadog + sentry"
+
+systems:
+  scout_analytics:
+    status: "production_ready"
+    version: "2.0.0"
+    type: "retail_intelligence"
+    deployment_url: "https://scout-analytics.vercel.app"
+    api_endpoints:
+      - "/api/scout-analytics"
+      - "/api/retail-insights"
+      - "/api/consumer-behavior"
+    database: "supabase_postgresql"
+    llm_integration: "azure_openai"
+    qa_status: "validated"
+    performance_sla: "<100ms query response"
+    
+  ces_creative_system:
+    status: "production_ready"
+    version: "2.0.0"
+    type: "creative_effectiveness"
+    deployment_url: "https://ces.tbwa.agency"
+    api_endpoints:
+      - "/api/ask-ces"
+      - "/api/creative-analysis"
+      - "/api/campaign-analysis"
+    database: "azure_sql"
+    llm_integration: "azure_openai"
+    qa_status: "validated"
+    performance_sla: "<2s analysis response"
+    
+  tbwa_chat:
+    status: "deployed"
+    version: "1.0.0"
+    type: "conversational_ai"
+    deployment_url: "https://chat.tbwa.agency"
+    api_endpoints:
+      - "/api/chat"
+    llm_integration: "azure_openai"
+    qa_status: "basic_validation"
+
+shared_resources:
+  llm_backend:
+    provider: "azure_openai"
+    endpoint: "${AZURE_OPENAI_ENDPOINT}"
+    deployment_id: "${AZURE_OPENAI_DEPLOYMENT_ID}"
+    model: "gpt-4-turbo"
+    
+  database_connections:
+    azure_sql: "tbwa_creative_campaigns"
+    supabase: "scout_analytics_prod"
+    redis: "shared_cache_layer"
+    
+  authentication:
+    provider: "supabase_auth"
+    sso_enabled: true
+    rbac: "row_level_security"
+
+agents:
+  ask_ces:
+    type: "creative_consultant"
+    model: "azure_openai"
+    context: "ces_framework + brand_guidelines"
+    capabilities: ["strategy", "analysis", "optimization"]
+    
+  scout_bot:
+    type: "retail_analyst"
+    model: "azure_openai"
+    context: "retail_data + market_intelligence"
+    capabilities: ["trends", "insights", "forecasting"]
+    
+  yummy:
+    type: "food_brand_specialist"
+    model: "azure_openai"
+    context: "fmcg_insights + consumer_behavior"
+    capabilities: ["category_analysis", "consumer_insights"]
+    
+  retail_bot:
+    type: "commerce_analyst"
+    model: "azure_openai"
+    context: "transaction_data + competitive_intel"
+    capabilities: ["performance", "optimization", "benchmarking"]
+
+qa_framework:
+  caca_validator:
+    coverage: "85%+"
+    test_types: ["regression", "performance", "accuracy"]
+    automation: "github_actions"
+    
+  validation_criteria:
+    response_quality: ">80% keyword relevance"
+    context_awareness: "brand + regional specificity"
+    performance: "<2s average response time"
+    accuracy: "aligned with framework guidelines"
+    
+  test_suites:
+    ces_tests: "15 test cases"
+    scout_tests: "12 test cases"
+    integration_tests: "8 test cases"
+
+deployment_environments:
+  production:
+    platform: "vercel"
+    domain: "tbwa.agency"
+    ssl: "automatic"
+    cdn: "edge_network"
+    
+  staging:
+    platform: "vercel_preview"
+    testing: "automated"
+    validation: "pre_deploy"
+    
+  development:
+    platform: "local + cloud"
+    hot_reload: "enabled"
+    debugging: "enhanced"
+
+monitoring:
+  metrics:
+    - response_time_p95
+    - error_rate
+    - user_satisfaction
+    - query_volume
+    - cost_per_query
+    
+  alerts:
+    - performance_degradation
+    - error_threshold_breach
+    - qa_test_failures
+    - cost_anomalies
+    
+  dashboards:
+    - system_health
+    - usage_analytics
+    - cost_tracking
+    - performance_trends
+
+cost_optimization:
+  azure_openai:
+    strategy: "prompt_optimization + caching"
+    budget: "$500/month"
+    alerts: "80% threshold"
+    
+  infrastructure:
+    vercel: "$95/month"
+    supabase: "$25/month"
+    monitoring: "$50/month"
+    total_monthly: "$170/month"
+
+security:
+  authentication: "oauth_2_0 + jwt"
+  authorization: "rbac + rls"
+  encryption: "tls_1_3 + aes_256"
+  api_security: "rate_limiting + validation"
+  
+  compliance:
+    gdpr: "data_privacy_framework"
+    soc2: "type_ii_ready"
+    audit_logs: "comprehensive_tracking"
+
+integration_points:
+  external_systems:
+    - google_drive_api
+    - salesforce_crm
+    - azure_key_vault
+    - github_actions
+    
+  data_pipelines:
+    - pos_data_ingestion
+    - campaign_asset_extraction
+    - performance_metrics_sync
+    - competitive_intelligence_feeds
+
+success_metrics:
+  technical:
+    uptime: "99.9%"
+    response_time: "<2s average"
+    error_rate: "<0.1%"
+    
+  business:
+    user_adoption: "80%+"
+    time_savings: "5 hours/week/user"
+    decision_impact: "20% roi improvement"
+    
+  quality:
+    qa_pass_rate: "95%+"
+    user_satisfaction: "4.5+ csat"
+    accuracy_score: ">90%"
+
+roadmap:
+  immediate:
+    - complete_azure_openai_migration
+    - enhanced_monitoring_setup
+    - performance_optimization
+    
+  q1_2025:
+    - multi_tenant_architecture
+    - advanced_analytics
+    - mobile_optimization
+    
+  q2_2025:
+    - southeast_asia_expansion
+    - white_label_platform
+    - advanced_ai_capabilities
+
+notes:
+  - "All systems now standardized on Azure OpenAI"
+  - "Unified QA framework via Caca validation"
+  - "Context-aware AI responses across all agents"
+  - "Production monitoring and alerting active"
+  - "Cost optimization strategies implemented"
