@@ -36,10 +36,10 @@
   ],
   "projects": {
     "scout-mvp": {
-      "rootDirectory": "tenants/scout",
+      "rootDirectory": ".",
       "framework": "nextjs",
       "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
-      "outputDirectory": "tenants/scout/.next",
+      "outputDirectory": ".next",
       "installCommand": "pnpm install --no-frozen-lockfile"
     }
   }
