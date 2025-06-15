@@ -1,38 +1,33 @@
 {
-  "name": "@ai/tenant-ces",
+  "name": "@ai/agency",
   "version": "0.1.0",
-  "description": "Campaign Insight Accelerator tenant application",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "qa:scout": "node scripts/qa/scout-qa.js",
+    "qa:validate": "node scripts/qa/scout-qa.js validate-output",
+    "qa:health": "node scripts/qa/scout-qa.js health-check",
+    "qa:full": "node scripts/qa/scout-qa.js full-suite"
   },
   "dependencies": {
-    "@azure/openai": "^2.0.0",
-    "@radix-ui/react-slot": "^1.2.3",
-    "@supabase/supabase-js": "^2.47.9",
-    "autoprefixer": "^10.4.21",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.344.0",
     "next": "^14.2.15",
-    "pg": "^8.11.3",
-    "postcss": "^8.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "recharts": "^2.8.0",
-    "tailwindcss": "^3.4.17"
-  },
-  "devDependencies": {
     "@types/node": "^20.16.11",
-    "@types/pg": "^8.10.9",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "^14.2.15",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "tailwindcss": "^3.4.0",
+    "lucide-react": "^0.263.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.15"
   }
 }

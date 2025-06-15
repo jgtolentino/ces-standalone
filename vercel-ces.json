@@ -1,44 +1,10 @@
 {
   "version": 2,
-  "name": "ces-mvp",
   "framework": "nextjs",
   "regions": ["iad1"],
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/ask-ces",
-      "dest": "/api/ask-ces"
-    },
-    {
-      "src": "/ces",
-      "dest": "/ces"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "env": {
-    "AZURE_OPENAI_ENDPOINT": "@azure-openai-endpoint",
-    "AZURE_OPENAI_API_KEY": "@azure-openai-api-key", 
-    "AZURE_OPENAI_DEPLOYMENT_NAME": "@azure-openai-deployment-name",
-    "NEXT_PUBLIC_VERCEL_ENV": "production"
-  },
   "functions": {
     "app/api/ask-ces/route.ts": {
       "maxDuration": 30
     }
-  },
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/ces",
-      "permanent": false
-    }
-  ]
+  }
 }
