@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  productionBrowserSourceMaps: true,
   transpilePackages: [],
   env: {
-    TENANT_ID: 'ces',
-    TENANT_NAME: 'Campaign Effectiveness System',
+    SYSTEM_ID: 'tbwa-creative-analysis',
+    SYSTEM_NAME: 'TBWA Creative Campaign Analysis System',
   },
   async headers() {
     return [
@@ -12,8 +13,12 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           {
-            key: 'X-Tenant-ID',
-            value: 'ces',
+            key: 'X-System-ID',
+            value: 'tbwa-creative-analysis',
+          },
+          {
+            key: 'X-System-Name',
+            value: 'TBWA Creative Campaign Analysis System',
           },
           {
             key: 'X-Frame-Options',

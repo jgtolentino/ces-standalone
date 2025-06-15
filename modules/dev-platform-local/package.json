@@ -1,0 +1,11 @@
+{
+  "name": "dev-platform-local",
+  "version": "1.0.0",
+  "description": "Local development platform for TBWA Creative Campaign RAG System",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "ws": "^8.13.0"
+  }
+} 

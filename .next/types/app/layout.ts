@@ -1,4 +1,4 @@
-// File: /Users/tbwa/Documents/GitHub/ces-standalone/app/layout.tsx
+// File: /Users/tbwa/Documents/GitHub/ai-agency/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

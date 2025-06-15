@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Add Modal Capabilities
+- Vision: use LLaVA / GPT-4o Vision
+- Voice: ElevenLabs, Whisper

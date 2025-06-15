@@ -1,4 +1,4 @@
-// File: /Users/tbwa/Documents/GitHub/ces-standalone/app/real-campaigns/page.tsx
+// File: /Users/tbwa/Documents/GitHub/ai-agency/app/real-campaigns/page.tsx
 import * as entry from '../../../../app/real-campaigns/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

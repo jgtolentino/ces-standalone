@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Multi-Agent Logic
+- Define roles: Planner, Researcher, QA
+- Use CrewAI or OpenAI Swarm for coordination

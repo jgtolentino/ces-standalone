@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Output Formatting
+- Markdown preferred
+- PDF (via LangChain or Markdown-to-PDF)
+- Must be parseable and human-readable

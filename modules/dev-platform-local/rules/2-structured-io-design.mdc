@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Structured I/O Design
+- Define schemas using JSON, Pydantic, or zod
+- Avoid raw text when possible

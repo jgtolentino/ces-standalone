@@ -1,0 +1,37 @@
+diff --git a/tenants/ces/app/page.tsx b/tenants/ces/app/page.tsx
+index abc123..def456 100644
+--- a/tenants/ces/app/page.tsx
++++ b/tenants/ces/app/page.tsx
+@@ -107,7 +107,7 @@ export default function CESHomePage() {
+   const formatNumber = (num: number) => {
+     if (!num || isNaN(num)) return '0';
+     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
+     if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+     return String(Math.round(num));
+   };
+ 
+@@ -57,11 +57,11 @@ export default function CESHomePage() {
+         // Set metrics from API aggregates with safe defaults
+         setMetrics({
+-          totalCampaigns: data.aggregates?.totalCampaigns || 0,
+-          activeCampaigns: data.aggregates?.activeCampaigns || 0,
+-          totalReach: data.aggregates?.totalReach || 0,
+-          averageROI: data.aggregates?.averageROI || 0,
+-          conversionRate: data.aggregates?.overallConversionRate || 0,
+-          totalSpend: data.aggregates?.totalSpend || 0,
+-          impressions: data.aggregates?.totalImpressions || 0,
+-          clicks: data.aggregates?.totalClicks || 0
++          totalCampaigns: data?.aggregates?.totalCampaigns || 0,
++          activeCampaigns: data?.aggregates?.activeCampaigns || 0,
++          totalReach: data?.aggregates?.totalReach || 0,
++          averageROI: data?.aggregates?.averageROI || 0,
++          conversionRate: data?.aggregates?.overallConversionRate || 0,
++          totalSpend: data?.aggregates?.totalSpend || 0,
++          impressions: data?.aggregates?.totalImpressions || 0,
++          clicks: data?.aggregates?.totalClicks || 0
+         });
+         
+@@ -69,7 +69,7 @@ export default function CESHomePage() {
+-        const mappedCampaigns = data.campaigns.map((campaign: any) => ({
++        const mappedCampaigns = (data?.campaigns || []).map((campaign: any) => ({
+           id: campaign.campaign_id,

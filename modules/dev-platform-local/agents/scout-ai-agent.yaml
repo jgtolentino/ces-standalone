@@ -1,0 +1,50 @@
+id: scoutAI
+name: Scout Retail Analytics Agent
+description: Advanced retail analytics and inventory optimization
+type: analytics/retail
+modules:
+  - retail_analytics
+  - inventory_optimization
+  - market_trends
+  - competitive_analysis
+functions:
+  analyze_retail_performance:
+    params: [store_id, timeframe, metrics]
+    output: performance_insights.json
+  optimize_inventory:
+    params: [product_category, demand_forecast]
+    output: inventory_recommendations.json
+  track_market_trends:
+    params: [category, region, period]
+    output: trend_analysis.md
+  analyze_competition:
+    params: [market_segment, competitors]
+    output: competitive_insights.json
+integration:
+  ces: 
+    endpoint: ${CES_API}/retail-data
+    format: ndjson
+  yummy:
+    endpoint: ${YUMMY_API}/market-insights
+context_limit: 65536
+execution:
+  engine: hybrid
+  local: ollama/mistral
+  cloud: anthropic.claude-3-haiku
+  rules:
+    - condition: { data_size: '>50MB' }
+      use: cloud
+    - condition: { sensitivity: 'high' }
+      use: local
+memory:
+  type: vector-db
+  implementation: chromadb
+  path: ./.scout-memory
+permissions:
+  - data_access: read-only
+  - tool_calling: analytics
+  - agent_coordination: true
+hooks:
+  pre_execution: ./hooks/scout-pre.js
+  post_execution: ./hooks/scout-post.js
+status: active 

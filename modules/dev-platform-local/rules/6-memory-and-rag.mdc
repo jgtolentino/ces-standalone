@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Memory / Long-Term Context
+- Use Pulser memory, Devstral vector recall, or local RAG
+- `memory: true` in agent YAML

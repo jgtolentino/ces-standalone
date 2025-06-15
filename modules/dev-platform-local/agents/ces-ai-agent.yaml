@@ -1,0 +1,50 @@
+id: cesAI
+name: CES Campaign Analysis Agent
+description: Creative Effectiveness System for campaign performance analysis
+type: analytics/campaign
+sources:
+  - campaign_metrics
+  - creative_assets
+  - market_data
+  - consumer_feedback
+functions:
+  analyze_campaign_performance:
+    params: [campaign_id, metrics, timeframe]
+    output: campaign_insights.json
+  evaluate_creative_effectiveness:
+    params: [asset_id, target_audience]
+    output: effectiveness_score.json
+  generate_market_insights:
+    params: [market_segment, period]
+    output: market_analysis.md
+  process_consumer_feedback:
+    params: [feedback_data, sentiment_threshold]
+    output: feedback_analysis.json
+integration:
+  yummy: 
+    endpoint: ${YUMMY_API}/creative-insights
+    format: ndjson
+  scout:
+    endpoint: ${SCOUT_API}/market-data
+context_limit: 98304
+execution:
+  engine: hybrid
+  local: ollama/mistral
+  cloud: anthropic.claude-3-sonnet
+  rules:
+    - condition: { data_size: '>100MB' }
+      use: cloud
+    - condition: { sensitivity: 'high' }
+      use: local
+memory:
+  type: vector-db
+  implementation: chromadb
+  path: ./.ces-memory
+permissions:
+  - data_access: read-write
+  - tool_calling: full
+  - agent_coordination: true
+hooks:
+  pre_execution: ./hooks/ces-pre.js
+  post_execution: ./hooks/ces-post.js
+status: active 

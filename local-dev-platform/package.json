@@ -1,0 +1,32 @@
+{
+  "name": "local-dev-platform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js --port 3000 --wsPort 3001",
+    "test": "node test.js",
+    "sandbox-test": "node -e \"const SecuritySandbox = require('./security/sandbox'); new SecuritySandbox().testSecurity().then(console.log);\""
+  },
+  "bin": {
+    "local-dev-platform": "./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "chokidar": "^4.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "lowdb": "^7.0.1",
+    "ollama": "^0.5.16",
+    "vm2": "^3.9.19",
+    "ws": "^8.18.2",
+    "yaml": "^2.8.0"
+  }
+}

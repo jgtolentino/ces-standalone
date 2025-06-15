@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Define Agent Role & Goal
+- Who is the agent helping?
+- What is its expected output format?
+- Example: Yummy = summarize creative asset signals, return sentiment map.

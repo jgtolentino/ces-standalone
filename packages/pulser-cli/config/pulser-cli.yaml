@@ -13,6 +13,7 @@ execution_modes:
       fast: "tinyllama:latest"
       code: "codellama:7b-code"
       advanced: "deepseek-coder:6.7b-instruct-q4_K_M"
+      devstral: "devstral:latest"
       default: "tinyllama:latest"
     timeout: 30000
     
@@ -72,6 +73,12 @@ agents:
       cloud_pipeline: "chat-orchestration"
       description: "Interactive chat with context"
       capabilities: ["conversation", "context_management"]
+      
+    devstral:
+      execution: "local"
+      model: "devstral:latest"
+      description: "Advanced coding assistance with 128K context"
+      capabilities: ["code_generation", "refactoring", "debugging", "architecture"]
       
   custom:
     enabled: true

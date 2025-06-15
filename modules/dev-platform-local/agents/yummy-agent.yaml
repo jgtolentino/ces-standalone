@@ -1,0 +1,31 @@
+id: yummy
+name: Yummy Creative Enrichment Agent
+description: Multimodal creative analysis for FMCG campaigns
+type: creative/enrichment
+sources:
+  - sales_interactions
+  - visual_assets
+  - social_media
+  - market_reports
+functions:
+  suggest_creative_directions:
+    params: [brand_id, campaign_goals]
+    output: creative_brief.md
+  score_brand_performance:
+    params: [timeframe, region]
+    output: performance_report.json
+  map_emotional_signals:
+    params: [customer_feedback]
+    output: emotion_heatmap.png
+integration:
+  ces: 
+    endpoint: ${CES_API}/ingest
+    format: ndjson
+  scout:
+    endpoint: ${SCOUT_API}/creative-insights
+context_limit: 32768
+execution:
+  engine: hybrid
+  local: ollama/llava
+  cloud: anthropic.claude-3-haiku
+status: active 

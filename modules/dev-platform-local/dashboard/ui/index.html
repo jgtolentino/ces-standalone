@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rule Editor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+  <style>
+    #container { width: 100%; height: 600px; }
+    .header { padding: 20px; }
+    .controls { padding: 10px; }
+    #loginForm { 
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .hidden { display: none; }
+    input { 
+      padding: 8px;
+      margin: 10px 0;
+      width: 200px;
+    }
+    button {
+      padding: 8px 16px;
+      background: #0e639c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background: #1177bb; }
+  </style>
+</head>
+<body>
+  <div id="loginForm">
+    <h2>🔒 Rule Dashboard Login</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="login()">Login</button>
+    <div id="loginError" style="color: red;"></div>
+  </div>
+
+  <div id="editorContainer" class="hidden">
+    <div class="header">
+      <h2>🧠 Live Rule Editor</h2>
+      <div class="controls">
+        <select id="fileList"></select>
+        <button onclick="save()">💾 Save</button>
+        <span id="status"></span>
+      </div>
+    </div>
+    <div id="container"></div>
+  </div>
+
+  <script>
+    let editor;
+    let currentFile;
+    let token;
+    const status = document.getElementById('status');
+    const fileList = document.getElementById('fileList');
+    const loginForm = document.getElementById('loginForm');
+    const editorContainer = document.getElementById('editorContainer');
+    
+    // Login function
+    async function login() {
+      const password = document.getElementById('password').value;
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+        const data = await response.json();
+        if (data.token) {
+          token = data.token;
+          loginForm.classList.add('hidden');
+          editorContainer.classList.remove('hidden');
+          initEditor();
+        } else {
+          document.getElementById('loginError').textContent = 'Invalid password';
+        }
+      } catch (err) {
+        document.getElementById('loginError').textContent = 'Login failed';
+      }
+    }
+
+    // Initialize Monaco Editor
+    function initEditor() {
+      require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+      require(['vs/editor/editor.main'], function() {
+        editor = monaco.editor.create(document.getElementById('container'), {
+          value: '',
+          language: 'markdown',
+          theme: 'vs-dark',
+          automaticLayout: true
+        });
+        loadFiles();
+      });
+    }
+
+    // Load files with auth
+    async function loadFiles() {
+      try {
+        const response = await fetch('/api/rules', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const files = await response.json();
+        files.forEach(f => {
+          const opt = document.createElement('option');
+          opt.value = f.name;
+          opt.innerText = f.name;
+          fileList.appendChild(opt);
+        });
+        fileList.onchange = () => {
+          const selected = files.find(f => f.name === fileList.value);
+          currentFile = selected.name;
+          editor.setValue(selected.content);
+        };
+        fileList.dispatchEvent(new Event('change'));
+      } catch (err) {
+        status.textContent = '❌ Failed to load files';
+      }
+    }
+
+    // Save function with auth
+    async function save() {
+      try {
+        await fetch('/api/rules/' + currentFile, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ content: editor.getValue() })
+        });
+        status.textContent = '✅ Saved!';
+        setTimeout(() => status.textContent = '', 2000);
+      } catch (err) {
+        status.textContent = '❌ Save failed';
+      }
+    }
+
+    // Hot reload WebSocket
+    let ws;
+    function connectWebSocket() {
+      ws = new WebSocket(`ws://${window.location.host}`);
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === 'fileChanged' && data.file === currentFile) {
+          loadFiles();
+          status.textContent = '🔄 File updated!';
+          setTimeout(() => status.textContent = '', 2000);
+        }
+      };
+      ws.onclose = () => {
+        setTimeout(connectWebSocket, 1000);
+      };
+    }
+    connectWebSocket();
+  </script>
+</body>
+</html> 

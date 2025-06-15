@@ -1,4 +1,4 @@
-// File: /Users/tbwa/Documents/GitHub/ces-standalone/app/creative-analyzer/page.tsx
+// File: /Users/tbwa/Documents/GitHub/ai-agency/app/creative-analyzer/page.tsx
 import * as entry from '../../../../app/creative-analyzer/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

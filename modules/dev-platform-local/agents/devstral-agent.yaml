@@ -1,0 +1,22 @@
+id: devstral
+name: Devstral AI Orchestrator
+description: Core reasoning engine with multi-agent coordination
+type: orchestration
+context_limit: ${CONTEXT_LIMIT}
+execution:
+  engine: ${MODE}
+  model: 
+    local: mistral-instruct
+    cloud: anthropic.claude-3-sonnet
+  memory: 
+    type: vector-db
+    implementation: chromadb
+    path: ./.agent-memory
+permissions:
+  - file_access: read/write
+  - tool_calling: full
+  - agent_coordination: true
+hooks:
+  pre_execution: ./hooks/devstral-pre.js
+  post_execution: ./hooks/devstral-post.js
+status: active 

@@ -1,4 +1,4 @@
-// File: /Users/tbwa/Documents/GitHub/ces-standalone/app/api/creative-analysis/route.ts
+// File: /Users/tbwa/Documents/GitHub/ai-agency/app/api/creative-analysis/route.ts
 import * as entry from '../../../../../app/api/creative-analysis/route.js'
 import type { NextRequest } from 'next/server.js'
 

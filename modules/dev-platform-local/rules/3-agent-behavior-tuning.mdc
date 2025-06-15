@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Prompt and Tune Behavior
+- Use system prompts or prefix tuning
+- Claude: `role-based prompt injection`

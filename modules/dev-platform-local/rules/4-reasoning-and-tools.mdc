@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Add Reasoning & Tools
+- Chain-of-Thought + ReAct
+- Enable tool use: interpreter, retriever, browser

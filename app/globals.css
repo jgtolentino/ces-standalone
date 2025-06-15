@@ -12,58 +12,22 @@
 }
 
 @layer components {
-  .metric-card {
-    @apply bg-gray-800/50 border border-gray-700 rounded-lg p-6 hover:bg-gray-800/70 transition-colors;
+  .feature-card {
+    background-color: #1f2937; /* gray-800 */
+    padding: 2.5rem;
+    border-radius: 0.75rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
   }
-  
-  .metric-value {
-    @apply text-2xl font-bold text-white;
+
+  .feature-card:hover {
+    transform: translateY(-5px);
   }
-  
-  .metric-label {
-    @apply text-sm text-gray-400 mb-2;
-  }
-  
-  .metric-change {
-    @apply text-xs font-medium;
-  }
-  
-  .metric-change.positive {
-    @apply text-green-400;
-  }
-  
-  .metric-change.negative {
-    @apply text-red-400;
-  }
-  
-  .chart-container {
-    @apply bg-gray-800/30 border border-gray-700 rounded-lg p-6;
-  }
-  
-  .campaign-card {
-    @apply bg-gray-800/40 border border-gray-700 rounded-lg p-4 hover:border-gray-600 transition-colors cursor-pointer;
-  }
-  
-  .status-badge {
-    @apply px-2 py-1 rounded-full text-xs font-medium;
-  }
-  
-  .status-active {
-    @apply bg-green-900/50 text-green-300 border border-green-700;
-  }
-  
-  .status-paused {
-    @apply bg-yellow-900/50 text-yellow-300 border border-yellow-700;
-  }
-  
-  .status-completed {
-    @apply bg-blue-900/50 text-blue-300 border border-blue-700;
-  }
-  
-  .status-draft {
-    @apply bg-gray-700/50 text-gray-300 border border-gray-600;
-  }
-  
+
   .nav-item {
     @apply flex items-center space-x-3 px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors;
   }
@@ -92,4 +56,4 @@
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
   }
-}
+} 

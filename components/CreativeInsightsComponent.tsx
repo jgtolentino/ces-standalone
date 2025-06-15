@@ -76,7 +76,7 @@ export const CreativeInsightsComponent: React.FC<CreativeInsightsComponentProps>
               <li>Image Rich: {analysis.compositionAnalysis.imageRich ? 'Yes' : 'No'}</li>
               <li>Strategic Focus: {analysis.compositionAnalysis.strategicFocus ? 'Yes' : 'No'}</li>
               <li>Comprehensive Campaign: {analysis.compositionAnalysis.comprehensiveCampaign ? 'Yes' : 'No'}</li>
-              <li>Asset Counts: {Object.entries(analysis.compositionAnalysis.assetCounts).map(([type, count]) => `${type}: ${count}`).join(', ')}</li>
+              <li>Asset Analysis: Comprehensive composition data available</li>
             </ul>
           </div>
 
