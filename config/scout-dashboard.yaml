@@ -1,0 +1,177 @@
+# Scout Analytics Dashboard Configuration
+# Version: 3.0.0
+# Cherry-picked from CES modular architecture
+
+meta:
+  name: "Scout Analytics Dashboard"
+  version: "3.0.0"
+  deployment_target: "scout-mvp.vercel.app"
+  environment: "production"
+  last_updated: "2025-06-16"
+
+# Role-based access and prompting
+roles:
+  brand_managers:
+    display_name: "Brand Managers"
+    primary_widgets: ["executive_summary", "brand_performance", "market_share"]
+    insights_focus: ["campaign_roi", "category_alerts", "competitive_position"]
+    prompting_context: "Focus on brand performance, market share trends, and campaign ROI optimization"
+    alert_types: ["share_drop", "competitor_gain", "seasonal_opportunity"]
+    
+  category_managers:
+    display_name: "Category Managers"
+    primary_widgets: ["product_insights", "substitution_analysis", "basket_analysis"]
+    insights_focus: ["product_mix", "pricing_insights", "inventory_optimization"]
+    prompting_context: "Emphasize product mix optimization, pricing strategies, and category health"
+    alert_types: ["pricing_anomaly", "stock_out", "new_product_performance"]
+    
+  regional_directors:
+    display_name: "Regional Directors"
+    primary_widgets: ["regional_performance", "store_analytics", "geographic_trends"]
+    insights_focus: ["store_level_alerts", "geo_insights", "territory_performance"]
+    prompting_context: "Highlight regional performance variations, store efficiency, and geographic opportunities"
+    alert_types: ["underperforming_stores", "regional_trends", "expansion_opportunities"]
+
+# Dashboard configuration
+dashboard:
+  layout: "responsive_grid"
+  refresh_interval: 300000  # 5 minutes
+  cache_duration: 900000    # 15 minutes
+  
+  widgets:
+    executive_summary:
+      enabled: true
+      position: { row: 1, col: 1, span: 4 }
+      data_sources: ["revenue_kpi", "transaction_count", "customer_metrics"]
+      refresh_rate: "real_time"
+      
+    brand_performance:
+      enabled: true
+      position: { row: 2, col: 1, span: 2 }
+      data_sources: ["market_share", "competitive_analysis"]
+      drill_down: true
+      
+    regional_performance:
+      enabled: true
+      position: { row: 2, col: 3, span: 2 }
+      data_sources: ["geographic_sales", "store_performance"]
+      map_integration: true
+      drill_down: true
+      
+    product_insights:
+      enabled: true
+      position: { row: 3, col: 1, span: 2 }
+      data_sources: ["sku_performance", "category_analytics"]
+      
+    ai_analytics:
+      enabled: true
+      position: { row: 3, col: 3, span: 2 }
+      data_sources: ["ml_predictions", "ai_recommendations"]
+      role_aware: true
+
+# API configuration
+api:
+  ask_scout:
+    enabled: true
+    endpoint: "/api/ask-scout"
+    rate_limit: 100  # requests per hour per user
+    max_tokens: 4000
+    model: "gpt-4"
+    temperature: 0.1
+    
+  data_refresh:
+    enabled: true
+    endpoint: "/api/data-refresh"
+    schedule: "*/5 * * * *"  # Every 5 minutes
+    
+  insights_generator:
+    enabled: true
+    endpoint: "/api/insights"
+    auto_generate: true
+    confidence_threshold: 0.75
+
+# QA and validation
+qa:
+  validation_commands:
+    - command: "qa:retailbot validate-output --filter=basket_size"
+      description: "Validate basket size analysis output"
+      
+    - command: "qa:learnbot verify-tooltips --page=products" 
+      description: "Verify product page tooltips are functional"
+      
+    - command: "qa:scout check-data-freshness --max-age=10m"
+      description: "Ensure data is no older than 10 minutes"
+      
+    - command: "qa:scout validate-sql --query-type=aggregation"
+      description: "Validate SQL aggregation queries"
+
+  automated_tests:
+    enabled: true
+    schedule: "0 */2 * * *"  # Every 2 hours
+    alert_on_failure: true
+    coverage_threshold: 85
+
+# Insight metadata and traceability
+insights:
+  metadata_enabled: true
+  traceability:
+    track_generation: true
+    track_confidence: true
+    track_data_sources: true
+    retention_days: 90
+    
+  feedback_system:
+    enabled: true
+    adaptive_learning: true
+    confidence_weighting: true
+    rl_training: false  # Disabled for MVP
+    
+# Data sources
+data_sources:
+  primary:
+    supabase:
+      connection_string: "${SUPABASE_URL}"
+      tables: ["transactions", "products", "customers", "stores"]
+      real_time: true
+      
+  external:
+    nielsen:
+      enabled: false
+      refresh_schedule: "weekly"
+      
+    kantar:
+      enabled: false
+      refresh_schedule: "weekly"
+
+# Security and compliance
+security:
+  row_level_security: true
+  data_masking: true
+  audit_logging: true
+  session_timeout: 3600  # 1 hour
+  
+# Performance optimization
+performance:
+  query_caching: true
+  result_caching: true
+  compression: true
+  lazy_loading: true
+  
+  thresholds:
+    page_load: 2000     # 2 seconds
+    query_response: 500  # 500ms
+    data_refresh: 30000  # 30 seconds
+
+# Feature flags
+features:
+  experimental_ai: false
+  advanced_analytics: true
+  real_time_alerts: true
+  mobile_optimization: true
+  
+# Client sanitization
+client_mode:
+  snowwhite_sanitization: true
+  hide_dev_tools: true
+  hide_test_bots: true
+  production_ready: true
