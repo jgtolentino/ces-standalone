@@ -1,0 +1,66 @@
+project: ask-ces
+version: 3.0.0
+deployment:
+  domain: ces-mvp.vercel.app
+  cloud: vercel
+  environment: production
+  enforce_domain: true
+  ci_cd:
+    provider: github
+    pipeline: vercel
+llm:
+  provider: azure-openai
+  model: gpt-4o
+  context: 16k
+  streaming: true
+  endpoint: "${AZURE_OPENAI_ENDPOINT}"
+  deployment_name: "gpt-4o-deployment"
+roles:
+  - exec
+  - strategist
+  - creative
+  - analyst
+features:
+  - ask_api
+  - insight_panel
+  - creative_vector_engine
+  - role_based_prompting
+  - artifact_output
+  - adr_feedback_loop
+  - campaign_traceability
+  - ci_model_retrain
+data:
+  sources:
+    - azure_sql
+    - supabase
+  campaign_data_path: "/Users/tbwa/Documents/GitHub/campaign-insight-accelerator/dist"
+  feedback:
+    adr_enabled: true
+    rl_enabled: true
+    weight_by_role: true
+metrics:
+  max_latency: 1.5s
+  uptime: 99.9%
+  query_volume: 1000/day
+tenant:
+  id: ces
+  name: "Campaign Effectiveness System"
+  route_prefix: "/api/ask-ces"
+  activation_phrases: ["ask ces", "ces", "campaign", "roas"]
+business_outcomes:
+  engagement:
+    weight: 0.2
+    target: 7.0
+    threshold: 5.5
+  brand_recall:
+    weight: 0.25
+    target: 8.0
+    threshold: 6.5
+  conversion:
+    weight: 0.25
+    target: 7.5
+    threshold: 6.0
+  roi_sales:
+    weight: 0.3
+    target: 8.5
+    threshold: 7.0

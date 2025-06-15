@@ -1,12 +1,15 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/creative-analysis/route": "app/api/creative-analysis/route.js",
-  "/api/analytics/route": "app/api/analytics/route.js",
   "/api/campaigns/route": "app/api/campaigns/route.js",
   "/api/campaign-analytics/route": "app/api/campaign-analytics/route.js",
+  "/api/analytics/route": "app/api/analytics/route.js",
+  "/api/campaign-analysis/route": "app/api/campaign-analysis/route.js",
+  "/ces/page": "app/ces/page.js",
+  "/api/creative-analysis/route": "app/api/creative-analysis/route.js",
   "/api/health/route": "app/api/health/route.js",
+  "/api/ask-ces/route": "app/api/ask-ces/route.js",
+  "/page": "app/page.js",
   "/real-campaigns/page": "app/real-campaigns/page.js",
   "/creative-analyzer/page": "app/creative-analyzer/page.js",
-  "/api/campaign-analysis/route": "app/api/campaign-analysis/route.js",
-  "/page": "app/page.js"
+  "/vibe/page": "app/vibe/page.js"
 }
