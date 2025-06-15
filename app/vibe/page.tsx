@@ -33,7 +33,7 @@ const ScoutRetailDashboard = () => {
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">Scout Analytics</h1>
-                  <p className="text-xs text-gray-500 hidden sm:block">AI-Powered Retail Insights</p>
+                  <p className="text-xs text-gray-500 hidden sm:block">Real-time Retail Intelligence</p>
                 </div>
               </div>
             </div>
