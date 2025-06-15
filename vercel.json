@@ -1,52 +1,12 @@
 {
   "version": 2,
-  "buildCommand": "pnpm install && pnpm build",
-  "installCommand": "pnpm install --frozen-lockfile",
   "framework": "nextjs",
+  "buildCommand": "npm install && npm run build",
+  "installCommand": "npm install",
   "regions": ["iad1"],
   "env": {
     "NEXT_PUBLIC_VERCEL_ENV": "production",
-    "PULSER_VERSION": "4.0.0",
-    "NEXT_PUBLIC_MAX_LOOPS": "100",
-    "PULSER_ORCHESTRATOR": "true"
-  },
-  "builds": [
-    {
-      "src": "tenants/ces/package.json",
-      "use": "@vercel/next"
-    },
-    {
-      "src": "tenants/frontend_agentgpt/next/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/ces/(.*)",
-      "dest": "/tenants/ces/$1"
-    },
-    {
-      "src": "/agent/(.*)",
-      "dest": "/tenants/frontend_agentgpt/next/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/tenants/ces/$1"
-    }
-  ],
-  "projects": {
-    "scout-mvp": {
-      "rootDirectory": ".",
-      "framework": "nextjs",
-      "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
-      "outputDirectory": ".next",
-      "installCommand": "pnpm install --no-frozen-lockfile",
-      "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "/$1"
-        }
-      ]
-    }
+    "SYSTEM_ID": "ask-ces-v3",
+    "SYSTEM_NAME": "Ask CES v3.0.0"
   }
-} 
+}
