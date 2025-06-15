@@ -40,7 +40,13 @@
       "framework": "nextjs",
       "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
       "outputDirectory": ".next",
-      "installCommand": "pnpm install --no-frozen-lockfile"
+      "installCommand": "pnpm install --no-frozen-lockfile",
+      "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "/$1"
+        }
+      ]
     }
   }
 } 
