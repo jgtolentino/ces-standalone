@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { LLMUtils } from '../../../utils/llm';
-import { businessEngine } from '../../../tenants/ces/lib/business-outcome-engine';
+import { businessEngine } from '../../../utils/business-outcome-engine';
 import fs from 'fs';
 import path from 'path';
 
