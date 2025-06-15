@@ -33,5 +33,14 @@
       "src": "/(.*)",
       "dest": "/tenants/ces/$1"
     }
-  ]
+  ],
+  "projects": {
+    "scout-mvp": {
+      "rootDirectory": "tenants/scout",
+      "framework": "nextjs",
+      "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
+      "outputDirectory": "tenants/scout/.next",
+      "installCommand": "pnpm install --no-frozen-lockfile"
+    }
+  }
 } 
