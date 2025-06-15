@@ -54,6 +54,14 @@ technical_architecture:
     monitoring: "Datadog + Sentry"
     ci_cd: "GitHub Actions with automated testing"
     
+  deployment:
+    production_url: "https://scout-mvp.vercel.app/vibe"
+    staging_url: "https://scout-mvp.vercel.app/"
+    monorepo_config: "ai-agency with scout-mvp project"
+    build_process: "pnpm install --no-frozen-lockfile && pnpm build"
+    routing: "Next.js App Router with /vibe route"
+    sanitization: "SnowWhite client delivery (no dev tools)"
+    
   security:
     authentication: "Supabase Auth with SSO"
     authorization: "Row Level Security (RLS)"
