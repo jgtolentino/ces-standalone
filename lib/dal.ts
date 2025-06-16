@@ -3,12 +3,28 @@ export async function fetchDAL(
   query: Record<string, any> = {},
   host = process.env.NEXT_PUBLIC_DAL_HOST || ""
 ) {
-  const qs = new URLSearchParams({ dataset, ...query });
-  const url = `${host}/api/powerbi/dal?${qs.toString()}`;
-  const r   = await fetch(url, {
-    headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_DAL_TOKEN ?? ""}` },
+  const url = `${host}/api/powerbi/dal`;
+  const body = {
+    datasetId: dataset,
+    queryType: query.query_type || 'summary',
+    filters: query.filters || {}
+  };
+  
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DAL_TOKEN ?? ""}`
+    },
+    body: JSON.stringify(body),
     cache: "no-store",
   });
-  if (!r.ok) throw new Error(`DAL error ${r.status}`);
-  return r.json();
+  
+  if (!r.ok) {
+    const errorText = await r.text();
+    throw new Error(`DAL error ${r.status}: ${errorText}`);
+  }
+  
+  const response = await r.json();
+  return response.data || [];
 }
