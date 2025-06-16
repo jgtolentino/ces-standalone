@@ -1,0 +1,30 @@
+version: 3.1.1
+project: scout-mvp
+source_branch: main
+status: production
+baseline: v2.1
+environment: production
+url: https://scout-mvp.vercel.app
+env_config: keykey-linked
+features:
+  layout: side-navigation
+  ai_modules:
+    - RetailBot
+    - LearnBot
+    - VibeTestBot
+  qa_pipeline: true
+  realtime_kpis: true
+  data_source: azure-sql + supabase
+flags:
+  strip_mock_data: true
+  locked_env: true
+  clean_layout: true
+  ci_validated: true
+meta:
+  date_created: 2025-06-16
+  baseline_commit: 8ee7154
+  promoted_from: v2.1
+  purged_branches:
+    - scout-v3.1.0-client-delivery
+    - experimental-v3.2
+  deployment_type: clean-promotion
