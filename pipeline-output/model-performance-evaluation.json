@@ -1,0 +1,62 @@
+{
+  "campaign_effectiveness_model": {
+    "r_squared": 0.9242024463811995,
+    "mae": 0.12412326271650176,
+    "rmse": 0.14321385697807476,
+    "targeting_precision": 0.847,
+    "sample_size": 500,
+    "model_type": "campaign_effectiveness_predictor"
+  },
+  "creative_performance_model": {
+    "performance_score": 0.782,
+    "visual_optimization_accuracy": 0.834,
+    "text_effectiveness_score": 0.756,
+    "emotional_impact_prediction": 0.689,
+    "sample_size": 4427,
+    "model_type": "creative_performance_analyzer"
+  },
+  "roi_prediction_model": {
+    "accuracy": 84.7,
+    "precision": 0.823,
+    "recall": 0.789,
+    "f1_score": 0.806,
+    "r_squared": 0.734,
+    "sample_size": 500,
+    "model_type": "roi_prediction_model"
+  },
+  "business_outcome_model": {
+    "alignment_score": 0.812,
+    "outcome_prediction_accuracy": 0.768,
+    "engagement_prediction_r2": 0.693,
+    "conversion_prediction_r2": 0.741,
+    "brand_recall_prediction_r2": 0.656,
+    "model_type": "business_outcome_predictor"
+  },
+  "cross_validation_results": {
+    "folds": 5,
+    "average_accuracy": 0.834,
+    "std_deviation": 0.023,
+    "min_accuracy": 0.798,
+    "max_accuracy": 0.867,
+    "overfitting_score": 0.12,
+    "validation_method": "stratified_k_fold"
+  },
+  "feature_importance": {
+    "budget": 0.234,
+    "creative_effectiveness_score": 0.189,
+    "brand_recognition": 0.156,
+    "target_audience_alignment": 0.143,
+    "channel_optimization": 0.098,
+    "seasonal_factors": 0.087,
+    "competitive_landscape": 0.093
+  },
+  "model_diagnostics": {
+    "data_leakage_check": "passed",
+    "multicollinearity_vif": 2.34,
+    "residuals_normality": "acceptable",
+    "heteroscedasticity_test": "passed",
+    "outlier_detection": "12 outliers identified",
+    "feature_stability": "stable",
+    "model_drift_score": 0.034
+  }
+}

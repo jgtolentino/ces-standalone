@@ -1,0 +1,75 @@
+{
+  "april_interactions_preserved": {
+    "emotional_x_cultural": {
+      "april_importance": 1.27,
+      "current_mapping": {
+        "emotional_component": "emotional_intensity",
+        "cultural_component": "sentiment_polarity",
+        "calculation": "emotional_intensity * sentiment_polarity * cultural_relevance_score"
+      },
+      "hybrid_weight": 1.27,
+      "applicable_campaigns": [
+        "Brand Building",
+        "Purpose-Driven"
+      ]
+    },
+    "message_x_cta": {
+      "april_importance": 0.247,
+      "current_mapping": {
+        "message_component": "text_readability",
+        "cta_component": "call_to_action_strength",
+        "calculation": "text_readability * call_to_action_strength"
+      },
+      "hybrid_weight": 0.247,
+      "applicable_campaigns": [
+        "Promotional"
+      ]
+    },
+    "visual_x_brand": {
+      "april_importance": 0.225,
+      "current_mapping": {
+        "visual_component": "visual_distinctness",
+        "brand_component": "brand_integration",
+        "calculation": "visual_distinctness * brand_prominence_score"
+      },
+      "hybrid_weight": 0.225,
+      "applicable_campaigns": [
+        "Brand Building"
+      ]
+    }
+  },
+  "current_interactions_added": {
+    "performance_x_platform": {
+      "components": [
+        "performance_score",
+        "platform_adaptation"
+      ],
+      "importance": 0.176,
+      "business_impact": "engagement optimization",
+      "calculation": "performance_score * platform_adaptation"
+    },
+    "sentiment_x_completion": {
+      "components": [
+        "sentiment_polarity",
+        "completion_rate"
+      ],
+      "importance": 0.154,
+      "business_impact": "conversion optimization",
+      "calculation": "sentiment_polarity * completion_rate"
+    }
+  },
+  "hybrid_calculation_engine": {
+    "step_1": "Extract automated features from current pipeline",
+    "step_2": "Apply human creative ratings where available",
+    "step_3": "Calculate interaction effects using April methodology",
+    "step_4": "Weight features by campaign type (April insights)",
+    "step_5": "Generate business outcome predictions"
+  },
+  "implementation_approach": {
+    "automated_base": "Use current ETL pipeline for base feature extraction",
+    "human_overlay": "Add human creative ratings for key April features",
+    "interaction_calculation": "Apply April interaction formulas to combined features",
+    "campaign_type_weighting": "Use April campaign-type specific weights",
+    "validation": "Cross-validate against both April and current datasets"
+  }
+}

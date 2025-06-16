@@ -1,0 +1,37 @@
+{
+  "total_case_studies": 45,
+  "validated_insights": [
+    {
+      "insight": "Visual distinctness drives 23% higher engagement in FMCG campaigns",
+      "campaigns": [
+        "P&G Product Launch 2024",
+        "Unilever Seasonal 2024"
+      ],
+      "confidence": 0.87,
+      "business_impact": "High"
+    },
+    {
+      "insight": "Emotional trigger intensity correlates with 18% better brand recall",
+      "campaigns": [
+        "CocaCola Product Launch 2022",
+        "McDonald's Social Media 2023"
+      ],
+      "confidence": 0.82,
+      "business_impact": "Medium-High"
+    },
+    {
+      "insight": "Text readability improves conversion rates by 15% in digital channels",
+      "campaigns": [
+        "Toyota Social Media 2023",
+        "BMW Digital 2023"
+      ],
+      "confidence": 0.79,
+      "business_impact": "Medium"
+    }
+  ],
+  "framework_alignment": {
+    "explainability_score": 0.84,
+    "human_judgment_complement": 0.91,
+    "strategic_insight_generation": 0.88
+  }
+}

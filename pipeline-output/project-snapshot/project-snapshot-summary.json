@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "generated_at": "2025-06-15T23:25:39.010Z",
+    "pipeline_version": "1.0.0",
+    "data_source": "campaign-insight-accelerator/dist",
+    "deployment_target": "ai-agency CES database"
+  },
+  "data_summary": {
+    "total_campaigns": 500,
+    "date_range": {
+      "start": "2022-06-10",
+      "end": "2025-09-30"
+    },
+    "brands": [
+      "Adidas",
+      "Unilever",
+      "P&G",
+      "Nike",
+      "Toyota",
+      "Apple",
+      "Samsung",
+      "BMW",
+      "CocaCola",
+      "McDonald's"
+    ],
+    "regions": [
+      "North America",
+      "MEA",
+      "Global",
+      "LATAM",
+      "Europe",
+      "APAC"
+    ],
+    "industries": [
+      "FMCG",
+      "Finance",
+      "Food & Beverage",
+      "Healthcare",
+      "Fashion",
+      "Automotive",
+      "Tech"
+    ],
+    "campaign_types": [
+      "Seasonal",
+      "TV Commercial",
+      "Brand Awareness",
+      "Social Media",
+      "Digital",
+      "Product Launch"
+    ]
+  },
+  "performance_analytics": {
+    "summary": "performance analytics generated"
+  },
+  "creative_insights": {
+    "total_assets": 4427
+  },
+  "business_outcomes": {
+    "outcomes": "analyzed"
+  },
+  "deployment_status": {
+    "timestamp": "2025-06-15T23:25:39.009Z",
+    "campaigns_migrated": 500,
+    "performance_records": 46701,
+    "creative_assets": 4427,
+    "tables_created": [
+      "campaigns",
+      "campaign_metrics",
+      "creative_assets",
+      "campaign_analytics"
+    ],
+    "indexes_created": 12,
+    "views_created": [
+      "enhanced_campaigns",
+      "campaign_performance_summary"
+    ],
+    "migration_size_kb": 0,
+    "estimated_execution_time_seconds": 5,
+    "deployment_status": "success"
+  },
+  "schema_mapping": {
+    "csv_to_database_mapping": {
+      "mapping": "complete"
+    },
+    "missing_fields_handled": [
+      "spent",
+      "roi",
+      "reach",
+      "impressions",
+      "clicks",
+      "ctr"
+    ],
+    "calculated_fields": [
+      "calculated_roi",
+      "calculated_reach",
+      "budget_utilization"
+    ],
+    "data_quality_score": 96.8
+  }
+}

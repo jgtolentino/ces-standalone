@@ -1,0 +1,72 @@
+{
+  "system_architecture": {
+    "data_ingestion": {
+      "automated_pipeline": "Current ETL system for automated feature extraction",
+      "human_input_interface": "Creative team rating interface for key features",
+      "data_validation": "Real-time quality checks and missing value handling"
+    },
+    "feature_processing": {
+      "automated_features": "Real-time calculation from creative assets",
+      "human_creative_features": "Expert ratings with validation workflows",
+      "interaction_calculation": "April interaction formulas applied to combined features"
+    },
+    "model_execution": {
+      "campaign_type_detection": "Auto-classify or manual selection",
+      "model_selection": "Route to appropriate campaign-type specific model",
+      "scoring_calculation": "Apply hybrid formula with weights and interactions",
+      "confidence_scoring": "Provide prediction confidence based on data completeness"
+    },
+    "output_delivery": {
+      "ces_score": "Final creative effectiveness score",
+      "feature_breakdown": "Individual feature contributions",
+      "recommendations": "Actionable optimization suggestions",
+      "confidence_interval": "Prediction reliability indicator"
+    }
+  },
+  "technical_implementation": {
+    "backend_api": {
+      "framework": "Node.js with current infrastructure",
+      "database": "Enhanced PostgreSQL schema with human rating storage",
+      "caching": "Redis for real-time feature calculation caching",
+      "monitoring": "Real-time performance and accuracy tracking"
+    },
+    "human_interface": {
+      "creative_rating_tool": "Web interface for expert creative assessment",
+      "bulk_processing": "Batch upload for multiple campaign rating",
+      "calibration_system": "Expert rating consistency monitoring",
+      "training_module": "Onboarding for creative team rating methodology"
+    },
+    "automated_pipeline": {
+      "etl_enhancement": "Extended current pipeline with interaction calculations",
+      "real_time_processing": "Stream processing for immediate scoring",
+      "quality_monitoring": "Automated data quality and drift detection",
+      "model_updates": "Continuous learning from new campaign performance"
+    }
+  },
+  "deployment_phases": {
+    "phase_1_pilot": {
+      "scope": "50 high-priority campaigns",
+      "features": "Automated + manual rating for purpose-driven campaigns",
+      "timeline": "30 days",
+      "success_criteria": "Match or exceed April R² of 0.65 for purpose-driven"
+    },
+    "phase_2_expansion": {
+      "scope": "200 campaigns across all types",
+      "features": "Full hybrid system with all interaction effects",
+      "timeline": "90 days",
+      "success_criteria": "Achieve 80%+ accuracy across all campaign types"
+    },
+    "phase_3_production": {
+      "scope": "500+ campaigns with real-time scoring",
+      "features": "Full automated system with human oversight",
+      "timeline": "180 days",
+      "success_criteria": "Process 100+ campaigns daily with consistent quality"
+    }
+  },
+  "quality_framework": {
+    "accuracy_monitoring": "Track prediction vs actual performance continuously",
+    "human_calibration": "Regular expert rating sessions to maintain consistency",
+    "model_drift_detection": "Alert when prediction accuracy degrades",
+    "feedback_integration": "Incorporate campaign results back into model training"
+  }
+}

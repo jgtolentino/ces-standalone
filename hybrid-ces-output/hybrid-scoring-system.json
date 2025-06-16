@@ -1,0 +1,71 @@
+{
+  "scoring_methodology": {
+    "automated_features": {
+      "source": "Current ETL pipeline",
+      "speed": "500 campaigns in 5 seconds",
+      "coverage": "100% of campaigns",
+      "accuracy": "96.8% data quality",
+      "features": [
+        "sentiment_polarity",
+        "performance_score",
+        "emotional_intensity",
+        "platform_adaptation"
+      ]
+    },
+    "human_creative_features": {
+      "source": "April expert methodology",
+      "speed": "Manual rating required",
+      "coverage": "Key creative elements only",
+      "accuracy": "Expert validated (R² 0.588)",
+      "features": [
+        "emotional_impact",
+        "visual_distinctiveness",
+        "message_clarity",
+        "cultural_relevance"
+      ]
+    },
+    "interaction_effects": {
+      "source": "April interaction modeling",
+      "calculation": "Multiplicative combinations",
+      "validation": "Cross-validated importance weights",
+      "top_effects": [
+        "emotional_x_cultural: 1.27",
+        "message_x_cta: 0.247",
+        "visual_x_brand: 0.225"
+      ]
+    }
+  },
+  "hybrid_ces_formula": {
+    "base_automated_score": "\n          (sentiment_polarity * 0.352) + \n          (performance_score * 0.352) + \n          (emotional_intensity * 0.352) + \n          (platform_adaptation * 0.176) + \n          (completion_rate * 0.176)\n        ",
+    "human_creative_overlay": "\n          (emotional_impact * 0.367) + \n          (visual_distinctiveness * 0.287) + \n          (message_clarity * 0.309) + \n          (cultural_relevance * 0.254) + \n          (brand_assets * 0.213)\n        ",
+    "interaction_effects": "\n          (emotional_impact * cultural_relevance * 1.27) + \n          (message_clarity * call_to_action * 0.247) + \n          (visual_distinctiveness * brand_assets * 0.225)\n        ",
+    "final_score": "weighted_average(automated_score, human_overlay, interaction_effects)",
+    "campaign_type_adjustment": "Apply April campaign-type specific weights"
+  },
+  "implementation_tiers": {
+    "tier_1_full_hybrid": {
+      "description": "Automated + Human + Interactions for critical campaigns",
+      "use_case": "High-budget campaigns, brand launches, purpose-driven",
+      "accuracy_expected": "85%+ (combining best of both)",
+      "resource_requirement": "Expert creative rating + automated pipeline"
+    },
+    "tier_2_automated_plus": {
+      "description": "Automated features + estimated human ratings",
+      "use_case": "Standard campaigns, ongoing optimization",
+      "accuracy_expected": "75-80% (automated with human insights)",
+      "resource_requirement": "Automated pipeline + ML-estimated creative scores"
+    },
+    "tier_3_automated_only": {
+      "description": "Pure automated scoring for scale",
+      "use_case": "High-volume campaigns, rapid testing",
+      "accuracy_expected": "70-75% (current automated performance)",
+      "resource_requirement": "Automated pipeline only"
+    }
+  },
+  "quality_assurance": {
+    "validation_against_april": "Test hybrid scores against April validated campaigns",
+    "validation_against_current": "Test hybrid scores against current 500 campaign dataset",
+    "human_expert_calibration": "Regular expert rating to maintain quality",
+    "automated_monitoring": "Real-time data quality and prediction accuracy tracking"
+  }
+}
