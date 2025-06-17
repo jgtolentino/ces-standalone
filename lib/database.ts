@@ -48,15 +48,46 @@ export async function executeQuery(query: string, params: any[] = []) {
     };
   }
 
-  // Handle product mix data
-  if (query.includes('product_mix')) {
+  // Handle channel analytics data
+  if (query.includes('channel_analytics')) {
     return {
       rows: [
-        { brand: 'Brand A', revenue: 450000, category: 'Electronics' },
-        { brand: 'Brand B', revenue: 380000, category: 'Fashion' },
-        { brand: 'Brand C', revenue: 320000, category: 'Home & Garden' },
-        { brand: 'Brand D', revenue: 280000, category: 'Sports' },
-        { brand: 'Brand E', revenue: 420000, category: 'Beauty' }
+        { 
+          channel: 'Facebook', 
+          campaign_count: 15,
+          total_revenue: 450000, 
+          total_spent: 120000,
+          channel_roi: 3.75,
+          avg_ctr: 2.8,
+          avg_cpc: 1.25
+        },
+        { 
+          channel: 'Instagram', 
+          campaign_count: 12,
+          total_revenue: 380000, 
+          total_spent: 95000,
+          channel_roi: 4.0,
+          avg_ctr: 3.2,
+          avg_cpc: 1.10
+        },
+        { 
+          channel: 'Google Ads', 
+          campaign_count: 18,
+          total_revenue: 520000, 
+          total_spent: 140000,
+          channel_roi: 3.71,
+          avg_ctr: 4.1,
+          avg_cpc: 0.95
+        },
+        { 
+          channel: 'TV', 
+          campaign_count: 8,
+          total_revenue: 280000, 
+          total_spent: 85000,
+          channel_roi: 3.29,
+          avg_ctr: 1.5,
+          avg_cpc: 2.50
+        }
       ]
     };
   }
