@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    dynamicIO: true
-  },
   transpilePackages: [],
   webpack: (config, { isServer }) => {
     // Exclude problematic packages from build

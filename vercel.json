@@ -6,7 +6,7 @@
   "regions": ["iad1"],
   "env": {
     "NEXT_PUBLIC_VERCEL_ENV": "production",
-    "SYSTEM_ID": "ask-ces-v3",
-    "SYSTEM_NAME": "Ask CES v3.0.0"
+    "SYSTEM_ID": "scout-analytics-v3.1.0",
+    "SYSTEM_NAME": "Scout Analytics v3.1.0"
   }
 }

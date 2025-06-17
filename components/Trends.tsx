@@ -4,6 +4,12 @@ import useSWR from "swr";
 import { fetchDAL } from "../lib/dal";
 import LineChart from "./charts/LineChart";
 import ForecastPanel from "./ForecastPanel";
+import dynamic from "next/dynamic";
+
+const PhilippinesMap = dynamic(() => import("./dashboard/PhilippinesMap"), {
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">Loading map...</div>
+});
 
 export default function Trends() {
   const [filters, setFilters] = useState({
@@ -79,13 +85,23 @@ export default function Trends() {
         {/* Regional Map */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-lg font-semibold mb-4">Regional Performance Map</h2>
-          <div className="h-64 bg-blue-50 rounded-lg border-2 border-dashed border-blue-200 flex items-center justify-center">
-            <div className="text-center text-gray-600">
-              <div className="text-4xl mb-2">🗺️</div>
-              <div className="font-medium">Philippines Heat Map</div>
-              <div className="text-sm">Click regions to drill down</div>
-              <div className="text-xs mt-2">Metro Manila: ₱15.8M | Cebu: ₱8.2M | Davao: ₱6.1M</div>
-            </div>
+          <div className="h-64">
+            <PhilippinesMap
+              regions={[
+                { name: 'Metro Manila', code: 'NCR', revenue: 15800000, growth: 12.3, coordinates: [14.5995, 120.9842] },
+                { name: 'Cebu', code: 'VII', revenue: 8200000, growth: 15.2, coordinates: [10.3157, 123.8854] },
+                { name: 'Davao', code: 'XI', revenue: 6100000, growth: 6.8, coordinates: [7.1907, 125.4553] },
+                { name: 'Ilocos', code: 'I', revenue: 2100000, growth: 8.4, coordinates: [17.5739, 120.3735] },
+                { name: 'Central Luzon', code: 'III', revenue: 8400000, growth: 9.1, coordinates: [15.4817, 120.7131] },
+                { name: 'Calabarzon', code: 'IVA', revenue: 6200000, growth: 7.6, coordinates: [14.1014, 121.0933] },
+                { name: 'Bicol', code: 'V', revenue: 3100000, growth: 5.2, coordinates: [13.4201, 123.3740] },
+                { name: 'Western Visayas', code: 'VI', revenue: 4800000, growth: 11.3, coordinates: [10.7202, 122.5621] },
+                { name: 'Eastern Visayas', code: 'VIII', revenue: 2900000, growth: 4.1, coordinates: [11.2421, 124.9634] },
+                { name: 'Northern Mindanao', code: 'X', revenue: 4100000, growth: 7.8, coordinates: [8.4542, 124.6319] }
+              ]}
+              selectedRegion={filters.region !== 'all' ? filters.region : undefined}
+              onRegionClick={(regionCode) => setFilters({...filters, region: regionCode})}
+            />
           </div>
         </div>
 
