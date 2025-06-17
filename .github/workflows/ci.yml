@@ -259,10 +259,38 @@ jobs:
           working-directory: ./
           scope: ${{ secrets.VERCEL_ORG_ID }}
 
+  dash-qc:
+    name: Dash QC - Visual Regression
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Install Playwright
+        run: npx playwright install chromium
+      
+      - name: Percy Snapshot
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: |
+          npx percy exec -- npx playwright test
+
   deploy-production:
     name: Deploy Production
     runs-on: ubuntu-latest
-    needs: [test-packages, test-tenants, security-scan]
+    needs: [test-packages, test-tenants, security-scan, dash-qc]
     if: github.ref == 'refs/heads/main' && (needs.test-packages.result == 'success' || needs.test-packages.result == 'skipped') && (needs.test-tenants.result == 'success' || needs.test-tenants.result == 'skipped') && needs.security-scan.result == 'success'
     steps:
       - uses: actions/checkout@v4
