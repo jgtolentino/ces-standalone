@@ -35,6 +35,17 @@ The assistant isn't just a chatbot — it's wired directly into real business da
 
 **"This dashboard was built using safe, modern tools. The AI behind it has been tested, improved, and only the best-performing versions are used. It's secure, smart, and ready to help with your business decisions — in plain language, not jargon."**
 
+## 🧭 Responsible AI Principles
+
+We also follow Responsible AI principles to ensure fairness, transparency, and safety:
+
+- **Fairness & Bias Prevention**: The AI uses well-balanced datasets and is tested across diverse use cases to avoid unfair outcomes
+- **Transparency & Accountability**: The AI only shows responses it can justify and trace. Every recommendation includes confidence scores and source attribution
+- **Privacy & Data Protection**: Your data is encrypted and never used to train models without explicit permission. All data handling follows strict privacy protocols
+- **Reliability & Safety**: Responses are regularly audited to meet ethical AI standards. Unsafe or inappropriate content is automatically filtered out
+- **Inclusiveness**: The interface is designed for accessibility and works across different devices, browsers, and user needs
+- **Audit Trail**: All AI decisions can be tracked and reviewed. If something seems wrong, there's a clear escalation path for human review
+
 ## Technical Stack (High-Level)
 
 - **Frontend**: Modern web framework with responsive design

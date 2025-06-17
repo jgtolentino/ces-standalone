@@ -64,13 +64,45 @@ export const isPublicExplanationQuery = (query: string): boolean => {
     /different.*dashboard/i,
     /handle.*data/i,
     /built.*with/i,
-    /tech.*stack/i
+    /tech.*stack/i,
+    /responsible.*ai/i,
+    /ethical.*ai/i,
+    /fairness/i,
+    /bias/i,
+    /transparency/i,
+    /accountability/i,
+    /privacy/i,
+    /audit/i,
+    /inclusive/i,
+    /accessibility/i
   ];
 
   return patterns.some(pattern => pattern.test(query));
 };
 
 export const generatePublicExplanation = (query: string): string => {
+  if (query.toLowerCase().includes('responsible') || query.toLowerCase().includes('ethical') || 
+      query.toLowerCase().includes('fairness') || query.toLowerCase().includes('bias') ||
+      query.toLowerCase().includes('transparency') || query.toLowerCase().includes('accountability')) {
+    return `
+🧭 **Responsible AI Principles**
+
+We follow comprehensive Responsible AI principles:
+
+**Fairness & Bias Prevention**: The AI uses well-balanced datasets and is tested across diverse use cases to avoid unfair outcomes or discriminatory results.
+
+**Transparency & Accountability**: Every AI response can be justified and traced. Recommendations include confidence scores and source attribution. Clear audit trails for all decisions.
+
+**Privacy & Data Protection**: Your data is encrypted and never used to train models without explicit permission. All data handling follows strict privacy protocols.
+
+**Reliability & Safety**: Responses are regularly audited to meet ethical AI standards. Unsafe or inappropriate content is automatically filtered out.
+
+**Inclusiveness**: The interface is designed for accessibility and works across different devices, browsers, and user needs.
+
+These principles ensure the AI is **fair, transparent, safe, and trustworthy** for business use.
+`;
+  }
+
   if (query.toLowerCase().includes('secure') || query.toLowerCase().includes('security')) {
     return `
 🔒 **Security & Reliability**
@@ -130,5 +162,13 @@ This AI-powered dashboard combines:
 **Made to improve**: The system learns from usage and understands the context of your dashboards and filters.
 
 In simple terms: **Safe, modern tools. Tested AI. Secure and smart business decisions in plain language.**
+
+### 🧭 Responsible AI Principles
+We also follow Responsible AI principles to ensure fairness, transparency, and safety:
+- **The AI only shows responses it can justify and trace**
+- **It avoids bias by using well-balanced datasets and testing across real use cases**
+- **Your data is encrypted and never used to train models without permission**
+- **Everything is regularly audited to meet our ethical AI standards**
+- **The system is designed for accessibility and works across different user needs**
 `;
 };
