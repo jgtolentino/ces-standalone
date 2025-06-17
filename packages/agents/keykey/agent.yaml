@@ -1,0 +1,28 @@
+name: keykey
+version: "1.0.0"
+description: "JWT credential broker for secure API authentication"
+
+permissions:
+  - secret:read
+  - jwt:sign
+
+roles:
+  - grant
+
+routes:
+  - path: "/api/keykey/jwt"
+    method: "GET"
+    description: "Mint JWT tokens for service authentication"
+  - path: "/api/keykey/usage"
+    method: "GET" 
+    description: "Check KeyKey service usage and health"
+
+environment:
+  - KEYKEY_MASTER_SECRET
+  - DAL_JWT_SECRET
+
+dependencies: []
+
+health_check:
+  endpoint: "/api/keykey/jwt?svc=dal"
+  expected_status: 200

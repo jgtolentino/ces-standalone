@@ -33,3 +33,7 @@ mcp:
     - agent_executor
     - database_connector
     - azure_integration
+cross_repo_allowed:
+  - repo
+  - keykey
+  - dal
