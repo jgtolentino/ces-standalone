@@ -107,6 +107,19 @@
       "related_campaigns": ["camp_banking_security", "camp_investment_platform"],
       "created_by": "cesai_agent",
       "last_updated": "2024-12-01T08:20:00Z"
+    },
+    {
+      "id": "insight_009",
+      "campaign_id": "general_platform_info",
+      "category": "platform_explanation",
+      "insight_text": "This AI-powered dashboard was built using modern web technology like React and Tailwind, connects securely to real-time data sources, and uses intelligent AI modules that turn questions into answers, charts, and insights. Every AI model is tested with hundreds of examples for accuracy and reliability before deployment.",
+      "confidence_score": 0.95,
+      "data_sources": ["platform_documentation", "technical_architecture", "public_information"],
+      "tags": ["platform_overview", "how_it_works", "technical_stack", "client_explanation", "public_information"],
+      "embedding_vector": [0.9012, -0.4567, 0.8901, 0.2345],
+      "related_campaigns": ["platform_demo", "client_onboarding", "technical_overview"],
+      "created_by": "system_documentation",
+      "last_updated": "2025-01-17T00:00:00Z"
     }
   ],
   "campaign_correlations": [
@@ -159,7 +172,7 @@
     ]
   },
   "metadata": {
-    "total_insights": 8,
+    "total_insights": 9,
     "last_updated": "2025-01-17T00:00:00Z",
     "coverage_period": "2024-01-01 to 2024-12-31",
     "data_sources_count": 15,

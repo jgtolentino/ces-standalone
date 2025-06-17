@@ -1,4 +1,5 @@
 import { fetchDAL } from './dal';
+import { isPublicExplanationQuery, generatePublicExplanation } from './prompts/public-explanation';
 
 export interface RAGInsight {
   id: string;
@@ -129,6 +130,22 @@ class RAGMemoryEngine {
   async searchInsights(searchQuery: RAGSearchQuery): Promise<RAGSearchResult[]> {
     const ragIndex = await this.loadRAGIndex();
     const { query, filters = {}, limit = 5, similarity_threshold = 0.7 } = searchQuery;
+
+    // Check if this is a public explanation query
+    if (isPublicExplanationQuery(query)) {
+      // Return the platform explanation insight with high relevance
+      const platformInsight = ragIndex.insights.find(insight => 
+        insight.category === 'platform_explanation'
+      );
+      
+      if (platformInsight) {
+        return [{
+          insight: platformInsight,
+          similarity_score: 0.95,
+          relevance_rank: 1
+        }];
+      }
+    }
 
     // Filter insights based on criteria
     let filteredInsights = ragIndex.insights;
