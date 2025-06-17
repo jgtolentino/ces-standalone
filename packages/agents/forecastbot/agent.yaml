@@ -1,0 +1,40 @@
+name: ForecastBot
+codename: forecastbot
+description: >
+  Generates 30/60/90-day revenue and ROI forecasts using seasonal decomposition,
+  LLM-aided regression, and prior KPI trends from DAL datasets.
+model: gpt-4-turbo
+version: 1.0.0
+capabilities:
+  - predictive_analytics
+  - trend_forecasting
+  - seasonal_decomposition
+  - regression_modeling
+data_sources:
+  - azure_sql
+  - supabase
+  - powerbi_dal
+functions:
+  - name: generate_forecast_sql
+    description: Generate SQL queries for forecasting KPI over next 30/60/90 days
+    parameters:
+      - metric: revenue | roi | transactions | aov
+      - period: 30 | 60 | 90
+      - confidence_level: 0.8 | 0.9 | 0.95
+  - name: summarize_forecast
+    description: Return executive summary of model predictions with confidence intervals
+    parameters:
+      - forecast_data: array
+      - baseline_period: string
+  - name: detect_seasonal_patterns
+    description: Identify seasonal trends and cyclical patterns in historical data
+    parameters:
+      - historical_data: array
+      - seasonality_type: weekly | monthly | quarterly
+security:
+  jwt_required: true
+  keykey_service: dal
+output_format:
+  charts: chart.js
+  summaries: markdown
+  confidence_scores: percentage
