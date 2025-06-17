@@ -18,7 +18,7 @@ export default function Overview() {
   }, []);
   if (!data) return <p>Loading…</p>;
   return (
-    <div className="grid gap-4 md:grid-cols-4">
+    <div className="kpi-grid grid gap-4 md:grid-cols-4">
       <KpiCard label="Revenue" value={`₱${data.revenue.toLocaleString()}`} />
       <KpiCard label="Orders" value={data.orders.toString()} />
       <KpiCard label="AOV" value={`₱${data.aov}`} />

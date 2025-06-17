@@ -26,7 +26,7 @@ export default function Heatmap({ matrix }: HeatmapProps) {
   };
 
   return (
-    <div className="w-full">
+    <div className="heatmap-container w-full">
       <h3 className="text-lg font-semibold mb-4">Consumer Demographics Heatmap</h3>
       <div className="space-y-6">
         {Object.entries(groupedData).map(([dimension, items]) => (

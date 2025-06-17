@@ -26,7 +26,7 @@ export function QueryInput({ onSubmit, isLoading, placeholder = "Ask me anything
   };
 
   return (
-    <div className="flex items-end space-x-3">
+    <div className="query-input flex items-end space-x-3">
       <div className="flex-1">
         <textarea
           value={query}

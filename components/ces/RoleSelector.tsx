@@ -56,7 +56,7 @@ export function RoleSelector({ currentRole, onRoleChange }: RoleSelectorProps) {
   };
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="role-selector flex items-center space-x-2">
       <span className="text-sm font-medium text-gray-700 mr-2">Role:</span>
       <div className="flex space-x-1">
         {roles.map((role) => {

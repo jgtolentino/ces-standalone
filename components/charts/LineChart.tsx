@@ -30,7 +30,7 @@ interface LineChartProps {
 
 export default function LineChart({ labels, values }: LineChartProps) {
   return (
-    <div className="w-full h-96">
+    <div className="line-chart-container w-full h-96">
       <Line
         options={{ 
           responsive: true, 

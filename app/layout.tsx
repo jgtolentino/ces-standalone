@@ -1,5 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
+import LearnBot from "../components/LearnBot";
 
 export const metadata = { title: "Scout Analytics 3.3" };
 
@@ -60,6 +61,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </main>
         </div>
+        
+        {/* LearnBot Tutorial Assistant */}
+        <LearnBot />
       </body>
     </html>
   );

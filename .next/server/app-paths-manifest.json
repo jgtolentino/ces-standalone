@@ -1,8 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/trends/page": "app/trends/page.js",
-  "/api/kpi/overview/route": "app/api/kpi/overview/route.js",
-  "/products/page": "app/products/page.js",
-  "/ces/page": "app/ces/page.js",
-  "/consumers/page": "app/consumers/page.js"
-}
+{}

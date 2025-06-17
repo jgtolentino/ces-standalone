@@ -30,7 +30,7 @@ interface StackedBarProps {
 
 export default function StackedBar({ labels, series }: StackedBarProps) {
   return (
-    <div className="w-full h-96">
+    <div className="stacked-bar-chart w-full h-96">
       <Bar
         options={{
           responsive: true,
