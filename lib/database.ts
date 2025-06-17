@@ -33,6 +33,50 @@ export async function executeQuery(query: string, params: any[] = []) {
       ]
     };
   }
+
+  // Handle campaign performance data for trends
+  if (query.includes('campaign_performance')) {
+    return {
+      rows: [
+        { date: '2024-01-01', revenue: 120000, impressions: 50000, clicks: 2500 },
+        { date: '2024-02-01', revenue: 135000, impressions: 55000, clicks: 2750 },
+        { date: '2024-03-01', revenue: 142000, impressions: 58000, clicks: 2900 },
+        { date: '2024-04-01', revenue: 158000, impressions: 62000, clicks: 3100 },
+        { date: '2024-05-01', revenue: 165000, impressions: 65000, clicks: 3250 },
+        { date: '2024-06-01', revenue: 178000, impressions: 68000, clicks: 3400 }
+      ]
+    };
+  }
+
+  // Handle product mix data
+  if (query.includes('product_mix')) {
+    return {
+      rows: [
+        { brand: 'Brand A', revenue: 450000, category: 'Electronics' },
+        { brand: 'Brand B', revenue: 380000, category: 'Fashion' },
+        { brand: 'Brand C', revenue: 320000, category: 'Home & Garden' },
+        { brand: 'Brand D', revenue: 280000, category: 'Sports' },
+        { brand: 'Brand E', revenue: 420000, category: 'Beauty' }
+      ]
+    };
+  }
+
+  // Handle audience insights data
+  if (query.includes('audience_insights')) {
+    return {
+      rows: [
+        { dimension: 'age', segment: '18-24', count: 1200, performance_score: 75.5 },
+        { dimension: 'age', segment: '25-34', count: 2100, performance_score: 82.3 },
+        { dimension: 'age', segment: '35-44', count: 1800, performance_score: 78.9 },
+        { dimension: 'age', segment: '45-54', count: 1400, performance_score: 71.2 },
+        { dimension: 'gender', segment: 'Female', count: 3200, performance_score: 79.8 },
+        { dimension: 'gender', segment: 'Male', count: 3300, performance_score: 76.4 },
+        { dimension: 'region', segment: 'Metro Manila', count: 2800, performance_score: 85.1 },
+        { dimension: 'region', segment: 'Cebu', count: 1900, performance_score: 73.6 },
+        { dimension: 'region', segment: 'Davao', count: 1800, performance_score: 71.8 }
+      ]
+    };
+  }
   
   if (query.includes('campaigns')) {
     return {
