@@ -10,8 +10,8 @@ const nextConfig = {
     return config;
   },
   env: {
-    SYSTEM_ID: 'tbwa-creative-analysis',
-    SYSTEM_NAME: 'TBWA Creative Campaign Analysis System',
+    SYSTEM_ID: 'scout-analytics-v3.1.0',
+    SYSTEM_NAME: 'Scout Analytics v3.1.0',
   },
   async headers() {
     return [
@@ -20,11 +20,11 @@ const nextConfig = {
         headers: [
           {
             key: 'X-System-ID',
-            value: 'tbwa-creative-analysis',
+            value: 'scout-analytics-v3.1.0',
           },
           {
             key: 'X-System-Name',
-            value: 'TBWA Creative Campaign Analysis System',
+            value: 'Scout Analytics v3.1.0',
           },
           {
             key: 'X-Frame-Options',

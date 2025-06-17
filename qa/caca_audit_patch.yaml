@@ -1,0 +1,102 @@
+uat_checklist:
+  version: "3.3.0"
+  dashboard: "scout-analytics-ces"
+  deployment_url: "https://ces-standalone.vercel.app"
+  
+  agents:
+    - scoutbot
+    - retailbot
+    - brandbot
+    - learnbot
+    - vibetestbot
+  
+  critical_issues:
+    - name: filter_data_disconnection
+      status: critical
+      file: "components/Trends.tsx"
+      lines: "21-25"
+      description: "useSWR key doesn't include filter values - changing filters doesn't trigger new data fetching"
+      fix_required: "Update SWR key to include filter state and pass filters to fetchDAL"
+      
+    - name: landing_page_redirect
+      status: critical
+      file: "app/page.tsx"
+      description: "Shows 'Redirecting to Ask CES v3.0.0...' instead of Scout Analytics dashboard"
+      fix_required: "Fix routing to show actual dashboard content"
+  
+  checks:
+    - name: widget_rendering
+      status: pending
+      description: "All KPI and chart widgets render with real data or show empty-state fallback"
+      
+    - name: api_resilience
+      status: warning
+      description: "Handle and log failed API calls (e.g. /metrics)"
+      
+    - name: agent_trigger_coverage
+      status: partial
+      description: "All agent triggers fire properly from routed components"
+      
+    - name: mobile_responsiveness
+      status: passed
+      notes: "Responsive layout works across breakpoints"
+      
+    - name: map_integration
+      status: passed
+      notes: "Philippines map with OpenStreetMap/Leaflet successfully implemented"
+      
+    - name: sqlserver_integration
+      status: passed
+      notes: "BrandBot queries validated, Azure SQL connection working"
+      
+    - name: fallback_pages
+      status: missing
+      notes: "No 404 fallback or route guards in place"
+      
+    - name: production_deployment
+      status: live
+      notes: "Deployed at https://ces-standalone.vercel.app with TBWA branding"
+
+  data_integration:
+    supabase:
+      status: connected
+      performance: "<300ms latency"
+      rls: "active"
+    
+    azure_sql:
+      status: connected
+      brand_queries: "working"
+      
+    api_errors:
+      - endpoint: "/api/insights"
+        status: "unhandled"
+      - endpoint: "/api/metrics" 
+        status: "unhandled"
+
+  ui_ux:
+    responsive_design: passed
+    chart_rendering: "pie chart overflow on Safari iOS"
+    empty_states: "needs enhancement"
+    theme_branding: "TBWA theme loaded"
+    
+  security:
+    rls_policies: validated
+    env_variables: validated
+    error_tracking: "needs Sentry implementation"
+
+  next_actions:
+    immediate:
+      - "Fix filter-to-data connection in Trends.tsx"
+      - "Fix landing page routing issue"
+    
+    before_production:
+      - "QA sweep for empty widget fallbacks"
+      - "Implement error tracking"
+      - "Write regression test suite"
+      - "Confirm LearnBot logging pipeline"
+
+  sign_off:
+    status: "conditional_pass"
+    condition: "2 critical fixes required"
+    ready_for_production: false
+    estimated_fix_time: "2-4 hours"
