@@ -1,0 +1,227 @@
+# Agent Orchestration Framework - SKR Enhancement
+# Scout Analytics Multi-Agent Coordination System
+
+system:
+  name: "Scout Agent Orchestration"
+  version: "1.0"
+  type: "Multi-Agent Coordination Framework"
+  owner: "TBWA"
+  
+live_binding: true
+qa_status: validated
+llm_provider: "azure-openai"
+model_backend: "azure-openai"
+mcp_protocol: "enabled"
+
+orchestration_framework:
+  coordination_pattern: "mcp_based"
+  communication_protocol: "standardized_tool_calling"
+  authentication: "oauth_bearer_tokens"
+  context_sharing: "skr_framework_integration"
+
+agents:
+  dash_2_0:
+    name: "Visual Artist Agent"
+    type: "ui_generation"
+    mcp_server: "https://scout-agents.vercel.app/dash"
+    capabilities:
+      - "generate_ui_component"
+      - "validate_visual_design"
+      - "export_design_tokens"
+      - "apply_visual_artist_standard"
+    skr_context_access:
+      - "ces.yaml#framework"
+      - "responsible-ai-compliance.yaml"
+      - "template-library.yaml#ui_components"
+    workflow_patterns:
+      - "understand_requirements"
+      - "generate_component"
+      - "validate_design"
+      - "create_tests"
+      - "document_implementation"
+    
+  keykey:
+    name: "Authentication & Security Agent"
+    type: "security_management"
+    mcp_server: "https://scout-agents.vercel.app/keykey"
+    capabilities:
+      - "generate_authentication"
+      - "validate_security"
+      - "manage_jwt_tokens"
+      - "enforce_compliance"
+    skr_context_access:
+      - "responsible-ai-compliance.yaml"
+      - "quality-gates.yaml#security"
+    workflow_patterns:
+      - "analyze_security_requirements"
+      - "implement_authentication"
+      - "validate_compliance"
+      - "monitor_security"
+    
+  manong:
+    name: "Data Access Agent"
+    type: "data_integration"
+    mcp_server: "https://scout-agents.vercel.app/manong"
+    capabilities:
+      - "generate_api_endpoints"
+      - "integrate_dal_layer"
+      - "manage_data_access"
+      - "optimize_queries"
+    skr_context_access:
+      - "scout.yaml#brands_tracked"
+      - "scout.yaml#regional_intelligence"
+      - "template-library.yaml#api_endpoints"
+    workflow_patterns:
+      - "analyze_data_requirements"
+      - "design_api_structure"
+      - "implement_dal_integration"
+      - "optimize_performance"
+      - "validate_data_quality"
+    
+  caca:
+    name: "Quality Assurance Agent"
+    type: "validation_testing"
+    mcp_server: "https://scout-agents.vercel.app/caca"
+    capabilities:
+      - "validate_components"
+      - "run_comprehensive_tests"
+      - "check_compliance"
+      - "generate_qa_reports"
+    skr_context_access:
+      - "all_contexts"
+    workflow_patterns:
+      - "analyze_test_requirements"
+      - "generate_test_cases"
+      - "execute_validation"
+      - "report_results"
+      - "ensure_compliance"
+
+coordination_workflows:
+  component_generation:
+    sequence: ["dash_2_0", "caca", "template_library_update"]
+    handoff_points:
+      - "design_tokens_export"
+      - "quality_validation"
+      - "template_registration"
+    success_criteria:
+      - "visual_artist_excellence_compliance"
+      - "90%_test_coverage"
+      - "zero_console_errors"
+      
+  api_development:
+    sequence: ["manong", "keykey", "caca"]
+    handoff_points:
+      - "data_layer_implementation"
+      - "authentication_integration"
+      - "security_validation"
+    success_criteria:
+      - "sub_100ms_response_time"
+      - "jwt_authentication_enabled"
+      - "compliance_verified"
+      
+  full_feature_implementation:
+    sequence: ["dash_2_0", "manong", "keykey", "caca"]
+    handoff_points:
+      - "ui_component_generation"
+      - "api_endpoint_creation"
+      - "security_implementation"
+      - "comprehensive_validation"
+    success_criteria:
+      - "end_to_end_functionality"
+      - "performance_benchmarks_met"
+      - "security_compliance_verified"
+      - "documentation_complete"
+
+mcp_integration:
+  connector_config:
+    model: "claude-sonnet-4-20250514"
+    max_tokens: 4000
+    beta_header: "mcp-client-2025-04-04"
+    
+  server_authentication:
+    dash_2_0:
+      type: "oauth"
+      token_env: "DASH_OAUTH_TOKEN"
+    keykey:
+      type: "oauth"
+      token_env: "KEYKEY_OAUTH_TOKEN"
+    manong:
+      type: "oauth"
+      token_env: "MANONG_OAUTH_TOKEN"
+    caca:
+      type: "oauth"
+      token_env: "CACA_OAUTH_TOKEN"
+
+tool_calling_standards:
+  input_schema_format: "json_schema"
+  output_schema_format: "json_schema"
+  context_injection: "skr_framework_references"
+  error_handling: "graceful_degradation"
+  
+  standard_tools:
+    generate_component:
+      description: "Generate UI component with Visual Artist Excellence"
+      required_context: ["ces.yaml", "responsible-ai-compliance.yaml"]
+      
+    validate_implementation:
+      description: "Comprehensive validation through Caca agent"
+      required_context: ["quality-gates.yaml"]
+      
+    create_api_endpoint:
+      description: "Generate API endpoint with authentication"
+      required_context: ["scout.yaml", "responsible-ai-compliance.yaml"]
+
+performance_metrics:
+  coordination_efficiency:
+    target: "95% successful handoffs"
+    measurement: "agent_coordination_success_rate"
+    
+  response_time:
+    target: "<2 seconds end-to-end"
+    measurement: "orchestration_latency"
+    
+  quality_score:
+    target: ">90% first-pass success"
+    measurement: "generated_component_quality"
+
+monitoring:
+  agent_health:
+    - "mcp_server_availability"
+    - "authentication_token_validity"
+    - "context_access_permissions"
+    
+  workflow_tracking:
+    - "handoff_success_rates"
+    - "component_generation_metrics"
+    - "validation_pass_rates"
+    
+  performance_monitoring:
+    - "orchestration_latency"
+    - "agent_response_times"
+    - "resource_utilization"
+
+integration_points:
+  skr_framework:
+    context_sharing: "real_time_access"
+    template_library: "bidirectional_updates"
+    quality_gates: "automated_validation"
+    
+  console_error_resolution:
+    missing_components: "automated_generation"
+    api_endpoints: "coordinated_creation"
+    testing: "comprehensive_coverage"
+    
+  ci_cd_pipeline:
+    verification_scripts: "agent_coordination_checks"
+    deployment_validation: "multi_agent_approval"
+    monitoring_integration: "real_time_metrics"
+
+notes:
+  - "Agent orchestration follows Anthropic MCP patterns"
+  - "SKR framework provides shared context for all agents"
+  - "OAuth authentication ensures enterprise-grade security"
+  - "Workflow patterns based on Claude Code best practices"
+  - "Real-time monitoring and performance optimization"
+  
+last_updated: "2025-06-17"
+validated_by: "Claude Code Assistant"

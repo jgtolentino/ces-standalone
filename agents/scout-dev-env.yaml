@@ -1,0 +1,376 @@
+# Scout Dev Environment Assessment Agent
+# Phase 0: AI-Native Development Environment Readiness
+name: "scout-dev-env"
+version: "1.0.0"
+role: "development_environment_assessor"
+description: "Phase 0 agent that assesses and validates development environment readiness for AI-native development work"
+
+# ============================================================================
+# AGENT CONFIGURATION
+# ============================================================================
+
+agent_config:
+  type: "environment_assessor"
+  priority: "critical"
+  execution_mode: "automated_scan"
+  reporting: "comprehensive_dashboard"
+  integration: "mcp_protocol"
+  
+capabilities:
+  - environment_health_check
+  - dependency_validation
+  - ai_stack_assessment
+  - agent_ecosystem_audit
+  - security_compliance_check
+  - performance_baseline
+  - configuration_validation
+  - integration_testing
+
+# ============================================================================
+# ASSESSMENT FRAMEWORK
+# ============================================================================
+
+assessment_framework:
+  phase_0_checklist:
+    development_environment:
+      - node_js_version_compatibility
+      - package_manager_setup
+      - typescript_configuration
+      - next_js_framework_status
+      - git_repository_health
+      - ide_configuration
+      
+    ai_native_stack:
+      - azure_openai_connectivity
+      - anthropic_claude_integration
+      - mcp_protocol_setup
+      - agent_orchestration_framework
+      - skr_framework_integration
+      - template_library_availability
+      
+    required_assets:
+      - package_dependencies_audit
+      - environment_variables_validation
+      - database_connectivity
+      - authentication_systems
+      - deployment_configurations
+      - monitoring_setup
+      
+    agent_ecosystem:
+      - existing_agents_status
+      - agent_templates_validation
+      - cross_agent_communication
+      - quality_gates_configuration
+      - workflow_orchestration
+
+# ============================================================================
+# ASSESSMENT CRITERIA
+# ============================================================================
+
+assessment_criteria:
+  critical_requirements:
+    node_environment:
+      node_version: ">=18.0.0"
+      package_manager: ["pnpm", "npm", "yarn"]
+      typescript: ">=5.0.0"
+      next_js: ">=14.0.0"
+      
+    ai_integrations:
+      azure_openai: "api_key_valid"
+      anthropic_claude: "api_key_valid"
+      mcp_servers: "configured"
+      agent_templates: "available"
+      
+    database_connections:
+      supabase: "connection_valid"
+      azure_sql: "connection_optional"
+      redis_cache: "connection_optional"
+      
+    security_requirements:
+      environment_variables: "properly_configured"
+      api_keys: "securely_stored"
+      authentication: "oauth_ready"
+      encryption: "tls_enabled"
+
+  performance_thresholds:
+    build_time: "<30_seconds"
+    test_execution: "<10_seconds"
+    api_response: "<500ms"
+    bundle_size: "<2mb"
+
+# ============================================================================
+# ASSESSMENT TOOLS
+# ============================================================================
+
+assessment_tools:
+  environment_scanners:
+    dependency_checker:
+      command: "npm audit --audit-level=moderate"
+      validation: "zero_vulnerabilities"
+      
+    typescript_validator:
+      command: "tsc --noEmit"
+      validation: "zero_errors"
+      
+    build_tester:
+      command: "npm run build"
+      validation: "successful_build"
+      
+    test_runner:
+      command: "npm test"
+      validation: "all_tests_pass"
+
+  connectivity_tests:
+    api_health_checks:
+      - endpoint: "/api/health"
+        expected_status: 200
+      - endpoint: "/api/kpi/overview"
+        expected_status: 200
+      - endpoint: "/api/ces/chat"
+        expected_status: 200
+        
+    database_tests:
+      supabase:
+        test: "SELECT 1"
+        timeout: "5_seconds"
+      azure_sql:
+        test: "SELECT 1"
+        timeout: "5_seconds"
+        optional: true
+
+  agent_ecosystem_tests:
+    agent_availability:
+      - agent: "dash"
+        status: "operational"
+      - agent: "keykey"
+        status: "operational"
+      - agent: "manong"
+        status: "operational"
+      - agent: "caca"
+        status: "operational"
+        
+    mcp_protocol:
+      servers: "responsive"
+      communication: "bidirectional"
+      error_handling: "graceful"
+
+# ============================================================================
+# REPORTING FRAMEWORK
+# ============================================================================
+
+reporting_framework:
+  assessment_report:
+    format: "markdown_dashboard"
+    sections:
+      - executive_summary
+      - environment_health_score
+      - critical_issues
+      - recommendations
+      - action_items
+      - next_steps
+      
+  scoring_system:
+    overall_readiness:
+      excellent: "90-100%"
+      good: "75-89%"
+      needs_improvement: "50-74%"
+      critical_issues: "<50%"
+      
+    category_weights:
+      development_environment: 25
+      ai_native_stack: 30
+      required_assets: 20
+      agent_ecosystem: 25
+
+  dashboard_metrics:
+    real_time_indicators:
+      - environment_health_score
+      - critical_issues_count
+      - agent_availability_status
+      - api_response_times
+      - build_success_rate
+      
+    trend_analysis:
+      - performance_over_time
+      - issue_resolution_rate
+      - agent_utilization
+      - deployment_frequency
+
+# ============================================================================
+# REMEDIATION FRAMEWORK
+# ============================================================================
+
+remediation_framework:
+  automated_fixes:
+    dependency_updates:
+      command: "npm update"
+      validation: "security_audit_pass"
+      
+    environment_setup:
+      missing_env_vars: "prompt_for_values"
+      invalid_configs: "suggest_corrections"
+      
+    agent_configuration:
+      missing_templates: "auto_generate"
+      broken_connections: "retry_with_backoff"
+
+  manual_interventions:
+    critical_security_issues:
+      action: "immediate_attention_required"
+      escalation: "security_team"
+      
+    infrastructure_problems:
+      action: "devops_intervention"
+      escalation: "infrastructure_team"
+      
+    agent_ecosystem_failures:
+      action: "agent_specialist_required"
+      escalation: "ai_team"
+
+# ============================================================================
+# INTEGRATION POINTS
+# ============================================================================
+
+integration_points:
+  ci_cd_pipeline:
+    github_actions: "pre_deployment_check"
+    vercel_deployment: "environment_validation"
+    azure_pipeline: "infrastructure_readiness"
+    
+  monitoring_systems:
+    vercel_analytics: "performance_tracking"
+    azure_monitor: "infrastructure_health"
+    custom_dashboards: "agent_ecosystem_status"
+    
+  notification_channels:
+    slack_integration: "critical_alerts"
+    email_reports: "daily_summaries"
+    dashboard_updates: "real_time_status"
+
+# ============================================================================
+# WORKFLOW ORCHESTRATION
+# ============================================================================
+
+workflow_orchestration:
+  assessment_triggers:
+    scheduled: "daily_at_6am"
+    on_demand: "manual_trigger"
+    pre_deployment: "automatic"
+    post_incident: "automatic"
+    
+  assessment_sequence:
+    phase_1: "environment_scan"
+    phase_2: "connectivity_tests"
+    phase_3: "agent_ecosystem_check"
+    phase_4: "performance_baseline"
+    phase_5: "security_validation"
+    phase_6: "report_generation"
+    
+  escalation_matrix:
+    critical_issues:
+      response_time: "immediate"
+      notification: "all_stakeholders"
+      
+    major_issues:
+      response_time: "within_1_hour"
+      notification: "development_team"
+      
+    minor_issues:
+      response_time: "within_24_hours"
+      notification: "daily_report"
+
+# ============================================================================
+# SUCCESS METRICS
+# ============================================================================
+
+success_metrics:
+  environment_readiness:
+    target_score: ">=85%"
+    critical_issues: "zero"
+    agent_availability: "100%"
+    api_response_time: "<500ms"
+    
+  development_velocity:
+    build_time_improvement: "20%"
+    deployment_frequency: "daily"
+    issue_resolution_time: "<2_hours"
+    developer_satisfaction: ">=4.5/5"
+    
+  ai_native_capabilities:
+    agent_utilization: ">=80%"
+    cross_agent_coordination: ">=95%"
+    automated_quality_gates: "100%"
+    template_reuse_rate: ">=85%"
+
+# ============================================================================
+# TEMPLATES & EXAMPLES
+# ============================================================================
+
+templates:
+  assessment_report_template: |
+    # 🔍 Scout Dev Environment Assessment Report
+    **Date**: {assessment_date}
+    **Environment**: {environment_name}
+    **Overall Score**: {overall_score}/100
+    
+    ## 📊 Executive Summary
+    {executive_summary}
+    
+    ## 🎯 Environment Health Score
+    - Development Environment: {dev_env_score}/25
+    - AI-Native Stack: {ai_stack_score}/30
+    - Required Assets: {assets_score}/20
+    - Agent Ecosystem: {agent_ecosystem_score}/25
+    
+    ## ⚠️ Critical Issues
+    {critical_issues_list}
+    
+    ## 💡 Recommendations
+    {recommendations_list}
+    
+    ## 📋 Action Items
+    {action_items_list}
+    
+    ## 🚀 Next Steps
+    {next_steps_list}
+
+  remediation_script_template: |
+    #!/bin/bash
+    # Scout Dev Environment Remediation Script
+    # Generated: {generation_date}
+    
+    echo "🔧 Starting environment remediation..."
+    
+    # Dependency updates
+    {dependency_commands}
+    
+    # Configuration fixes
+    {config_commands}
+    
+    # Agent setup
+    {agent_commands}
+    
+    echo "✅ Remediation complete!"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  created_by: "Scout Agent Orchestration System"
+  created_date: "2025-06-17"
+  version: "1.0.0"
+  last_updated: "2025-06-17T13:41:00Z"
+  compatibility: "Scout v3.3.1+"
+  dependencies: ["mcp-protocol", "skr-framework", "agent-orchestration"]
+  
+validation:
+  schema_version: "1.0"
+  required_fields: ["assessment_framework", "assessment_criteria", "reporting_framework"]
+  optional_fields: ["remediation_framework", "integration_points"]
+  
+deployment:
+  target_environment: "development"
+  rollout_strategy: "gradual"
+  monitoring: "comprehensive"
+  rollback_plan: "automatic"

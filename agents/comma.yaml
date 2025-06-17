@@ -1,0 +1,243 @@
+# 💼 Comma Agent Configuration
+# Strategy Bridge Agent - Business Alignment
+
+name: "comma"
+version: "2.0"
+description: "Strategy Bridge Agent for Business-Creative Alignment"
+agent_type: "strategy_bridge"
+role: "business_creative_translator"
+
+capabilities:
+  primary:
+    - "business_goal_translation"
+    - "kpi_mapping"
+    - "roi_calculation"
+    - "stakeholder_alignment"
+    - "creative_brief_validation"
+    - "success_metrics_definition"
+
+  secondary:
+    - "market_research_integration"
+    - "competitive_analysis"
+    - "user_persona_development"
+    - "brand_guideline_enforcement"
+
+tools:
+  analytics:
+    - name: "google_analytics"
+      purpose: "user_behavior_analysis"
+      integration: "api_direct"
+    - name: "mixpanel"
+      purpose: "event_tracking"
+      integration: "custom_events"
+    - name: "hotjar"
+      purpose: "user_session_analysis"
+      integration: "heatmap_recordings"
+
+  business_intelligence:
+    - name: "tableau"
+      purpose: "data_visualization"
+      integration: "dashboard_embedding"
+    - name: "powerbi"
+      purpose: "business_reporting"
+      integration: "scout_platform"
+    - name: "looker"
+      purpose: "data_exploration"
+      integration: "sql_queries"
+
+  strategy:
+    - name: "miro"
+      purpose: "strategy_mapping"
+      integration: "collaborative_boards"
+    - name: "notion"
+      purpose: "documentation"
+      integration: "knowledge_base"
+    - name: "airtable"
+      purpose: "project_tracking"
+      integration: "workflow_automation"
+
+workflow:
+  strategy_validation:
+    - step: "business_goal_analysis"
+      description: "Analyze and validate business objectives"
+      deliverable: "goal_hierarchy_map"
+    - step: "kpi_definition"
+      description: "Define measurable success metrics"
+      deliverable: "kpi_dashboard_spec"
+    - step: "user_impact_assessment"
+      description: "Evaluate user behavior implications"
+      deliverable: "user_journey_impact_map"
+    - step: "creative_brief_approval"
+      description: "Approve creative direction alignment"
+      validation: "business_creative_alignment_score"
+
+  creative_review:
+    - step: "brand_alignment_check"
+      description: "Validate brand consistency"
+      criteria: "brand_guideline_compliance"
+    - step: "message_clarity_review"
+      description: "Ensure clear value proposition"
+      criteria: "message_effectiveness_score"
+    - step: "target_audience_fit"
+      description: "Confirm audience resonance"
+      criteria: "persona_alignment_rating"
+    - step: "business_impact_projection"
+      description: "Project expected business outcomes"
+      deliverable: "impact_forecast_report"
+
+quality_standards:
+  business_alignment:
+    goal_clarity: "required"
+    kpi_measurability: "required"
+    roi_projection: "required"
+    stakeholder_buy_in: "required"
+
+  creative_validation:
+    brand_consistency: "required"
+    message_clarity: "required"
+    audience_relevance: "required"
+    differentiation: "required"
+
+  success_metrics:
+    conversion_impact: "measurable"
+    engagement_lift: "trackable"
+    brand_perception: "surveyed"
+    business_value: "quantified"
+
+integration:
+  agents:
+    - name: "dash"
+      purpose: "creative_execution_alignment"
+      trigger: "strategy_approved"
+    - name: "manong"
+      purpose: "user_experience_validation"
+      trigger: "concept_review"
+    - name: "caca"
+      purpose: "quality_assurance"
+      trigger: "deliverable_review"
+
+  platforms:
+    - name: "scout_analytics"
+      purpose: "performance_tracking"
+      integration: "kpi_dashboard"
+    - name: "ces_platform"
+      purpose: "consumer_insights"
+      integration: "behavior_analysis"
+
+prompts:
+  business_brief_analysis: |
+    Analyze this business brief for creative alignment:
+    
+    BUSINESS OBJECTIVE: {objective}
+    TARGET METRICS: {metrics}
+    AUDIENCE: {audience}
+    TIMELINE: {timeline}
+    BUDGET: {budget}
+    
+    Evaluate:
+    1. Goal clarity and measurability
+    2. Audience definition completeness
+    3. Success metrics appropriateness
+    4. Resource allocation efficiency
+    
+    Provide strategic recommendations.
+
+  creative_concept_review: |
+    Review this creative concept for business alignment:
+    
+    CONCEPT: {concept_description}
+    CREATIVE DIRECTION: {direction}
+    EXPECTED OUTCOMES: {outcomes}
+    
+    Validate against:
+    - Brand consistency
+    - Message clarity
+    - Audience relevance
+    - Business impact potential
+    
+    Score and provide feedback.
+
+  kpi_validation: |
+    Validate these KPIs for creative campaign:
+    
+    PRIMARY KPIs: {primary_kpis}
+    SECONDARY KPIs: {secondary_kpis}
+    MEASUREMENT METHOD: {measurement}
+    
+    Assess:
+    - Measurability
+    - Relevance to business goals
+    - Achievability within timeline
+    - Attribution clarity
+    
+    Recommend optimizations.
+
+metrics:
+  strategy_effectiveness:
+    - "goal_achievement_rate: 85%+"
+    - "stakeholder_satisfaction: 90%+"
+    - "creative_business_alignment: 95%+"
+    - "roi_accuracy: 80%+"
+
+  process_efficiency:
+    - "brief_to_approval_time: <48_hours"
+    - "revision_cycles: <2_rounds"
+    - "stakeholder_alignment: first_review"
+
+validation_framework:
+  business_goals:
+    - criterion: "smart_goals"
+      description: "Specific, Measurable, Achievable, Relevant, Time-bound"
+      weight: 25
+    - criterion: "stakeholder_alignment"
+      description: "All key stakeholders agree on objectives"
+      weight: 20
+    - criterion: "resource_feasibility"
+      description: "Goals achievable with available resources"
+      weight: 15
+    - criterion: "market_relevance"
+      description: "Goals align with market opportunities"
+      weight: 20
+    - criterion: "brand_consistency"
+      description: "Goals support overall brand strategy"
+      weight: 20
+
+  creative_alignment:
+    - criterion: "message_clarity"
+      description: "Clear value proposition communication"
+      weight: 30
+    - criterion: "audience_resonance"
+      description: "Appeals to target audience preferences"
+      weight: 25
+    - criterion: "brand_voice"
+      description: "Consistent with brand personality"
+      weight: 20
+    - criterion: "differentiation"
+      description: "Distinguishes from competitors"
+      weight: 25
+
+automation:
+  kpi_tracking:
+    - trigger: "campaign_launch"
+      action: "setup_tracking_dashboard"
+    - trigger: "weekly_review"
+      action: "generate_performance_report"
+
+  stakeholder_updates:
+    - frequency: "daily"
+      content: "key_metrics_summary"
+    - frequency: "weekly"
+      content: "detailed_performance_analysis"
+
+reporting:
+  executive_summary:
+    - "business_goal_progress"
+    - "creative_performance_metrics"
+    - "roi_analysis"
+    - "strategic_recommendations"
+
+  operational_dashboard:
+    - "real_time_kpi_tracking"
+    - "campaign_performance_metrics"
+    - "audience_engagement_data"
+    - "conversion_funnel_analysis"

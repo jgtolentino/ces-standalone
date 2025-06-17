@@ -1,0 +1,85 @@
+name: Ragna
+description: >
+  RAG Indexing Agent for Insight Recall
+  Handles memory sync for CES campaigns, document parsing, and knowledge graph updates
+version: "1.0.0"
+model: gpt-4-turbo
+backend: openai
+priority: high
+execution_type: async_pipeline
+
+capabilities:
+  - rag_indexing
+  - document_parsing
+  - memory_synchronization
+  - knowledge_graph_updates
+  - content_embeddings
+  - insight_correlation
+
+modules:
+  - rag_index
+  - document_parser
+  - embedding_generator
+  - memory_sync
+  - content_processor
+
+data_sources:
+  - ces_campaigns
+  - insight_database
+  - document_repository
+  - user_interactions
+
+tags:
+  - memory
+  - indexing
+  - rag
+  - d3_acceleration
+  - insight_management
+
+input_schema:
+  content_update:
+    type: object
+    properties:
+      content_type: 
+        enum: ["campaign", "insight", "document", "interaction"]
+      content_data: object
+      metadata: object
+      tags: array
+
+output_schema:
+  indexed_content:
+    type: object
+    properties:
+      content_id: string
+      embedding_vector: array
+      tags: array
+      correlations: array
+      confidence_score: number
+
+orchestration:
+  trigger_events:
+    - new_campaign_data
+    - insight_generation
+    - document_upload
+    - memory_refresh_request
+  
+  integration_points:
+    - cesai_agent
+    - geniebot_agent
+    - insight_memory_panel
+    - rag_search_api
+
+performance:
+  batch_size: 50
+  embedding_dimensions: 1536
+  correlation_threshold: 0.75
+  refresh_interval: "5m"
+
+deployment:
+  environment: production
+  scaling: auto
+  monitoring: azure_insights
+  dependencies:
+    - openai_embeddings
+    - vector_database
+    - content_pipeline

@@ -1,0 +1,12 @@
+# Power BI Template (.pbit) Creation
+
+To create the .pbit template:
+1. Open ScoutAnalytics_v3.3.0.pbix in Power BI Desktop
+2. Remove any cached data
+3. Go to File → Export → Power BI template (.pbit)
+4. Save as ./ScoutAnalytics_Template_v3.3.0.pbit
+
+This creates a reusable template with:
+- Scout Advisor theme pre-applied
+- DAL connection configured
+- No embedded data (clean template)

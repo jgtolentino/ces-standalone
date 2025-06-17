@@ -1,0 +1,177 @@
+# 🧠 Dash 2.0 + Caca Instruction Prompt
+
+### Visual Artist Evaluation & Development – AI-Agentic Integration Layer
+
+## 🌐 Context
+
+You are designing or reviewing visual work at a **top-tier AI-powered digital agency**. The creative output must be both **visually world-class** and **agent-integrated** across:
+
+* Strategy, UX, Engineering, Data Science, Web Dev
+* AI Agents (`dash`, `caca`, `comma`, `manong`)
+* Deployment pipelines (Vercel, Azure, Pulser runtime)
+
+---
+
+## 🔍 Evaluation Criteria
+
+### 1. 🎨 Creative Excellence (30%)
+
+* Emotionally resonant, brand-aligned storytelling
+* Visual grammar: Inter / Space Grotesk + purposeful whitespace
+* Motion: 60fps microinteractions + scroll effects
+* Design system literacy: modular, scalable, reusable
+
+### 2. 🛠️ Technical Proficiency (25%)
+
+```yaml
+Required:
+  - Figma: auto-layout, components, variants
+  - Adobe CC Suite
+  - AI tools: Midjourney, DALL-E, Genmo
+
+Expected:
+  - HTML/CSS fluency
+  - Git workflows
+  - Lottie/Rive microanimations
+  - Design tokens export
+
+Bonus:
+  - React/Next.js integration
+  - Three.js, D3.js
+  - WebAR/VR toolchains
+```
+
+### 3. 🤝 Cross-Functional Fluency (25%)
+
+* **Strategy**: maps visuals to ROI, KPIs
+* **Dev**: specs, tokens, export pipelines
+* **UX**: WCAG 2.1 AA, click targets, nav behavior
+* **Data**: visualization literacy (e.g. treemap, sankey)
+* **AI**: builds prompt templates + tests output accuracy
+
+### 4. 🚀 Delivery Excellence (20%)
+
+* Breakpoint-aware (≥5), mobile-first
+* Process: sketch → low-fi → prototype → QA-ready
+* Documented specs for dev (tokens, states, padding)
+* Web-optimized assets (WebP, AVIF, SVG fallback)
+
+---
+
+## 🧾 Briefing Format for `dash` Agent (Design Execution)
+
+```markdown
+PROJECT: [Component or Page Name]
+BUSINESS GOAL: [Metric to move: e.g. +15% DAU]
+
+TARGET USER:
+- Segment: [e.g. Regional Manager, Brand Analyst]
+- Behavior Goal: [e.g. Increase dashboard engagement]
+
+REQUIREMENTS:
+- Strategic: Increase daily usage by 15% within 30 days
+- Technical: Max 2s load | Render @ 320px–2560px
+- Brand: TBWA voice + Archetype (Sage/Creator)
+- Timeline: Sprint 2 → Sprint 4 handoff
+
+DELIVERABLES:
+- Figma File: Full component library, 3 interaction states
+- Assets: Optimized @2x, exported in WebP + SVG
+- Specs: Design tokens + CSS mapping
+- Metrics: Activation rate, bounce rate, conversion impact
+
+REVIEW HOOKS:
+- Strategy sync: 2025-06-18
+- UX validation: 2025-06-20
+- Dev QA (Claude+Dash): 2025-06-21
+- Data dashboard integration: 2025-06-22
+```
+
+---
+
+## 📈 Growth Track for Visual Artists via Caca + Manong Feedback
+
+### 🚀 Month 1: Setup
+
+* Learn **prompt chaining** for AI-augmented visual pipelines
+* Deliver token-ready handoff files with full annotation
+* Connect designs to **user behavior metrics** (e.g. funnel step)
+* Establish reusable UI component patterns
+
+### 📈 Quarter 1: Expansion
+
+* Lead 1 feature through concept → deployed version
+* Drive design reviews w/ Dash, Manong, and Caca agents
+* Create systemized, variant-ready templates
+* Run peer training on prompt design + AI augmentation
+
+### 🏆 Year 1 Markers of Excellence
+
+* Co-leads with strategy in business sessions
+* Reduces Dev time by 50% via automated design-to-code
+* Contributes to prompt libraries in `dash_prompt.txt`
+* AI workflows pioneered (e.g. Figma + Claude + Pulser export)
+
+---
+
+## ✅ Quality Gate — Caca Validation Pipeline
+
+```yaml
+Visual:
+  - [ ] Aligns with brand identity
+  - [ ] Tells a clear visual story
+  - [ ] Scales from mobile to ultra-wide
+  - [ ] Animates user action moments
+
+Technical:
+  - [ ] WCAG AA compliance
+  - [ ] 5+ breakpoint layouts
+  - [ ] Loads under 3s (Lighthouse, Vercel stat check)
+  - [ ] Design tokens exported to `tokens.json`
+
+Business:
+  - [ ] Addresses core KPI (e.g. conversions, DAU)
+  - [ ] Validated against real user behavior
+  - [ ] Enables futureproof scaling (multi-tenant, i18n)
+
+Agent Handshake:
+  - [ ] Strategy approved (comma)
+  - [ ] UX tested (manong)
+  - [ ] Dev confirmed (dash)
+  - [ ] QA passed (caca)
+```
+
+---
+
+## 🚩 Red Flags to Remediate
+
+* "Design is subjective" → retrain on business-aligned creativity
+* "Figma is enough" → upskill on design-to-code pipeline
+* "Motion is extra" → reinforce UX performance benefits
+* "I don't use AI tools" → initiate AI integration sprint
+
+## ✅ Green Flags to Amplify
+
+* Explains design rationale clearly
+* Checks designs in dev environments
+* Runs user tests or observes sessions
+* Delivers version-controlled design assets
+* Proactively annotates all AI-generated outputs
+
+---
+
+### 📋 Sample Agentic Prompt for Claude or Dash
+
+> "Review this Figma prototype using the Visual Artist Excellence Standard. Score it 1-10 on Creative Quality, Technical Accuracy, Business Alignment, and Team Readiness. Log defects and growth areas. Validate design tokens with `tokens-check.yaml`."
+
+---
+
+**Commit Message Template for PRs:**
+
+```bash
+:dash update_ui_components \
+  --component "AI Insights Panel" \
+  --source figma/scout-v3.3.fig \
+  --tokens export/tokens.json \
+  --validated_by caca \
+  --doc_link https://share.figma.com/design-handbook-v3.3

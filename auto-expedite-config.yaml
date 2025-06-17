@@ -1,0 +1,127 @@
+# Scout Analytics v3.3.1 Auto-Expedite Configuration
+# AI-Assisted Patch Generation System
+
+project:
+  name: "Scout Analytics"
+  version: "v3.3.1-dg-final"
+  timeline_days: 45
+  target_date: "2025-08-01"
+  repo_path: "/Users/tbwa/Documents/GitHub/ai-agency"
+
+automation_tools:
+  agent_factory:
+    base_model: "LearnBot"
+    derived_agents: ["ScoutBot", "CESAI", "Kalaw", "Claudia", "Caca"]
+    
+  generator:
+    type: "YAML-to-React"
+    templates: 
+      - component_builder
+      - page_builder
+      - api_scaffold
+      
+  scaffold:
+    api_generator: true
+    kpi_card_auto_generator: true
+    prd_schema_sync: true
+    
+  ci_pipeline:
+    platform: "GitHub Actions"
+    qa_gates: ["Percy", "Playwright", "JWT compliance"]
+    auto_deploy: "Vercel"
+    
+  tester:
+    framework: "Playwright"
+    coverage_target: 95
+    visual_regression: "Percy"
+
+timeline:
+  week_1_2:
+    name: "Pages + KPI Cards"
+    duration: 14
+    tasks:
+      - missing_pages: ["/creative-analyzer", "/real-campaigns", "/tutorial"]
+      - kpi_cards: ["LTV", "CAC", "Market Share", "Margin %", "Stores"]
+      - chart_components: ["Radar", "Progress", "Heatmap"]
+    
+  week_3_4:
+    name: "Agents + AI Infrastructure"  
+    duration: 14
+    tasks:
+      - agent_instantiation: true
+      - nl2sql_integration: "GenieBot + OpenAI"
+      - rag_optimization: "Ragna + CESAI"
+      
+  week_5_6:
+    name: "Production Deployment"
+    duration: 17
+    tasks:
+      - ci_cd_setup: "Vercel + GitHub Actions"
+      - qa_automation: "Percy + Playwright"
+      - responsible_ai_modal: "LearnBot integration"
+
+agents:
+  orchestrator:
+    name: "Claudia"
+    role: "Pipeline execution & task routing"
+    capabilities: ["orchestration", "ci_management", "deployment"]
+    
+  ui_generator:
+    name: "Dash"
+    role: "UI component generation"
+    capabilities: ["react_generation", "tailwind_styling", "chart_integration"]
+    
+  qa_validator:
+    name: "Caca"
+    role: "Quality assurance & testing"
+    capabilities: ["visual_qa", "regression_testing", "compliance_checks"]
+    
+  data_validator:
+    name: "Kalaw"
+    role: "Data mapping & RAG validation"
+    capabilities: ["rag_validation", "data_integrity", "schema_compliance"]
+    
+  tutorial_assistant:
+    name: "LearnBot"
+    role: "Template model & tutorial generation"
+    capabilities: ["tutorial_creation", "agent_templating", "user_guidance"]
+    
+  security_manager:
+    name: "KeyKey"
+    role: "JWT & security compliance"
+    capabilities: ["jwt_management", "security_validation", "compliance_checks"]
+
+generators:
+  yaml_to_react:
+    enabled: true
+    templates_path: "templates/react"
+    output_path: "components/generated"
+    
+  api_scaffold:
+    enabled: true
+    templates_path: "templates/api"
+    output_path: "app/api/generated"
+    
+  kpi_card_generator:
+    enabled: true
+    card_types: ["metric", "trend", "comparison", "target"]
+    chart_integration: ["Chart.js", "D3.js"]
+
+success_metrics:
+  automation_percentage: 80
+  test_coverage: 95
+  compliance_score: 100
+  performance_target: "<200ms page load"
+  
+blockers_eliminated:
+  - manual_page_assembly: false
+  - hand_coded_kpi_logic: false
+  - disconnected_agents: false
+  - untested_integration: false
+  - manual_ci_setup: false
+
+deployment:
+  strategy: "blue_green"
+  environment: "production"
+  monitoring: "Azure Insights"
+  rollback_triggers: ["error_rate > 5%", "performance_degradation > 20%"]

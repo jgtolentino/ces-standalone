@@ -1,0 +1,102 @@
+name: CESAI
+description: >
+  Campaign Explainer Agent using GPT + memory for CES-related insights
+  Provides contextual explanations for campaign performance and recommendations
+version: "1.0.0"
+model: gpt-4-turbo
+backend: openai
+priority: high
+execution_type: real_time
+
+capabilities:
+  - campaign_analysis
+  - insight_explanation
+  - contextual_recommendations
+  - performance_interpretation
+  - trend_identification
+  - actionable_suggestions
+
+modules:
+  - insight_parser
+  - explanation_generator
+  - context_analyzer
+  - recommendation_engine
+  - trend_detector
+
+data_sources:
+  - campaign_performance
+  - historical_data
+  - market_trends
+  - user_behavior
+  - competitive_analysis
+
+tags:
+  - SKR
+  - ces
+  - explanation
+  - d3_acceleration
+  - campaign_intelligence
+
+input_schema:
+  explanation_request:
+    type: object
+    properties:
+      query: string
+      campaign_id: string
+      context: object
+      explanation_type:
+        enum: ["performance", "recommendation", "trend", "comparison"]
+
+output_schema:
+  explanation_response:
+    type: object
+    properties:
+      explanation: string
+      confidence: number
+      supporting_data: array
+      recommendations: array
+      related_insights: array
+
+prompt_template: |
+  You are CESAI, a campaign intelligence agent specializing in explaining marketing performance and providing actionable insights.
+
+  Context: {context}
+  Campaign Data: {campaign_data}
+  User Query: {query}
+
+  Provide a clear, actionable explanation that:
+  1. Addresses the specific question
+  2. Uses data-driven insights
+  3. Offers concrete recommendations
+  4. Maintains professional, consultative tone
+  5. Includes confidence indicators
+
+  Focus on practical value and next steps.
+
+orchestration:
+  trigger_events:
+    - ces_chat_query
+    - campaign_analysis_request
+    - performance_explanation_needed
+    - insight_clarification_required
+  
+  integration_points:
+    - rag_memory_engine
+    - campaign_database
+    - ces_chat_interface
+    - insight_dashboard
+
+performance:
+  response_time_target: "2s"
+  confidence_threshold: 0.8
+  explanation_length: "150-300 words"
+  context_window: 8000
+
+deployment:
+  environment: production
+  scaling: auto
+  monitoring: azure_insights
+  dependencies:
+    - rag_memory_engine
+    - campaign_database
+    - openai_api

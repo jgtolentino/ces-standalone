@@ -1,0 +1,126 @@
+name: Orchestrator
+description: >
+  Master Agent Orchestration System for Scout Analytics v3.3.0
+  Manages parallel agent execution, task routing, and workflow coordination
+version: "1.0.0"
+execution_type: master_controller
+
+agent_registry:
+  core_agents:
+    - name: Claudia
+      role: "Task routing & pipeline execution"
+      status: active
+      phases: ["all"]
+      
+    - name: LearnBot
+      role: "Tutorial Assistant"
+      status: active
+      phases: ["D1", "E1"]
+      
+    - name: ForecastBot
+      role: "Predictive AI Analytics"
+      status: active
+      phases: ["F1"]
+      
+    - name: KeyKey
+      role: "JWT & security management"
+      status: active
+      phases: ["C1", "E1"]
+      
+    - name: Dash
+      role: "UI implementation & layout optimization"
+      status: active
+      phases: ["A1", "A2", "B1"]
+      
+    - name: Caca
+      role: "Visual QA, regression checks"
+      status: active
+      phases: ["B1"]
+
+  acceleration_agents:
+    - name: Ragna
+      role: "RAG Memory Handler – auto-index CES content"
+      status: ready
+      phases: ["D3"]
+      dependencies: ["rag_memory_engine"]
+      
+    - name: CESAI
+      role: "Campaign Insight Explainer (GPT w/ SKR tags)"
+      status: ready
+      phases: ["D3"]
+      dependencies: ["rag_memory_engine", "campaign_database"]
+      
+    - name: GenieBot
+      role: "Full Ask CES NL2SQL RAG engine"
+      status: ready
+      phases: ["G1"]
+      dependencies: ["database_layer", "rag_memory_system"]
+      
+    - name: Kalaw
+      role: "Data mapping + index validator (SKR support)"
+      status: ready
+      phases: ["D3", "G1"]
+      dependencies: ["database_metadata", "schema_repository"]
+
+orchestration_config:
+  parallel_execution:
+    enabled: true
+    max_concurrent_agents: 4
+    load_balancing: round_robin
+    
+  execution_phases:
+    D3_acceleration:
+      agents: ["Ragna", "CESAI", "Kalaw"]
+      execution_mode: parallel
+      estimated_duration: "1h"
+      dependencies_check: true
+      
+    G1_deployment:
+      agents: ["GenieBot", "Kalaw"]
+      execution_mode: sequential
+      estimated_duration: "1.5h"
+      dependencies_check: true
+
+  monitoring:
+    agent_health_checks: "30s"
+    performance_metrics: enabled
+    error_escalation: true
+    status_dashboard: "/admin/agents"
+
+  integration_points:
+    - rag_memory_engine
+    - campaign_database
+    - ces_chat_interface
+    - insight_dashboard
+    - visualization_engine
+
+deployment_sequence:
+  phase_1_d3:
+    order: 1
+    agents: ["Ragna", "CESAI"]
+    execution: parallel
+    validation: "Kalaw"
+    
+  phase_2_g1:
+    order: 2
+    agents: ["GenieBot"]
+    execution: single
+    validation: "Kalaw"
+    dependencies: ["phase_1_d3"]
+
+success_criteria:
+  d3_completion:
+    - ragna_rag_indexing_active
+    - cesai_explanation_engine_ready
+    - memory_panel_integration_verified
+    
+  g1_completion:
+    - geniebot_nl2sql_functional
+    - ask_ces_interface_responsive
+    - query_validation_passing
+
+error_handling:
+  agent_failure_recovery: auto_restart
+  dependency_failure_fallback: graceful_degradation
+  escalation_threshold: 3_failures
+  notification_channels: ["admin_console", "monitoring_alerts"]

@@ -2,8 +2,20 @@ let jwt: string | null = null;
 
 async function getJwt() {
   if (jwt) return jwt;
-  const url = process.env.NEXT_PUBLIC_DAL_KEYKEY_URL!;
-  jwt = await fetch(url).then((r) => r.text());
+  
+  // Use KeyKey JWT service only - no fallback tokens for production security
+  const keyKeyUrl = process.env.NEXT_PUBLIC_DAL_KEYKEY_URL;
+  if (!keyKeyUrl) {
+    throw new Error('NEXT_PUBLIC_DAL_KEYKEY_URL environment variable is required for secure JWT authentication');
+  }
+  
+  const response = await fetch(keyKeyUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to obtain JWT from KeyKey service: ${response.status} ${response.statusText}`);
+  }
+  
+  jwt = await response.text();
+  
   return jwt;
 }
 

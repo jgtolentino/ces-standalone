@@ -1,0 +1,456 @@
+{
+  "name": "Scout Analytics v3.3.0 Dashboard Layout",
+  "version": "3.3.0",
+  "description": "Complete Power BI dashboard layout matching Scout Analytics web application",
+  "pages": [
+    {
+      "name": "Executive Overview",
+      "displayName": "Executive Overview",
+      "ordinal": 0,
+      "width": 1280,
+      "height": 720,
+      "background": "#F8FAFC",
+      "visuals": [
+        {
+          "name": "RevenueKPI",
+          "type": "card",
+          "title": "Total Revenue",
+          "x": 50,
+          "y": 50,
+          "width": 280,
+          "height": 120,
+          "dataSource": "FetchFromDAL(\"kpi_revenue_2024\", [], \"summary\")",
+          "field": "total_revenue",
+          "format": "₱#,##0",
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E2E8F0",
+            "titleColor": "#64748B",
+            "valueColor": "#1D4ED8",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "name": "OrdersKPI",
+          "type": "card",
+          "title": "Total Orders",
+          "x": 350,
+          "y": 50,
+          "width": 280,
+          "height": 120,
+          "dataSource": "FetchFromDAL(\"kpi_revenue_2024\", [], \"summary\")",
+          "field": "total_transactions",
+          "format": "#,##0",
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E2E8F0",
+            "titleColor": "#64748B",
+            "valueColor": "#22C55E",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "name": "AOVKPI",
+          "type": "card",
+          "title": "Average Order Value",
+          "x": 650,
+          "y": 50,
+          "width": 280,
+          "height": 120,
+          "dataSource": "FetchFromDAL(\"kpi_revenue_2024\", [], \"summary\")",
+          "field": "avg_aov",
+          "format": "₱#,##0",
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E2E8F0",
+            "titleColor": "#64748B",
+            "valueColor": "#F59E0B",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "name": "ROIKPI",
+          "type": "card",
+          "title": "Return on Investment",
+          "x": 950,
+          "y": 50,
+          "width": 280,
+          "height": 120,
+          "dataSource": "FetchFromDAL(\"kpi_revenue_2024\", [], \"summary\")",
+          "field": "avg_roi",
+          "format": "#,##0.0%",
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E2E8F0",
+            "titleColor": "#64748B",
+            "valueColor": "#EF4444",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "name": "RevenueChart",
+          "type": "lineChart",
+          "title": "Revenue Trend (6 Months)",
+          "x": 50,
+          "y": 200,
+          "width": 580,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "start_date",
+          "yAxis": "revenue",
+          "styling": {
+            "lineColor": "#1D4ED8",
+            "backgroundColor": "#FFFFFF",
+            "gridColor": "#F1F5F9"
+          }
+        },
+        {
+          "name": "ChannelPerformance",
+          "type": "barChart",
+          "title": "Channel Performance",
+          "x": 650,
+          "y": 200,
+          "width": 580,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"channel_analytics\", [], \"summary\")",
+          "xAxis": "channel",
+          "yAxis": "total_revenue",
+          "styling": {
+            "barColor": "#0EA5E9",
+            "backgroundColor": "#FFFFFF",
+            "gridColor": "#F1F5F9"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product Insights",
+      "displayName": "Product Insights",
+      "ordinal": 1,
+      "width": 1280,
+      "height": 720,
+      "background": "#F8FAFC",
+      "visuals": [
+        {
+          "name": "ChannelMatrix",
+          "type": "matrix",
+          "title": "Channel Performance Matrix",
+          "x": 50,
+          "y": 50,
+          "width": 580,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"channel_analytics\", [], \"summary\")",
+          "rows": ["channel"],
+          "values": ["total_revenue", "total_clicks", "channel_roi"],
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "headerColor": "#1D4ED8",
+            "alternateRowColor": "#F8FAFC"
+          }
+        },
+        {
+          "name": "ROIScatter",
+          "type": "scatterChart",
+          "title": "ROI vs Spend Analysis",
+          "x": 650,
+          "y": 50,
+          "width": 580,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "spent",
+          "yAxis": "roi",
+          "size": "revenue",
+          "styling": {
+            "bubbleColor": "#22C55E",
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "name": "CampaignTable",
+          "type": "table",
+          "title": "Top Campaigns",
+          "x": 50,
+          "y": 380,
+          "width": 1180,
+          "height": 290,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "columns": ["name", "channel", "impressions", "clicks", "conversions", "spent", "revenue", "roi"],
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "headerColor": "#1D4ED8",
+            "alternateRowColor": "#F8FAFC"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Profile",
+      "displayName": "Customer Profile",
+      "ordinal": 2,
+      "width": 1280,
+      "height": 720,
+      "background": "#F8FAFC",
+      "visuals": [
+        {
+          "name": "AgeDistribution",
+          "type": "columnChart",
+          "title": "Age Distribution",
+          "x": 50,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"audience_insights\", [], \"demographics\")",
+          "xAxis": "segment",
+          "yAxis": "count",
+          "filter": "dimension = 'age'",
+          "styling": {
+            "barColor": "#1D4ED8",
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "name": "GenderSplit",
+          "type": "pieChart",
+          "title": "Gender Distribution",
+          "x": 450,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"audience_insights\", [], \"demographics\")",
+          "category": "segment",
+          "values": "count",
+          "filter": "dimension = 'gender'",
+          "styling": {
+            "colors": ["#1D4ED8", "#0EA5E9", "#22C55E"],
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "name": "RegionMap",
+          "type": "map",
+          "title": "Regional Performance",
+          "x": 850,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"audience_insights\", [], \"demographics\")",
+          "location": "segment",
+          "size": "performance_score",
+          "filter": "dimension = 'region'",
+          "styling": {
+            "bubbleColor": "#22C55E",
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "name": "EngagementHeatmap",
+          "type": "matrix",
+          "title": "Engagement Heatmap",
+          "x": 50,
+          "y": 380,
+          "width": 1180,
+          "height": 290,
+          "dataSource": "FetchFromDAL(\"audience_insights\", [], \"main\")",
+          "rows": ["age_range"],
+          "columns": ["region"],
+          "values": ["avg_engagement"],
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "heatmapColors": ["#EF4444", "#F59E0B", "#22C55E"]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trend Explorer",
+      "displayName": "Trend Explorer",
+      "ordinal": 3,
+      "width": 1280,
+      "height": 720,
+      "background": "#F8FAFC",
+      "visuals": [
+        {
+          "name": "RevenueTimeSeries",
+          "type": "lineChart",
+          "title": "Revenue Time Series",
+          "x": 50,
+          "y": 50,
+          "width": 1180,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "start_date",
+          "yAxis": "revenue",
+          "series": "channel",
+          "styling": {
+            "lineColors": ["#1D4ED8", "#0EA5E9", "#22C55E", "#F59E0B"],
+            "backgroundColor": "#FFFFFF",
+            "showTrendLine": true
+          }
+        },
+        {
+          "name": "ForecastChart",
+          "type": "lineChart",
+          "title": "Revenue Forecast (Next 3 Months)",
+          "x": 50,
+          "y": 380,
+          "width": 580,
+          "height": 290,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "start_date",
+          "yAxis": "revenue",
+          "forecast": true,
+          "styling": {
+            "lineColor": "#1D4ED8",
+            "forecastColor": "#8B5CF6",
+            "backgroundColor": "#FFFFFF",
+            "confidenceInterval": true
+          }
+        },
+        {
+          "name": "SeasonalityChart",
+          "type": "areaChart",
+          "title": "Seasonal Patterns",
+          "x": 650,
+          "y": 380,
+          "width": 580,
+          "height": 290,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "start_date",
+          "yAxis": "revenue",
+          "styling": {
+            "areaColor": "#22C55E",
+            "backgroundColor": "#FFFFFF",
+            "transparency": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Insight Panel",
+      "displayName": "AI Insight Panel",
+      "ordinal": 4,
+      "width": 1280,
+      "height": 720,
+      "background": "#F8FAFC",
+      "visuals": [
+        {
+          "name": "QAValidationSummary",
+          "type": "multiRowCard",
+          "title": "QA Validation Summary",
+          "x": 50,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"qa_validation_logs\", [], \"summary\")",
+          "fields": ["test_type", "total_tests", "passed_tests", "avg_confidence"],
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "cardColor": "#1D4ED8"
+          }
+        },
+        {
+          "name": "AnomalyDetection",
+          "type": "scatterChart",
+          "title": "Anomaly Detection",
+          "x": 450,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "dataSource": "FetchFromDAL(\"campaign_performance\", [], \"main\")",
+          "xAxis": "spent",
+          "yAxis": "revenue",
+          "anomalyDetection": true,
+          "styling": {
+            "normalColor": "#22C55E",
+            "anomalyColor": "#EF4444",
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "name": "InsightTextBox",
+          "type": "textbox",
+          "title": "AI Generated Insights",
+          "x": 850,
+          "y": 50,
+          "width": 380,
+          "height": 300,
+          "content": "Key insights from Scout Analytics AI:\n\n• Revenue growth of 15% month-over-month\n• Facebook channel showing highest ROI at 4.2x\n• Customer acquisition cost decreased by 8%\n• Recommended budget reallocation to digital channels",
+          "styling": {
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#0F172A",
+            "fontSize": 14,
+            "fontFamily": "Inter"
+          }
+        },
+        {
+          "name": "ValidationTimeline",
+          "type": "lineChart",
+          "title": "QA Validation Timeline",
+          "x": 50,
+          "y": 380,
+          "width": 1180,
+          "height": 290,
+          "dataSource": "FetchFromDAL(\"qa_validation_logs\", [], \"main\")",
+          "xAxis": "created_at",
+          "yAxis": "confidence_score",
+          "series": "test_type",
+          "styling": {
+            "lineColors": ["#1D4ED8", "#22C55E", "#F59E0B"],
+            "backgroundColor": "#FFFFFF"
+          }
+        }
+      ]
+    }
+  ],
+  "dataConnections": [
+    {
+      "name": "ScoutDAL",
+      "type": "web",
+      "connectionString": "http://localhost:3000/api/powerbi/dal",
+      "authentication": "bearer",
+      "token": "dev-bearer-token",
+      "refreshSchedule": "hourly"
+    }
+  ],
+  "theme": {
+    "name": "Scout Advisor UI Theme",
+    "file": "pbix_config_scout_advisor.json",
+    "primaryColor": "#1D4ED8",
+    "secondaryColor": "#0EA5E9",
+    "backgroundColor": "#F8FAFC",
+    "fontFamily": "Inter"
+  },
+  "filters": [
+    {
+      "name": "DateRange",
+      "type": "dateRange",
+      "defaultValue": "Last 90 days",
+      "appliesTo": ["Executive Overview", "Product Insights", "Trend Explorer"]
+    },
+    {
+      "name": "Channel",
+      "type": "dropdown",
+      "source": "FetchFromDAL(\"channel_analytics\", [], \"summary\")",
+      "field": "channel",
+      "appliesTo": ["Product Insights", "Trend Explorer"]
+    },
+    {
+      "name": "Region",
+      "type": "dropdown", 
+      "source": "FetchFromDAL(\"audience_insights\", [], \"demographics\")",
+      "field": "segment",
+      "filter": "dimension = 'region'",
+      "appliesTo": ["Customer Profile"]
+    }
+  ],
+  "navigation": {
+    "showTabs": true,
+    "tabColor": "#1D4ED8",
+    "activeTabColor": "#FFFFFF",
+    "backgroundColor": "#F8FAFC"
+  }
+}

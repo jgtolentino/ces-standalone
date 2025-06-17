@@ -1,0 +1,426 @@
+# Template Library - SKR Enhancement
+# Reusable Patterns for Scout Agent Coordination
+
+system:
+  name: "Scout Template Library"
+  version: "1.0"
+  type: "Reusable Pattern Repository"
+  owner: "TBWA"
+  
+live_binding: true
+qa_status: validated
+llm_provider: "azure-openai"
+model_backend: "azure-openai"
+
+template_categories:
+  ui_components:
+    description: "Reusable UI component patterns with Visual Artist Excellence"
+    base_path: "components/"
+    standards: "visual_artist_excellence_standard"
+    
+  api_endpoints:
+    description: "Standardized API endpoint patterns with authentication"
+    base_path: "app/api/"
+    standards: "dal_integration_keykey_auth"
+    
+  test_patterns:
+    description: "Comprehensive testing patterns for all component types"
+    base_path: "__tests__/"
+    standards: "90_percent_coverage_minimum"
+    
+  documentation:
+    description: "Standardized documentation patterns"
+    base_path: "docs/"
+    standards: "comprehensive_technical_documentation"
+
+ui_component_templates:
+  kpi_card:
+    name: "KPI Card Component"
+    source_file: "components/KpiCard.tsx"
+    pattern_type: "data_visualization"
+    reusability: "high"
+    agent_generator: "dash_2_0"
+    visual_standards:
+      - "Inter/Space Grotesk typography"
+      - "60fps microinteractions"
+      - "Responsive breakpoints (≥5)"
+      - "WCAG 2.1 AA compliance"
+    template_structure: |
+      interface KpiCardProps {
+        title: string;
+        value: string | number;
+        trend?: 'up' | 'down' | 'neutral';
+        subtitle?: string;
+        loading?: boolean;
+      }
+      
+      export default function KpiCard({ title, value, trend, subtitle, loading }: KpiCardProps) {
+        // Visual Artist Excellence implementation
+        // SKR context integration
+        // Responsive design
+        // Accessibility features
+      }
+    dependencies:
+      - "tailwindcss"
+      - "framer-motion"
+      - "lucide-react"
+    skr_context_required:
+      - "ces.yaml#framework"
+      - "scout.yaml#brands_tracked"
+    
+  chart_component:
+    name: "Chart Component"
+    source_files: 
+      - "components/charts/LineChart.tsx"
+      - "components/charts/StackedBar.tsx"
+      - "components/charts/Heatmap.tsx"
+    pattern_type: "data_visualization"
+    reusability: "high"
+    agent_generator: "dash_2_0"
+    visual_standards:
+      - "Chart.js integration"
+      - "Responsive design"
+      - "Color accessibility"
+      - "Interactive tooltips"
+    template_structure: |
+      interface ChartProps {
+        data: ChartData;
+        type: 'line' | 'bar' | 'heatmap';
+        config?: ChartConfiguration;
+        loading?: boolean;
+      }
+      
+      export default function Chart({ data, type, config, loading }: ChartProps) {
+        // Chart.js implementation
+        // Responsive configuration
+        // Accessibility features
+        // Performance optimization
+      }
+    dependencies:
+      - "chart.js"
+      - "react-chartjs-2"
+      - "tailwindcss"
+    skr_context_required:
+      - "scout.yaml#regional_intelligence"
+      - "ces.yaml#framework"
+    
+  dashboard_layout:
+    name: "Dashboard Layout Component"
+    source_file: "components/scout/EnhancedScoutDashboard.tsx"
+    pattern_type: "layout_container"
+    reusability: "medium"
+    agent_generator: "dash_2_0"
+    visual_standards:
+      - "Grid-based layout"
+      - "Mobile-first responsive"
+      - "Navigation integration"
+      - "Loading states"
+    template_structure: |
+      interface DashboardLayoutProps {
+        children: React.ReactNode;
+        title: string;
+        navigation?: NavigationItem[];
+        loading?: boolean;
+      }
+      
+      export default function DashboardLayout({ children, title, navigation, loading }: DashboardLayoutProps) {
+        // Layout structure
+        // Navigation integration
+        // Responsive behavior
+        // Loading states
+      }
+    dependencies:
+      - "next/navigation"
+      - "tailwindcss"
+      - "framer-motion"
+    skr_context_required:
+      - "scout.yaml#dashboard_modules"
+
+api_endpoint_templates:
+  authenticated_endpoint:
+    name: "Authenticated API Endpoint"
+    source_file: "app/api/kpi/overview/route.ts"
+    pattern_type: "data_access"
+    reusability: "high"
+    agent_generator: "manong"
+    security_standards:
+      - "JWT token validation"
+      - "Role-based access control"
+      - "Rate limiting"
+      - "Input validation"
+    template_structure: |
+      import { NextRequest, NextResponse } from 'next/server';
+      import { validateJWT } from '@/lib/keykey';
+      import { getDalConnection } from '@/lib/dal';
+      
+      export async function GET(request: NextRequest) {
+        try {
+          // JWT validation
+          const user = await validateJWT(request);
+          if (!user) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+          }
+          
+          // DAL integration
+          const data = await getDalConnection().query(/* query */);
+          
+          // Response formatting
+          return NextResponse.json(data);
+        } catch (error) {
+          return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        }
+      }
+    dependencies:
+      - "jsonwebtoken"
+      - "next"
+      - "@/lib/dal"
+      - "@/lib/keykey"
+    skr_context_required:
+      - "responsible-ai-compliance.yaml"
+      - "scout.yaml#data_architecture"
+    
+  streaming_endpoint:
+    name: "Streaming API Endpoint"
+    source_file: "app/api/ces/chat/route.ts"
+    pattern_type: "ai_integration"
+    reusability: "medium"
+    agent_generator: "manong"
+    ai_standards:
+      - "Azure OpenAI integration"
+      - "Streaming responses"
+      - "Context injection"
+      - "Error handling"
+    template_structure: |
+      import { NextRequest } from 'next/server';
+      import { OpenAIStream, StreamingTextResponse } from 'ai';
+      import { openai } from '@/lib/azure-openai';
+      
+      export async function POST(request: NextRequest) {
+        try {
+          const { messages } = await request.json();
+          
+          // SKR context injection
+          const contextualMessages = await injectSKRContext(messages);
+          
+          // Azure OpenAI streaming
+          const response = await openai.chat.completions.create({
+            model: 'gpt-4',
+            messages: contextualMessages,
+            stream: true,
+          });
+          
+          const stream = OpenAIStream(response);
+          return new StreamingTextResponse(stream);
+        } catch (error) {
+          return new Response('Error', { status: 500 });
+        }
+      }
+    dependencies:
+      - "ai"
+      - "openai"
+      - "next"
+    skr_context_required:
+      - "ces.yaml#framework"
+      - "responsible-ai-compliance.yaml"
+
+test_pattern_templates:
+  component_test:
+    name: "Component Test Pattern"
+    pattern_type: "unit_testing"
+    reusability: "high"
+    agent_generator: "caca"
+    testing_standards:
+      - "90% code coverage minimum"
+      - "Accessibility testing"
+      - "Visual regression testing"
+      - "Performance testing"
+    template_structure: |
+      import { render, screen, fireEvent } from '@testing-library/react';
+      import { axe, toHaveNoViolations } from 'jest-axe';
+      import Component from '@/components/Component';
+      
+      expect.extend(toHaveNoViolations);
+      
+      describe('Component', () => {
+        it('renders correctly', () => {
+          render(<Component />);
+          expect(screen.getByRole('main')).toBeInTheDocument();
+        });
+        
+        it('has no accessibility violations', async () => {
+          const { container } = render(<Component />);
+          const results = await axe(container);
+          expect(results).toHaveNoViolations();
+        });
+        
+        it('handles user interactions', () => {
+          render(<Component />);
+          fireEvent.click(screen.getByRole('button'));
+          // Assertions
+        });
+      });
+    dependencies:
+      - "@testing-library/react"
+      - "@testing-library/jest-dom"
+      - "jest-axe"
+      - "jest"
+    
+  api_test:
+    name: "API Endpoint Test Pattern"
+    pattern_type: "integration_testing"
+    reusability: "high"
+    agent_generator: "caca"
+    testing_standards:
+      - "Authentication testing"
+      - "Error handling validation"
+      - "Performance benchmarking"
+      - "Security testing"
+    template_structure: |
+      import { NextRequest } from 'next/server';
+      import { GET, POST } from '@/app/api/endpoint/route';
+      
+      describe('/api/endpoint', () => {
+        it('requires authentication', async () => {
+          const request = new NextRequest('http://localhost/api/endpoint');
+          const response = await GET(request);
+          expect(response.status).toBe(401);
+        });
+        
+        it('returns data for authenticated users', async () => {
+          const request = new NextRequest('http://localhost/api/endpoint', {
+            headers: { Authorization: 'Bearer valid-token' }
+          });
+          const response = await GET(request);
+          expect(response.status).toBe(200);
+        });
+        
+        it('handles errors gracefully', async () => {
+          // Error scenario testing
+        });
+      });
+    dependencies:
+      - "next"
+      - "jest"
+      - "@testing-library/jest-dom"
+
+documentation_templates:
+  component_documentation:
+    name: "Component Documentation Pattern"
+    pattern_type: "technical_documentation"
+    reusability: "high"
+    agent_generator: "dash_2_0"
+    documentation_standards:
+      - "JSDoc comments"
+      - "Usage examples"
+      - "Props documentation"
+      - "Accessibility notes"
+    template_structure: |
+      # Component Name
+      
+      ## Overview
+      Brief description of the component's purpose and functionality.
+      
+      ## Props
+      | Prop | Type | Required | Default | Description |
+      |------|------|----------|---------|-------------|
+      | prop1 | string | Yes | - | Description |
+      
+      ## Usage
+      ```tsx
+      import Component from '@/components/Component';
+      
+      <Component prop1="value" />
+      ```
+      
+      ## Accessibility
+      - WCAG 2.1 AA compliant
+      - Keyboard navigation support
+      - Screen reader compatible
+      
+      ## Visual Artist Excellence
+      - Follows design system standards
+      - Responsive across all breakpoints
+      - 60fps animations
+    
+  api_documentation:
+    name: "API Documentation Pattern"
+    pattern_type: "api_documentation"
+    reusability: "high"
+    agent_generator: "manong"
+    documentation_standards:
+      - "OpenAPI specification"
+      - "Authentication requirements"
+      - "Example requests/responses"
+      - "Error codes"
+    template_structure: |
+      # API Endpoint
+      
+      ## Endpoint
+      `GET /api/endpoint`
+      
+      ## Authentication
+      Requires JWT token in Authorization header.
+      
+      ## Parameters
+      | Parameter | Type | Required | Description |
+      |-----------|------|----------|-------------|
+      | param1 | string | Yes | Description |
+      
+      ## Response
+      ```json
+      {
+        "data": {},
+        "status": "success"
+      }
+      ```
+      
+      ## Error Codes
+      - 401: Unauthorized
+      - 500: Internal Server Error
+
+template_usage_tracking:
+  metrics:
+    usage_frequency: "track_template_utilization"
+    success_rate: "measure_first_pass_success"
+    modification_rate: "track_template_customizations"
+    
+  optimization:
+    popular_patterns: "promote_to_core_templates"
+    unused_patterns: "deprecate_or_improve"
+    feedback_integration: "continuous_improvement"
+
+integration_with_agents:
+  dash_2_0:
+    template_access: "ui_components, documentation"
+    template_generation: "new_ui_patterns"
+    template_validation: "visual_artist_excellence"
+    
+  manong:
+    template_access: "api_endpoints, documentation"
+    template_generation: "new_api_patterns"
+    template_validation: "dal_integration_compliance"
+    
+  keykey:
+    template_access: "api_endpoints"
+    template_generation: "security_patterns"
+    template_validation: "authentication_compliance"
+    
+  caca:
+    template_access: "all_templates"
+    template_generation: "test_patterns"
+    template_validation: "quality_assurance"
+
+version_control:
+  template_versioning: "semantic_versioning"
+  backward_compatibility: "maintained_for_2_versions"
+  migration_guides: "automated_generation"
+  
+notes:
+  - "Templates follow Visual Artist Excellence Standard"
+  - "All templates include comprehensive testing patterns"
+  - "SKR context integration is mandatory"
+  - "Templates are continuously optimized based on usage metrics"
+  - "Agent coordination ensures template consistency"
+  
+last_updated: "2025-06-17"
+validated_by: "Claude Code Assistant"

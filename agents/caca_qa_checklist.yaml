@@ -1,0 +1,148 @@
+# 🔍 Caca QA Validation Pipeline
+# Visual Artist Excellence Standard - Quality Gates
+
+name: "caca_visual_qa"
+version: "2.0"
+description: "QA validation pipeline for visual artist deliverables"
+agent_type: "qa_validator"
+
+validation_gates:
+  visual_excellence:
+    weight: 30
+    criteria:
+      - name: "brand_alignment"
+        description: "Aligns with brand identity and voice"
+        required: true
+        validation_method: "automated_brand_check"
+      - name: "visual_storytelling"
+        description: "Tells a clear visual story"
+        required: true
+        validation_method: "manual_review"
+      - name: "responsive_scaling"
+        description: "Scales from mobile (320px) to ultra-wide (2560px)"
+        required: true
+        validation_method: "breakpoint_test"
+      - name: "microinteractions"
+        description: "Animates user action moments at 60fps"
+        required: false
+        validation_method: "performance_test"
+
+  technical_proficiency:
+    weight: 25
+    criteria:
+      - name: "wcag_compliance"
+        description: "WCAG 2.1 AA compliance"
+        required: true
+        validation_method: "accessibility_audit"
+      - name: "breakpoint_layouts"
+        description: "5+ breakpoint layouts implemented"
+        required: true
+        validation_method: "responsive_test"
+      - name: "performance_load"
+        description: "Loads under 3s (Lighthouse score)"
+        required: true
+        validation_method: "lighthouse_audit"
+      - name: "design_tokens"
+        description: "Design tokens exported to tokens.json"
+        required: true
+        validation_method: "file_check"
+
+  business_alignment:
+    weight: 25
+    criteria:
+      - name: "kpi_addressing"
+        description: "Addresses core KPI (conversions, DAU, etc.)"
+        required: true
+        validation_method: "business_review"
+      - name: "user_validation"
+        description: "Validated against real user behavior"
+        required: true
+        validation_method: "analytics_check"
+      - name: "scalability"
+        description: "Enables futureproof scaling (multi-tenant, i18n)"
+        required: true
+        validation_method: "architecture_review"
+
+  agent_handshake:
+    weight: 20
+    criteria:
+      - name: "strategy_approval"
+        description: "Strategy approved by comma agent"
+        required: true
+        validation_method: "agent_sign_off"
+        agent: "comma"
+      - name: "ux_testing"
+        description: "UX tested by manong agent"
+        required: true
+        validation_method: "agent_sign_off"
+        agent: "manong"
+      - name: "dev_confirmation"
+        description: "Dev confirmed by dash agent"
+        required: true
+        validation_method: "agent_sign_off"
+        agent: "dash"
+      - name: "qa_passed"
+        description: "QA passed by caca agent"
+        required: true
+        validation_method: "self_validation"
+        agent: "caca"
+
+scoring:
+  passing_threshold: 80
+  excellence_threshold: 90
+  scoring_method: "weighted_average"
+
+red_flags:
+  - pattern: "design is subjective"
+    action: "retrain_business_alignment"
+    severity: "high"
+  - pattern: "figma is enough"
+    action: "upskill_design_to_code"
+    severity: "medium"
+  - pattern: "motion is extra"
+    action: "reinforce_ux_performance"
+    severity: "medium"
+  - pattern: "no ai tools"
+    action: "initiate_ai_integration"
+    severity: "high"
+
+green_flags:
+  - pattern: "explains design rationale"
+    action: "amplify_communication"
+    reward: "documentation_bonus"
+  - pattern: "checks in dev environment"
+    action: "amplify_technical_validation"
+    reward: "technical_bonus"
+  - pattern: "runs user tests"
+    action: "amplify_user_research"
+    reward: "research_bonus"
+  - pattern: "version controlled assets"
+    action: "amplify_process_excellence"
+    reward: "process_bonus"
+
+automation:
+  tools:
+    - name: "lighthouse"
+      purpose: "performance_audit"
+      threshold: "score >= 90"
+    - name: "axe-core"
+      purpose: "accessibility_audit"
+      threshold: "no_violations"
+    - name: "figma_api"
+      purpose: "design_token_export"
+      threshold: "tokens_exported"
+    - name: "browserstack"
+      purpose: "cross_browser_test"
+      threshold: "all_browsers_pass"
+
+integration:
+  pulser_runtime: true
+  vercel_deployment: true
+  azure_pipeline: true
+  figma_webhook: true
+
+reporting:
+  format: "yaml"
+  include_screenshots: true
+  include_metrics: true
+  include_recommendations: true

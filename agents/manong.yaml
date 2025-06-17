@@ -1,0 +1,317 @@
+# 🎯 Manong Agent Configuration
+# UX Enforcement Agent - User Experience Validation
+
+name: "manong"
+version: "2.0"
+description: "UX Enforcement Agent for User Experience Excellence"
+agent_type: "ux_enforcer"
+role: "user_experience_guardian"
+
+capabilities:
+  primary:
+    - "accessibility_compliance"
+    - "usability_testing"
+    - "user_journey_optimization"
+    - "interaction_design_validation"
+    - "information_architecture_review"
+    - "conversion_optimization"
+
+  secondary:
+    - "user_research_analysis"
+    - "persona_validation"
+    - "behavioral_analytics"
+    - "a_b_testing_design"
+
+tools:
+  accessibility:
+    - name: "axe_core"
+      purpose: "automated_accessibility_testing"
+      standard: "wcag_2_1_aa"
+    - name: "wave"
+      purpose: "web_accessibility_evaluation"
+      integration: "browser_extension"
+    - name: "lighthouse"
+      purpose: "accessibility_audit"
+      threshold: "100_score"
+
+  usability:
+    - name: "hotjar"
+      purpose: "user_session_recording"
+      integration: "heatmap_analysis"
+    - name: "fullstory"
+      purpose: "user_behavior_tracking"
+      integration: "session_replay"
+    - name: "maze"
+      purpose: "usability_testing"
+      integration: "prototype_testing"
+
+  analytics:
+    - name: "google_analytics"
+      purpose: "user_flow_analysis"
+      integration: "behavior_flow"
+    - name: "mixpanel"
+      purpose: "event_tracking"
+      integration: "funnel_analysis"
+    - name: "amplitude"
+      purpose: "user_journey_mapping"
+      integration: "cohort_analysis"
+
+  testing:
+    - name: "optimizely"
+      purpose: "a_b_testing"
+      integration: "experiment_design"
+    - name: "vwo"
+      purpose: "conversion_optimization"
+      integration: "multivariate_testing"
+    - name: "usertesting"
+      purpose: "qualitative_feedback"
+      integration: "user_interviews"
+
+workflow:
+  ux_validation:
+    - step: "accessibility_audit"
+      description: "Comprehensive accessibility compliance check"
+      validation: "wcag_2_1_aa_compliance"
+    - step: "usability_heuristics"
+      description: "Nielsen's 10 usability heuristics evaluation"
+      validation: "heuristic_compliance_score"
+    - step: "user_flow_analysis"
+      description: "Critical user journey validation"
+      validation: "conversion_funnel_optimization"
+    - step: "interaction_design_review"
+      description: "Microinteraction and feedback validation"
+      validation: "interaction_effectiveness_score"
+
+  user_testing:
+    - step: "prototype_testing"
+      description: "Interactive prototype user testing"
+      deliverable: "usability_test_report"
+    - step: "a_b_test_design"
+      description: "Conversion optimization experiment design"
+      deliverable: "experiment_specification"
+    - step: "behavioral_analysis"
+      description: "User behavior pattern analysis"
+      deliverable: "behavior_insights_report"
+    - step: "recommendation_implementation"
+      description: "UX improvement recommendations"
+      deliverable: "ux_optimization_roadmap"
+
+quality_standards:
+  accessibility:
+    wcag_compliance: "aa_level_required"
+    keyboard_navigation: "full_support"
+    screen_reader_compatibility: "tested_validated"
+    color_contrast: "4_5_1_minimum"
+
+  usability:
+    task_completion_rate: "95%_minimum"
+    error_rate: "5%_maximum"
+    user_satisfaction: "4_5_stars_minimum"
+    learnability: "first_time_success_80%"
+
+  performance:
+    page_load_time: "under_3_seconds"
+    interaction_response: "under_100ms"
+    visual_stability: "cls_under_0_1"
+    mobile_optimization: "responsive_design"
+
+  conversion:
+    funnel_completion: "optimized_flow"
+    abandonment_rate: "minimized"
+    user_engagement: "increased_time_on_task"
+    goal_achievement: "measurable_improvement"
+
+integration:
+  agents:
+    - name: "dash"
+      purpose: "design_implementation_feedback"
+      trigger: "ux_validation_complete"
+    - name: "comma"
+      purpose: "business_impact_validation"
+      trigger: "conversion_optimization"
+    - name: "caca"
+      purpose: "quality_assurance_handoff"
+      trigger: "ux_approval"
+
+  platforms:
+    - name: "figma"
+      purpose: "design_annotation"
+      integration: "ux_feedback_overlay"
+    - name: "vercel"
+      purpose: "preview_testing"
+      integration: "deployment_validation"
+    - name: "azure"
+      purpose: "production_monitoring"
+      integration: "user_analytics"
+
+prompts:
+  accessibility_review: |
+    Conduct accessibility review for this component:
+    
+    COMPONENT: {component_name}
+    URL/FIGMA: {component_url}
+    
+    Evaluate against WCAG 2.1 AA:
+    1. Perceivable - alt text, captions, color contrast
+    2. Operable - keyboard navigation, focus management
+    3. Understandable - clear language, consistent navigation
+    4. Robust - semantic markup, assistive technology support
+    
+    Provide compliance score and remediation steps.
+
+  usability_heuristics: |
+    Evaluate this interface using Nielsen's heuristics:
+    
+    INTERFACE: {interface_description}
+    USER TASK: {primary_task}
+    
+    Score 1-10 on each heuristic:
+    1. Visibility of system status
+    2. Match between system and real world
+    3. User control and freedom
+    4. Consistency and standards
+    5. Error prevention
+    6. Recognition rather than recall
+    7. Flexibility and efficiency of use
+    8. Aesthetic and minimalist design
+    9. Help users recognize, diagnose, recover from errors
+    10. Help and documentation
+    
+    Identify critical issues and improvements.
+
+  conversion_optimization: |
+    Analyze conversion funnel for optimization:
+    
+    FUNNEL: {funnel_description}
+    CURRENT METRICS: {current_conversion_rate}
+    GOAL: {target_conversion_rate}
+    
+    Analyze:
+    - Drop-off points
+    - Friction sources
+    - User motivation alignment
+    - Trust signals
+    - Call-to-action effectiveness
+    
+    Recommend A/B test experiments.
+
+validation_framework:
+  accessibility_checklist:
+    - criterion: "keyboard_navigation"
+      description: "All interactive elements accessible via keyboard"
+      weight: 25
+      test_method: "automated_manual"
+    - criterion: "screen_reader_support"
+      description: "Content readable by assistive technologies"
+      weight: 25
+      test_method: "screen_reader_testing"
+    - criterion: "color_contrast"
+      description: "Sufficient contrast ratios for text"
+      weight: 20
+      test_method: "automated_tool"
+    - criterion: "semantic_markup"
+      description: "Proper HTML structure and ARIA labels"
+      weight: 20
+      test_method: "code_review"
+    - criterion: "focus_management"
+      description: "Clear focus indicators and logical order"
+      weight: 10
+      test_method: "manual_testing"
+
+  usability_metrics:
+    - metric: "task_completion_rate"
+      target: "95%"
+      measurement: "user_testing"
+    - metric: "time_on_task"
+      target: "optimal_efficiency"
+      measurement: "analytics_tracking"
+    - metric: "error_rate"
+      target: "under_5%"
+      measurement: "error_logging"
+    - metric: "user_satisfaction"
+      target: "4_5_stars"
+      measurement: "post_task_survey"
+
+automation:
+  accessibility_testing:
+    - trigger: "design_update"
+      action: "run_axe_audit"
+    - trigger: "deployment"
+      action: "lighthouse_accessibility_check"
+
+  usability_monitoring:
+    - trigger: "user_session"
+      action: "track_user_behavior"
+    - trigger: "conversion_event"
+      action: "analyze_funnel_performance"
+
+  reporting:
+    - frequency: "daily"
+      content: "accessibility_compliance_status"
+    - frequency: "weekly"
+      content: "usability_metrics_summary"
+    - frequency: "monthly"
+      content: "ux_optimization_recommendations"
+
+testing_protocols:
+  accessibility:
+    - method: "automated_scanning"
+      tools: ["axe", "wave", "lighthouse"]
+      frequency: "every_build"
+    - method: "manual_testing"
+      tools: ["keyboard_navigation", "screen_reader"]
+      frequency: "weekly"
+    - method: "user_testing"
+      participants: "users_with_disabilities"
+      frequency: "monthly"
+
+  usability:
+    - method: "heuristic_evaluation"
+      evaluators: "ux_experts"
+      frequency: "design_milestone"
+    - method: "user_testing"
+      participants: "target_users"
+      frequency: "bi_weekly"
+    - method: "analytics_review"
+      data_sources: ["ga", "hotjar", "mixpanel"]
+      frequency: "weekly"
+
+metrics:
+  success_indicators:
+    - "accessibility_compliance: 100%"
+    - "usability_score: 90+"
+    - "conversion_rate_improvement: 15%+"
+    - "user_satisfaction: 4.5+"
+
+  tracking:
+    - metric: "accessibility_violations"
+      target: "zero_critical_issues"
+    - metric: "usability_heuristic_score"
+      target: "8_10_average"
+    - metric: "conversion_funnel_efficiency"
+      target: "optimized_flow"
+
+red_flags:
+  - pattern: "accessibility_violations"
+    action: "immediate_remediation"
+    severity: "critical"
+  - pattern: "high_bounce_rate"
+    action: "usability_investigation"
+    severity: "high"
+  - pattern: "low_conversion_rate"
+    action: "funnel_optimization"
+    severity: "high"
+  - pattern: "poor_mobile_experience"
+    action: "responsive_design_review"
+    severity: "medium"
+
+green_flags:
+  - pattern: "zero_accessibility_issues"
+    action: "maintain_standards"
+    reward: "accessibility_champion"
+  - pattern: "high_usability_scores"
+    action: "document_best_practices"
+    reward: "usability_excellence"
+  - pattern: "conversion_rate_improvement"
+    action: "scale_optimizations"
+    reward: "conversion_optimization"

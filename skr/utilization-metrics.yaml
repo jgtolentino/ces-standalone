@@ -1,0 +1,422 @@
+# Utilization Metrics - SKR Enhancement
+# Performance Tracking for Scout Agent Coordination
+
+system:
+  name: "Scout Utilization Metrics"
+  version: "1.0"
+  type: "Performance Tracking Framework"
+  owner: "TBWA"
+  
+live_binding: true
+qa_status: validated
+llm_provider: "azure-openai"
+model_backend: "azure-openai"
+monitoring_enabled: true
+
+metrics_framework:
+  collection_method: "real_time_telemetry"
+  aggregation_interval: "1_minute"
+  retention_period: "90_days"
+  alerting_enabled: true
+
+agent_efficiency_metrics:
+  dash_2_0:
+    name: "Visual Artist Agent Metrics"
+    
+    generation_efficiency:
+      components_per_hour:
+        metric: "components_generated_per_hour"
+        target: "8_components_per_hour"
+        threshold_warning: "6_components_per_hour"
+        threshold_critical: "4_components_per_hour"
+        
+      template_reuse_rate:
+        metric: "percentage_template_usage"
+        target: "85%_template_reuse"
+        threshold_warning: "70%_template_reuse"
+        threshold_critical: "50%_template_reuse"
+        
+      first_pass_success:
+        metric: "components_passing_qa_first_time"
+        target: "90%_first_pass_success"
+        threshold_warning: "80%_first_pass_success"
+        threshold_critical: "70%_first_pass_success"
+    
+    quality_metrics:
+      visual_artist_compliance:
+        metric: "percentage_visual_excellence_compliance"
+        target: "100%_compliance"
+        threshold_warning: "95%_compliance"
+        threshold_critical: "90%_compliance"
+        
+      accessibility_score:
+        metric: "wcag_compliance_percentage"
+        target: "100%_wcag_compliance"
+        threshold_warning: "95%_wcag_compliance"
+        threshold_critical: "90%_wcag_compliance"
+        
+      performance_score:
+        metric: "lighthouse_performance_average"
+        target: "90_lighthouse_score"
+        threshold_warning: "80_lighthouse_score"
+        threshold_critical: "70_lighthouse_score"
+    
+    time_metrics:
+      average_generation_time:
+        metric: "seconds_per_component_generation"
+        target: "300_seconds_per_component"
+        threshold_warning: "450_seconds_per_component"
+        threshold_critical: "600_seconds_per_component"
+        
+      design_validation_time:
+        metric: "seconds_for_design_validation"
+        target: "60_seconds_validation"
+        threshold_warning: "90_seconds_validation"
+        threshold_critical: "120_seconds_validation"
+
+  keykey:
+    name: "Security Agent Metrics"
+    
+    security_efficiency:
+      auth_implementations_per_hour:
+        metric: "authentication_systems_per_hour"
+        target: "4_auth_systems_per_hour"
+        threshold_warning: "3_auth_systems_per_hour"
+        threshold_critical: "2_auth_systems_per_hour"
+        
+      security_validation_rate:
+        metric: "percentage_security_validations_passed"
+        target: "100%_security_validation"
+        threshold_warning: "95%_security_validation"
+        threshold_critical: "90%_security_validation"
+        
+      vulnerability_detection:
+        metric: "vulnerabilities_detected_per_scan"
+        target: "0_vulnerabilities_detected"
+        threshold_warning: "1_vulnerability_detected"
+        threshold_critical: "3_vulnerabilities_detected"
+    
+    performance_metrics:
+      authentication_latency:
+        metric: "milliseconds_auth_response_time"
+        target: "50_ms_auth_time"
+        threshold_warning: "75_ms_auth_time"
+        threshold_critical: "100_ms_auth_time"
+        
+      token_generation_time:
+        metric: "milliseconds_token_generation"
+        target: "10_ms_token_generation"
+        threshold_warning: "20_ms_token_generation"
+        threshold_critical: "30_ms_token_generation"
+    
+    compliance_metrics:
+      responsible_ai_score:
+        metric: "percentage_responsible_ai_compliance"
+        target: "100%_responsible_ai_compliance"
+        threshold_warning: "95%_responsible_ai_compliance"
+        threshold_critical: "90%_responsible_ai_compliance"
+        
+      encryption_compliance:
+        metric: "percentage_encryption_compliance"
+        target: "100%_encryption_compliance"
+        threshold_warning: "95%_encryption_compliance"
+        threshold_critical: "90%_encryption_compliance"
+
+  manong:
+    name: "Data Access Agent Metrics"
+    
+    data_efficiency:
+      api_endpoints_per_hour:
+        metric: "endpoints_generated_per_hour"
+        target: "6_endpoints_per_hour"
+        threshold_warning: "4_endpoints_per_hour"
+        threshold_critical: "3_endpoints_per_hour"
+        
+      dal_integration_success:
+        metric: "percentage_successful_dal_integrations"
+        target: "100%_dal_integration_success"
+        threshold_warning: "95%_dal_integration_success"
+        threshold_critical: "90%_dal_integration_success"
+        
+      data_quality_score:
+        metric: "percentage_data_quality_compliance"
+        target: "99%_data_quality"
+        threshold_warning: "95%_data_quality"
+        threshold_critical: "90%_data_quality"
+    
+    performance_metrics:
+      query_response_time:
+        metric: "milliseconds_query_response"
+        target: "50_ms_query_response"
+        threshold_warning: "75_ms_query_response"
+        threshold_critical: "100_ms_query_response"
+        
+      throughput:
+        metric: "requests_per_second"
+        target: "1000_rps"
+        threshold_warning: "750_rps"
+        threshold_critical: "500_rps"
+        
+      data_freshness:
+        metric: "minutes_data_latency"
+        target: "5_minutes_latency"
+        threshold_warning: "10_minutes_latency"
+        threshold_critical: "15_minutes_latency"
+    
+    integration_metrics:
+      skr_context_utilization:
+        metric: "percentage_skr_context_usage"
+        target: "100%_skr_context_usage"
+        threshold_warning: "90%_skr_context_usage"
+        threshold_critical: "80%_skr_context_usage"
+
+  caca:
+    name: "Quality Assurance Agent Metrics"
+    
+    validation_efficiency:
+      validations_per_hour:
+        metric: "validations_completed_per_hour"
+        target: "20_validations_per_hour"
+        threshold_warning: "15_validations_per_hour"
+        threshold_critical: "10_validations_per_hour"
+        
+      test_coverage_achieved:
+        metric: "percentage_test_coverage"
+        target: "95%_test_coverage"
+        threshold_warning: "90%_test_coverage"
+        threshold_critical: "85%_test_coverage"
+        
+      defect_detection_rate:
+        metric: "percentage_defects_detected"
+        target: "95%_defect_detection"
+        threshold_warning: "90%_defect_detection"
+        threshold_critical: "85%_defect_detection"
+    
+    quality_metrics:
+      false_positive_rate:
+        metric: "percentage_false_positives"
+        target: "5%_false_positives"
+        threshold_warning: "10%_false_positives"
+        threshold_critical: "15%_false_positives"
+        
+      validation_accuracy:
+        metric: "percentage_validation_accuracy"
+        target: "95%_validation_accuracy"
+        threshold_warning: "90%_validation_accuracy"
+        threshold_critical: "85%_validation_accuracy"
+    
+    automation_metrics:
+      test_automation_coverage:
+        metric: "percentage_automated_tests"
+        target: "90%_test_automation"
+        threshold_warning: "80%_test_automation"
+        threshold_critical: "70%_test_automation"
+
+cross_agent_coordination_metrics:
+  workflow_efficiency:
+    handoff_success_rate:
+      metric: "percentage_successful_handoffs"
+      target: "95%_handoff_success"
+      threshold_warning: "90%_handoff_success"
+      threshold_critical: "85%_handoff_success"
+      
+    end_to_end_completion:
+      metric: "percentage_workflow_completion"
+      target: "90%_workflow_completion"
+      threshold_warning: "85%_workflow_completion"
+      threshold_critical: "80%_workflow_completion"
+      
+    coordination_latency:
+      metric: "seconds_total_coordination_time"
+      target: "120_seconds_coordination"
+      threshold_warning: "180_seconds_coordination"
+      threshold_critical: "240_seconds_coordination"
+  
+  context_sharing_efficiency:
+    skr_context_access_time:
+      metric: "milliseconds_context_access"
+      target: "100_ms_context_access"
+      threshold_warning: "200_ms_context_access"
+      threshold_critical: "300_ms_context_access"
+      
+    context_utilization_rate:
+      metric: "percentage_context_utilization"
+      target: "90%_context_utilization"
+      threshold_warning: "80%_context_utilization"
+      threshold_critical: "70%_context_utilization"
+  
+  template_library_metrics:
+    template_reuse_efficiency:
+      metric: "percentage_template_reuse"
+      target: "80%_template_reuse"
+      threshold_warning: "70%_template_reuse"
+      threshold_critical: "60%_template_reuse"
+      
+    template_success_rate:
+      metric: "percentage_successful_template_usage"
+      target: "95%_template_success"
+      threshold_warning: "90%_template_success"
+      threshold_critical: "85%_template_success"
+
+console_error_resolution_metrics:
+  error_detection:
+    error_detection_time:
+      metric: "seconds_to_detect_errors"
+      target: "30_seconds_detection"
+      threshold_warning: "60_seconds_detection"
+      threshold_critical: "120_seconds_detection"
+      
+    error_classification_accuracy:
+      metric: "percentage_accurate_error_classification"
+      target: "95%_classification_accuracy"
+      threshold_warning: "90%_classification_accuracy"
+      threshold_critical: "85%_classification_accuracy"
+  
+  resolution_efficiency:
+    component_generation_success:
+      metric: "percentage_successful_component_generation"
+      target: "90%_generation_success"
+      threshold_warning: "85%_generation_success"
+      threshold_critical: "80%_generation_success"
+      
+    resolution_time:
+      metric: "minutes_to_resolve_error"
+      target: "15_minutes_resolution"
+      threshold_warning: "30_minutes_resolution"
+      threshold_critical: "60_minutes_resolution"
+      
+    post_resolution_stability:
+      metric: "hours_without_regression"
+      target: "24_hours_stability"
+      threshold_warning: "12_hours_stability"
+      threshold_critical: "6_hours_stability"
+
+business_impact_metrics:
+  development_efficiency:
+    time_reduction:
+      metric: "percentage_time_reduction"
+      target: "70%_time_reduction"
+      threshold_warning: "60%_time_reduction"
+      threshold_critical: "50%_time_reduction"
+      
+    cost_savings:
+      metric: "percentage_cost_reduction"
+      target: "50%_cost_reduction"
+      threshold_warning: "40%_cost_reduction"
+      threshold_critical: "30%_cost_reduction"
+  
+  quality_improvement:
+    defect_reduction:
+      metric: "percentage_defect_reduction"
+      target: "80%_defect_reduction"
+      threshold_warning: "70%_defect_reduction"
+      threshold_critical: "60%_defect_reduction"
+      
+    user_satisfaction:
+      metric: "user_satisfaction_score"
+      target: "4.5_satisfaction_score"
+      threshold_warning: "4.0_satisfaction_score"
+      threshold_critical: "3.5_satisfaction_score"
+
+monitoring_infrastructure:
+  data_collection:
+    telemetry_sources:
+      - "agent_performance_logs"
+      - "mcp_server_metrics"
+      - "application_performance_monitoring"
+      - "user_interaction_analytics"
+      
+    collection_frequency:
+      real_time_metrics: "1_second_interval"
+      aggregated_metrics: "1_minute_interval"
+      summary_reports: "1_hour_interval"
+      trend_analysis: "1_day_interval"
+  
+  alerting_system:
+    alert_channels:
+      - "slack_notifications"
+      - "email_alerts"
+      - "dashboard_notifications"
+      - "webhook_integrations"
+      
+    escalation_rules:
+      warning_threshold: "immediate_notification"
+      critical_threshold: "escalation_to_on_call"
+      sustained_issues: "management_notification"
+
+reporting_framework:
+  real_time_dashboards:
+    agent_performance:
+      refresh_rate: "30_seconds"
+      metrics_displayed: ["efficiency", "quality", "performance"]
+      visualization: "time_series_charts"
+      
+    coordination_health:
+      refresh_rate: "1_minute"
+      metrics_displayed: ["handoffs", "workflows", "context_sharing"]
+      visualization: "flow_diagrams"
+      
+    console_error_status:
+      refresh_rate: "10_seconds"
+      metrics_displayed: ["error_count", "resolution_time", "success_rate"]
+      visualization: "status_indicators"
+  
+  periodic_reports:
+    daily_summary:
+      schedule: "daily_at_9am"
+      recipients: ["development_team", "qa_team"]
+      content: ["performance_summary", "issues_resolved", "trends"]
+      
+    weekly_analysis:
+      schedule: "weekly_monday_9am"
+      recipients: ["management", "stakeholders"]
+      content: ["efficiency_trends", "business_impact", "recommendations"]
+      
+    monthly_review:
+      schedule: "monthly_first_monday"
+      recipients: ["executives", "product_owners"]
+      content: ["strategic_metrics", "roi_analysis", "roadmap_updates"]
+
+continuous_optimization:
+  performance_tuning:
+    threshold_adjustment:
+      frequency: "weekly_review"
+      method: "statistical_analysis"
+      validation: "a_b_testing"
+      
+    bottleneck_identification:
+      frequency: "daily_analysis"
+      method: "performance_profiling"
+      action: "optimization_recommendations"
+  
+  predictive_analytics:
+    trend_forecasting:
+      method: "machine_learning_models"
+      horizon: "30_day_forecast"
+      accuracy_target: "85%_forecast_accuracy"
+      
+    capacity_planning:
+      method: "resource_utilization_analysis"
+      planning_horizon: "90_days"
+      scaling_triggers: "automated_recommendations"
+
+integration_points:
+  skr_framework:
+    context_metrics: "skr_context_utilization_tracking"
+    template_metrics: "template_library_usage_analytics"
+    quality_metrics: "quality_gates_compliance_monitoring"
+    
+  anthropic_patterns:
+    mcp_metrics: "mcp_protocol_performance_tracking"
+    workflow_metrics: "claude_code_workflow_efficiency"
+    coordination_metrics: "multi_agent_orchestration_analytics"
+
+notes:
+  - "All metrics are collected in real-time for immediate feedback"
+  - "Thresholds are automatically adjusted based on performance trends"
+  - "Business impact metrics directly correlate to ROI measurement"
+  - "Predictive analytics enable proactive optimization"
+  - "Integration with existing monitoring infrastructure"
+  
+last_updated: "2025-06-17"
+validated_by: "Claude Code Assistant"

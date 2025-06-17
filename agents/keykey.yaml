@@ -1,0 +1,450 @@
+# KeyKey Authentication & Security Agent
+# Enterprise-grade authentication and security management
+name: "keykey"
+version: "1.0.0"
+role: "authentication_security_guardian"
+description: "Enterprise authentication, authorization, and security validation agent for Scout Analytics platform"
+
+# ============================================================================
+# AGENT CONFIGURATION
+# ============================================================================
+
+agent_config:
+  type: "security_authentication"
+  priority: "critical"
+  execution_mode: "real_time_validation"
+  security_level: "enterprise"
+  integration: "mcp_protocol"
+  
+capabilities:
+  - jwt_token_management
+  - oauth_authentication
+  - role_based_access_control
+  - session_management
+  - api_key_validation
+  - security_compliance_check
+  - vulnerability_scanning
+  - encryption_validation
+  - audit_logging
+  - threat_detection
+
+# ============================================================================
+# AUTHENTICATION FRAMEWORK
+# ============================================================================
+
+authentication_framework:
+  supported_methods:
+    oauth2:
+      providers: ["azure_ad", "google", "github"]
+      flow: "authorization_code"
+      pkce: true
+      scopes: ["openid", "profile", "email"]
+      
+    jwt_tokens:
+      algorithm: "RS256"
+      expiration: "1h"
+      refresh_expiration: "7d"
+      issuer: "scout-analytics"
+      audience: "scout-platform"
+      
+    api_keys:
+      format: "sk-scout-{32_char_random}"
+      expiration: "90d"
+      rate_limiting: true
+      scope_based: true
+      
+    session_management:
+      storage: "secure_cookies"
+      encryption: "AES-256-GCM"
+      csrf_protection: true
+      same_site: "strict"
+
+  role_definitions:
+    admin:
+      permissions: ["*"]
+      description: "Full system access"
+      
+    analyst:
+      permissions: [
+        "dashboard:read",
+        "reports:read",
+        "data:query",
+        "insights:read"
+      ]
+      description: "Data analysis and reporting"
+      
+    viewer:
+      permissions: [
+        "dashboard:read",
+        "reports:read"
+      ]
+      description: "Read-only access to dashboards"
+      
+    api_user:
+      permissions: [
+        "api:read",
+        "data:query"
+      ]
+      description: "API access for integrations"
+
+# ============================================================================
+# SECURITY STANDARDS
+# ============================================================================
+
+security_standards:
+  encryption:
+    at_rest:
+      algorithm: "AES-256-GCM"
+      key_rotation: "quarterly"
+      
+    in_transit:
+      protocol: "TLS 1.3"
+      cipher_suites: ["TLS_AES_256_GCM_SHA384"]
+      
+    key_management:
+      provider: "azure_key_vault"
+      hsm_backed: true
+      
+  compliance:
+    frameworks: ["SOC2", "GDPR", "CCPA"]
+    audit_frequency: "quarterly"
+    penetration_testing: "annually"
+    
+  password_policy:
+    min_length: 12
+    complexity: "high"
+    history: 12
+    expiration: "90d"
+    lockout_threshold: 5
+    lockout_duration: "30m"
+
+# ============================================================================
+# API SECURITY
+# ============================================================================
+
+api_security:
+  rate_limiting:
+    default: "1000/hour"
+    authenticated: "10000/hour"
+    premium: "100000/hour"
+    
+  request_validation:
+    input_sanitization: true
+    sql_injection_protection: true
+    xss_protection: true
+    csrf_protection: true
+    
+  response_security:
+    cors_policy: "strict"
+    content_security_policy: true
+    security_headers: true
+    
+  monitoring:
+    failed_attempts: true
+    suspicious_patterns: true
+    anomaly_detection: true
+    real_time_alerts: true
+
+# ============================================================================
+# INTEGRATION POINTS
+# ============================================================================
+
+integration_points:
+  azure_ad:
+    tenant_id: "${AZURE_TENANT_ID}"
+    client_id: "${AZURE_CLIENT_ID}"
+    client_secret: "${AZURE_CLIENT_SECRET}"
+    redirect_uri: "${BASE_URL}/auth/callback"
+    
+  database:
+    connection_encryption: true
+    connection_pooling: true
+    query_logging: true
+    
+  logging:
+    provider: "azure_monitor"
+    retention: "2_years"
+    encryption: true
+    
+  monitoring:
+    security_events: true
+    performance_metrics: true
+    compliance_reporting: true
+
+# ============================================================================
+# VALIDATION RULES
+# ============================================================================
+
+validation_rules:
+  token_validation:
+    - check_expiration
+    - verify_signature
+    - validate_issuer
+    - check_audience
+    - verify_scopes
+    
+  session_validation:
+    - check_csrf_token
+    - validate_session_id
+    - verify_user_agent
+    - check_ip_consistency
+    - validate_timestamp
+    
+  api_key_validation:
+    - check_format
+    - verify_signature
+    - validate_expiration
+    - check_rate_limits
+    - verify_permissions
+    
+  security_headers:
+    - strict_transport_security
+    - content_security_policy
+    - x_frame_options
+    - x_content_type_options
+    - referrer_policy
+
+# ============================================================================
+# THREAT DETECTION
+# ============================================================================
+
+threat_detection:
+  patterns:
+    brute_force:
+      threshold: 10
+      window: "5m"
+      action: "temporary_block"
+      
+    credential_stuffing:
+      threshold: 50
+      window: "1h"
+      action: "captcha_challenge"
+      
+    suspicious_login:
+      new_device: "email_verification"
+      new_location: "sms_verification"
+      impossible_travel: "account_lock"
+      
+    api_abuse:
+      rate_exceeded: "throttle"
+      invalid_requests: "temporary_block"
+      
+  response_actions:
+    log_event: true
+    notify_admin: true
+    block_ip: "conditional"
+    require_mfa: "conditional"
+    lock_account: "conditional"
+
+# ============================================================================
+# AUDIT & COMPLIANCE
+# ============================================================================
+
+audit_compliance:
+  audit_events:
+    - user_login
+    - user_logout
+    - permission_change
+    - data_access
+    - configuration_change
+    - security_incident
+    
+  log_format:
+    timestamp: "ISO8601"
+    user_id: "required"
+    action: "required"
+    resource: "required"
+    ip_address: "required"
+    user_agent: "required"
+    result: "required"
+    
+  retention_policy:
+    security_logs: "7_years"
+    audit_logs: "7_years"
+    access_logs: "2_years"
+    
+  compliance_reporting:
+    frequency: "monthly"
+    format: "json"
+    encryption: true
+    digital_signature: true
+
+# ============================================================================
+# EMERGENCY PROCEDURES
+# ============================================================================
+
+emergency_procedures:
+  security_breach:
+    immediate_actions:
+      - revoke_all_sessions
+      - disable_api_keys
+      - enable_maintenance_mode
+      - notify_security_team
+      
+    investigation_steps:
+      - preserve_evidence
+      - analyze_logs
+      - identify_scope
+      - assess_damage
+      
+    recovery_actions:
+      - patch_vulnerabilities
+      - reset_credentials
+      - restore_services
+      - notify_users
+      
+  system_compromise:
+    detection_triggers:
+      - unusual_admin_activity
+      - mass_data_access
+      - configuration_changes
+      - failed_security_checks
+      
+    response_protocol:
+      - isolate_affected_systems
+      - activate_incident_response
+      - contact_authorities
+      - implement_recovery_plan
+
+# ============================================================================
+# PERFORMANCE METRICS
+# ============================================================================
+
+performance_metrics:
+  authentication:
+    success_rate: ">99.9%"
+    response_time: "<100ms"
+    availability: ">99.99%"
+    
+  security:
+    false_positive_rate: "<0.1%"
+    threat_detection_time: "<1s"
+    incident_response_time: "<5m"
+    
+  compliance:
+    audit_completeness: "100%"
+    policy_adherence: ">99%"
+    vulnerability_remediation: "<24h"
+
+# ============================================================================
+# CONFIGURATION TEMPLATES
+# ============================================================================
+
+configuration_templates:
+  jwt_config:
+    issuer: "https://scout-analytics.com"
+    audience: "scout-platform"
+    algorithm: "RS256"
+    expiration: 3600
+    
+  oauth_config:
+    authorization_endpoint: "/oauth/authorize"
+    token_endpoint: "/oauth/token"
+    userinfo_endpoint: "/oauth/userinfo"
+    jwks_endpoint: "/oauth/jwks"
+    
+  security_headers:
+    strict_transport_security: "max-age=31536000; includeSubDomains"
+    content_security_policy: "default-src 'self'; script-src 'self' 'unsafe-inline'"
+    x_frame_options: "DENY"
+    x_content_type_options: "nosniff"
+
+# ============================================================================
+# API ENDPOINTS
+# ============================================================================
+
+api_endpoints:
+  authentication:
+    - POST /auth/login
+    - POST /auth/logout
+    - POST /auth/refresh
+    - GET /auth/me
+    
+  authorization:
+    - GET /auth/permissions
+    - POST /auth/validate
+    - GET /auth/roles
+    
+  management:
+    - GET /auth/users
+    - POST /auth/users
+    - PUT /auth/users/{id}
+    - DELETE /auth/users/{id}
+    
+  security:
+    - GET /auth/audit
+    - POST /auth/report-incident
+    - GET /auth/security-status
+
+# ============================================================================
+# TESTING FRAMEWORK
+# ============================================================================
+
+testing_framework:
+  security_tests:
+    - authentication_bypass
+    - authorization_escalation
+    - session_hijacking
+    - csrf_attacks
+    - injection_attacks
+    
+  penetration_testing:
+    frequency: "quarterly"
+    scope: "full_application"
+    methodology: "OWASP"
+    
+  compliance_testing:
+    automated_scans: "daily"
+    manual_reviews: "monthly"
+    third_party_audits: "annually"
+
+# ============================================================================
+# DEPLOYMENT CONFIGURATION
+# ============================================================================
+
+deployment:
+  environment_variables:
+    required:
+      - AZURE_TENANT_ID
+      - AZURE_CLIENT_ID
+      - AZURE_CLIENT_SECRET
+      - JWT_SECRET_KEY
+      - ENCRYPTION_KEY
+      
+    optional:
+      - SESSION_TIMEOUT
+      - RATE_LIMIT_WINDOW
+      - AUDIT_LOG_LEVEL
+      
+  health_checks:
+    - database_connectivity
+    - azure_ad_connectivity
+    - key_vault_access
+    - certificate_validity
+    
+  monitoring:
+    metrics: ["auth_success_rate", "response_time", "error_rate"]
+    alerts: ["failed_logins", "security_incidents", "service_down"]
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  created_by: "Scout Agent Orchestration System"
+  created_date: "2025-06-17"
+  version: "1.0.0"
+  last_updated: "2025-06-17T13:47:00Z"
+  compatibility: "Scout v3.3.1+"
+  dependencies: ["azure-ad", "jwt", "encryption", "audit-logging"]
+  
+validation:
+  schema_version: "1.0"
+  required_fields: ["authentication_framework", "security_standards", "api_security"]
+  optional_fields: ["threat_detection", "emergency_procedures"]
+  
+deployment:
+  target_environment: "production"
+  security_level: "enterprise"
+  compliance_required: true
+  audit_enabled: true

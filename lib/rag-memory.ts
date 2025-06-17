@@ -101,7 +101,7 @@ class RAGMemoryEngine {
       this.ragIndex = await response.json();
       this.indexLastLoaded = now;
       
-      return this.ragIndex;
+      return this.ragIndex!;
     } catch (error) {
       console.error('Failed to load RAG index:', error);
       // Return empty index as fallback
@@ -282,7 +282,7 @@ class RAGMemoryEngine {
       'trust_building': 'Build Customer Trust'
     };
 
-    return categoryTitles[category] || `Improve ${category.replace('_', ' ')}`;
+    return categoryTitles[category as keyof typeof categoryTitles] || `Improve ${category.replace('_', ' ')}`;
   }
 
   private generateRecommendationDescription(
@@ -315,7 +315,7 @@ class RAGMemoryEngine {
       'trust_building': 'high'
     };
 
-    return effortMap[category] as 'high' | 'medium' | 'low' || 'medium';
+    return effortMap[category as keyof typeof effortMap] as 'high' | 'medium' | 'low' || 'medium';
   }
 
   private extractRelatedMetrics(insights: RAGSearchResult[]): string[] {
@@ -352,7 +352,7 @@ class RAGMemoryEngine {
       ]
     };
 
-    return actionMap[category] || [
+    return actionMap[category as keyof typeof actionMap] || [
       'Analyze current performance metrics',
       'Implement recommended changes',
       'Monitor results and iterate'

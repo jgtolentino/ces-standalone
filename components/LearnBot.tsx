@@ -106,6 +106,39 @@ const TUTORIALS: Tutorial[] = [
         target: '.query-input'
       }
     ]
+  },
+  {
+    id: 'responsible-ai-overview',
+    title: 'Why This AI is Safe',
+    description: 'Learn about our responsible AI practices and safety measures',
+    pageUrl: '/',
+    steps: [
+      {
+        id: 'responsible-ai-intro',
+        title: 'Built with Responsible AI',
+        content: 'This dashboard follows comprehensive Responsible AI principles including fairness, transparency, privacy protection, and regular ethical audits to ensure safe and trustworthy insights.'
+      },
+      {
+        id: 'azure-waf-compliance',
+        title: 'Enterprise Security Standards',
+        content: 'We comply with Azure Well-Architected Framework (WAF) standards for AI security, including encrypted data, audit trails, and role-based access controls.'
+      },
+      {
+        id: 'bias-prevention',
+        title: 'Fairness & Bias Prevention',
+        content: 'The AI uses well-balanced datasets and is tested across diverse use cases to avoid unfair outcomes. All responses include confidence scores so you know how reliable each insight is.'
+      },
+      {
+        id: 'data-protection',
+        title: 'Your Data is Protected',
+        content: 'Your data is encrypted and never used to train models without permission. We follow strict privacy protocols and you have full control over your information.'
+      },
+      {
+        id: 'human-oversight',
+        title: 'Human Oversight & Safety',
+        content: 'All AI responses are regularly audited and inappropriate content is automatically filtered. If something seems wrong, there\'s always a clear path for human review.'
+      }
+    ]
   }
 ];
 

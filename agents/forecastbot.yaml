@@ -1,0 +1,67 @@
+name: ForecastBot
+description: Predicts 30/60/90-day trends in revenue, AOV, and transactions for retail analytics
+version: "1.0.0"
+model: gpt-4-turbo
+backend: openai
+data_source: 
+  - supabase
+  - azure_sql
+confidence_threshold: 0.85
+trigger: forecast_query
+outputs:
+  - forecast_chart_json
+  - confidence_intervals
+  - trend_analysis
+permissions:
+  - read:sales_interactions
+  - read:transactions
+  - read:analytics_data
+  - net:openai
+
+capabilities:
+  - time_series_analysis
+  - seasonal_pattern_detection
+  - trend_forecasting
+  - confidence_scoring
+  - anomaly_detection
+
+input_schema:
+  historical_data:
+    type: array
+    required: true
+    items:
+      date: string
+      revenue: number
+      transactions: number
+      aov: number
+  
+  forecast_period:
+    type: object
+    required: true
+    properties:
+      days: number (30, 60, or 90)
+      confidence_level: number (0.8-0.95)
+
+output_schema:
+  forecast_data:
+    type: array
+    items:
+      date: string
+      revenue: number
+      transactions: number
+      aov: number
+      confidence_lower: number
+      confidence_upper: number
+      trend_factor: number
+
+context_integration:
+  - memory_tags: ["forecast", "predictive_analytics", "retail_trends"]
+  - orchestrator: "claudia"
+  - session_binding: "keykey_jwt"
+  - qa_validation: "percy_visual_regression"
+
+deployment:
+  environment: production
+  scaling: auto
+  monitoring: azure_insights
+  fallback: statistical_model

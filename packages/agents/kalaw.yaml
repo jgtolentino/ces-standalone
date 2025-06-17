@@ -1,0 +1,109 @@
+name: Kalaw
+description: >
+  Data mapping and index validator with SKR support
+  Ensures data integrity, validates mappings, and maintains schema consistency
+version: "1.0.0"
+model: gpt-3.5-turbo
+backend: openai
+priority: medium
+execution_type: background_validator
+
+capabilities:
+  - data_mapping_validation
+  - schema_consistency_checks
+  - index_optimization
+  - data_quality_assessment
+  - relationship_validation
+  - performance_monitoring
+
+modules:
+  - data_mapper
+  - schema_validator
+  - index_analyzer
+  - quality_checker
+  - relationship_validator
+  - performance_monitor
+
+data_sources:
+  - database_schemas
+  - data_mappings
+  - index_configurations
+  - data_quality_metrics
+  - system_performance_logs
+
+tags:
+  - validation
+  - data_quality
+  - mapping
+  - skr_support
+  - integrity_checks
+
+input_schema:
+  validation_request:
+    type: object
+    properties:
+      validation_type:
+        enum: ["mapping", "schema", "index", "quality", "relationship"]
+      target_data: object
+      validation_rules: object
+      severity_level:
+        enum: ["error", "warning", "info"]
+
+output_schema:
+  validation_result:
+    type: object
+    properties:
+      validation_status: 
+        enum: ["passed", "failed", "warning"]
+      issues_found: array
+      recommendations: array
+      performance_impact: object
+      fix_suggestions: array
+
+orchestration:
+  trigger_events:
+    - data_update
+    - schema_change
+    - index_modification
+    - quality_check_scheduled
+    - validation_request
+  
+  integration_points:
+    - database_layer
+    - rag_indexing_system
+    - data_pipeline
+    - monitoring_dashboard
+
+validation_rules:
+  data_mapping:
+    - source_target_consistency
+    - data_type_compatibility
+    - null_handling_rules
+    - transformation_logic_validation
+  
+  schema_validation:
+    - referential_integrity
+    - constraint_validation
+    - naming_conventions
+    - documentation_completeness
+  
+  index_optimization:
+    - query_performance_impact
+    - storage_efficiency
+    - maintenance_overhead
+    - usage_patterns
+
+performance:
+  validation_batch_size: 100
+  max_processing_time: "30s"
+  error_threshold: 5
+  warning_threshold: 20
+
+deployment:
+  environment: production
+  scaling: auto
+  monitoring: azure_insights
+  dependencies:
+    - database_metadata
+    - schema_repository
+    - performance_metrics

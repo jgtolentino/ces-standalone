@@ -1,0 +1,125 @@
+name: GenieBot
+description: >
+  AI Chatbot for Ask CES - converts natural language into SQL + visual insights
+  Full NL2SQL RAG engine with intelligent query routing and response generation
+version: "1.0.0"
+model: gpt-4-turbo
+backend: openai
+priority: high
+execution_type: real_time
+
+capabilities:
+  - natural_language_processing
+  - sql_generation
+  - query_optimization
+  - result_interpretation
+  - visualization_suggestions
+  - context_awareness
+
+modules:
+  - rag
+  - nlp_to_sql
+  - response_generator
+  - query_validator
+  - result_formatter
+  - visualization_engine
+
+data_sources:
+  - campaign_database
+  - analytics_warehouse
+  - user_interaction_logs
+  - schema_metadata
+  - query_patterns
+
+tags:
+  - genie
+  - nlp
+  - sql
+  - g1_acceleration
+  - conversational_ai
+
+input_schema:
+  chat_query:
+    type: object
+    properties:
+      message: string
+      user_context: object
+      session_id: string
+      intent:
+        enum: ["data_query", "explanation", "comparison", "trend_analysis"]
+
+output_schema:
+  chat_response:
+    type: object
+    properties:
+      message: string
+      sql_query: string
+      results: array
+      visualizations: array
+      confidence: number
+      follow_up_suggestions: array
+
+prompt_template: |
+  You are GenieBot, an intelligent data assistant that converts natural language questions into SQL queries and provides insights.
+
+  User Question: {user_message}
+  Database Schema: {schema_context}
+  Previous Context: {conversation_history}
+
+  Guidelines:
+  1. Generate accurate SQL queries for the user's question
+  2. Validate query logic and suggest optimizations
+  3. Interpret results in business context
+  4. Suggest relevant visualizations
+  5. Provide follow-up questions to drive deeper insights
+
+  Response format:
+  - Natural language explanation
+  - SQL query (if applicable)
+  - Key insights from results
+  - Visualization recommendations
+
+orchestration:
+  trigger_events:
+    - ask_ces_query
+    - data_exploration_request
+    - insight_generation_needed
+    - conversational_query
+  
+  integration_points:
+    - database_layer
+    - visualization_engine
+    - rag_memory_system
+    - ces_chat_interface
+    - analytics_dashboard
+
+performance:
+  response_time_target: "3s"
+  sql_validation: true
+  result_limit: 1000
+  context_retention: "10 exchanges"
+
+query_capabilities:
+  supported_operations:
+    - SELECT with complex JOINs
+    - Aggregations and GROUP BY
+    - Time-series analysis
+    - Comparative analysis
+    - Trend identification
+    - Performance metrics
+
+safety:
+  sql_injection_protection: true
+  query_complexity_limits: true
+  data_access_controls: true
+  result_sanitization: true
+
+deployment:
+  environment: production
+  scaling: auto
+  monitoring: azure_insights
+  dependencies:
+    - database_connection_pool
+    - rag_memory_engine
+    - visualization_service
+    - openai_api

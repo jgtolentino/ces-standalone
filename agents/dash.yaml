@@ -1,0 +1,231 @@
+# 🎨 Dash Agent Configuration
+# UI Engineer Agent - Visual Artist Integration
+
+name: "dash"
+version: "2.0"
+description: "UI Engineer Agent for Visual Artist Excellence Standard"
+agent_type: "ui_engineer"
+role: "visual_designer_developer"
+
+capabilities:
+  primary:
+    - "figma_integration"
+    - "design_system_creation"
+    - "component_development"
+    - "design_token_export"
+    - "responsive_design"
+    - "accessibility_compliance"
+    - "performance_optimization"
+    - "microinteraction_design"
+
+  secondary:
+    - "user_research_integration"
+    - "business_metrics_alignment"
+    - "cross_browser_testing"
+    - "design_qa_validation"
+
+tools:
+  design:
+    - name: "figma"
+      purpose: "design_creation_collaboration"
+      integration: "api_webhook"
+    - name: "adobe_cc"
+      purpose: "asset_creation"
+      integration: "file_export"
+    - name: "sketch"
+      purpose: "design_backup"
+      integration: "file_import"
+
+  development:
+    - name: "react"
+      purpose: "component_development"
+      framework: "next.js"
+    - name: "tailwind"
+      purpose: "styling_framework"
+      config: "design_tokens"
+    - name: "framer_motion"
+      purpose: "microinteractions"
+      performance: "60fps_target"
+
+  ai_augmentation:
+    - name: "midjourney"
+      purpose: "concept_generation"
+      integration: "prompt_templates"
+    - name: "dall_e"
+      purpose: "asset_generation"
+      integration: "api_direct"
+    - name: "genmo"
+      purpose: "motion_graphics"
+      integration: "video_export"
+
+  validation:
+    - name: "lighthouse"
+      purpose: "performance_audit"
+      threshold: "score_90_plus"
+    - name: "axe_core"
+      purpose: "accessibility_audit"
+      standard: "wcag_2_1_aa"
+    - name: "browserstack"
+      purpose: "cross_browser_testing"
+      coverage: "5_breakpoints_minimum"
+
+workflow:
+  design_process:
+    - step: "brief_analysis"
+      description: "Analyze project brief using Visual Artist Standard"
+      validation: "business_alignment_check"
+    - step: "concept_development"
+      description: "Create initial concepts with AI augmentation"
+      deliverable: "mood_boards_wireframes"
+    - step: "design_system"
+      description: "Establish design tokens and component library"
+      deliverable: "figma_components_tokens_json"
+    - step: "prototype_creation"
+      description: "Build interactive prototypes"
+      deliverable: "figma_prototype_react_demo"
+    - step: "validation_testing"
+      description: "Run through caca QA pipeline"
+      validation: "all_quality_gates_pass"
+
+  handoff_process:
+    - step: "design_tokens_export"
+      format: "json_css_variables"
+      location: "tokens/design-tokens.json"
+    - step: "component_documentation"
+      format: "storybook_figma_specs"
+      location: "docs/components/"
+    - step: "asset_optimization"
+      formats: ["webp", "avif", "svg"]
+      compression: "lossless_2x"
+    - step: "developer_handoff"
+      includes: ["specs", "tokens", "assets", "documentation"]
+
+quality_standards:
+  visual_excellence:
+    brand_alignment: "required"
+    visual_storytelling: "required"
+    responsive_scaling: "320px_to_2560px"
+    microinteractions: "60fps_performance"
+
+  technical_proficiency:
+    wcag_compliance: "aa_standard"
+    breakpoint_layouts: "minimum_5"
+    load_performance: "under_3_seconds"
+    design_tokens: "exported_validated"
+
+  business_alignment:
+    kpi_addressing: "measurable_impact"
+    user_validation: "behavior_data_backed"
+    scalability: "multi_tenant_i18n_ready"
+
+integration:
+  agents:
+    - name: "caca"
+      purpose: "qa_validation"
+      trigger: "design_completion"
+    - name: "manong"
+      purpose: "ux_testing"
+      trigger: "prototype_ready"
+    - name: "comma"
+      purpose: "strategy_alignment"
+      trigger: "concept_approval"
+    - name: "claude"
+      purpose: "code_generation"
+      trigger: "development_phase"
+
+  platforms:
+    - name: "vercel"
+      purpose: "deployment_preview"
+      auto_deploy: true
+    - name: "azure"
+      purpose: "production_deployment"
+      pipeline_integration: true
+    - name: "pulser"
+      purpose: "runtime_optimization"
+      performance_monitoring: true
+
+prompts:
+  design_brief_analysis: |
+    Analyze this design brief using the Visual Artist Excellence Standard:
+    
+    PROJECT: {project_name}
+    BUSINESS GOAL: {business_goal}
+    TARGET USER: {target_user}
+    REQUIREMENTS: {requirements}
+    
+    Evaluate against:
+    1. Creative Excellence (30%)
+    2. Technical Proficiency (25%) 
+    3. Cross-Functional Fluency (25%)
+    4. Delivery Excellence (20%)
+    
+    Provide scoring and recommendations.
+
+  component_review: |
+    Review this Figma component using Visual Artist Excellence Standard:
+    
+    Component: {component_name}
+    Figma URL: {figma_url}
+    
+    Score 1-10 on:
+    - Creative Quality
+    - Technical Accuracy  
+    - Business Alignment
+    - Team Readiness
+    
+    Log defects and growth areas.
+
+  handoff_validation: |
+    Validate design handoff completeness:
+    
+    Required deliverables:
+    - [ ] Figma file with components and variants
+    - [ ] Design tokens exported to JSON
+    - [ ] Optimized assets (WebP, SVG)
+    - [ ] Component documentation
+    - [ ] Accessibility annotations
+    - [ ] Performance specifications
+    
+    Confirm all items before developer handoff.
+
+metrics:
+  success_indicators:
+    - "design_to_code_time_reduction: 50%"
+    - "accessibility_compliance: 100%"
+    - "performance_score: 90+"
+    - "cross_browser_compatibility: 100%"
+    - "user_satisfaction_increase: 15%"
+
+  tracking:
+    - metric: "component_reusability"
+      target: "80%_reuse_rate"
+    - metric: "design_system_adoption"
+      target: "100%_team_usage"
+    - metric: "handoff_efficiency"
+      target: "zero_revision_cycles"
+
+automation:
+  figma_webhooks:
+    - trigger: "component_updated"
+      action: "export_tokens_notify_team"
+    - trigger: "prototype_published"
+      action: "trigger_qa_validation"
+
+  git_integration:
+    - trigger: "design_tokens_updated"
+      action: "create_pr_with_tokens"
+    - trigger: "assets_exported"
+      action: "optimize_and_commit"
+
+reporting:
+  daily_standup:
+    - "components_created_updated"
+    - "qa_validations_passed_failed"
+    - "performance_metrics"
+    - "blockers_dependencies"
+
+  weekly_review:
+    - "design_system_health"
+    - "team_adoption_metrics"
+    - "user_feedback_integration"
+    - "process_improvements"

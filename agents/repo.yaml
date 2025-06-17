@@ -1,0 +1,523 @@
+# Repo Cross-Repository Agent
+# AI Agent Specialist for Multi-Repository Management and Zero-Waste Development
+name: "repo"
+version: "1.0.0"
+role: "cross_repository_specialist"
+description: "AI agent specialist for repository cherry-picking, cross-codebase management, successful deployment coordination, and zero-waste asset recycling"
+
+# ============================================================================
+# AGENT CONFIGURATION
+# ============================================================================
+
+agent_config:
+  type: "repository_management"
+  priority: "critical"
+  execution_mode: "cross_repository_orchestration"
+  scope: "multi_codebase"
+  integration: "mcp_protocol"
+  
+capabilities:
+  - cross_repository_analysis
+  - intelligent_cherry_picking
+  - codebase_pattern_recognition
+  - asset_deduplication
+  - prompt_recycling
+  - deployment_coordination
+  - dependency_resolution
+  - conflict_detection
+  - zero_waste_optimization
+  - success_validation
+
+# ============================================================================
+# CROSS-REPOSITORY FRAMEWORK
+# ============================================================================
+
+cross_repository_framework:
+  repository_discovery:
+    scan_patterns:
+      - "scout-*"
+      - "*-analytics"
+      - "*-mvp"
+      - "*-platform"
+      - "*-cdb"
+      
+    analysis_depth:
+      - file_structure_mapping
+      - dependency_analysis
+      - component_identification
+      - pattern_recognition
+      - asset_cataloging
+      
+  cherry_picking_strategy:
+    selection_criteria:
+      - code_quality_score: ">80%"
+      - test_coverage: ">70%"
+      - documentation_completeness: ">60%"
+      - reusability_potential: "high"
+      - zero_conflicts: true
+      
+    extraction_methods:
+      - intelligent_component_extraction
+      - dependency_aware_copying
+      - configuration_adaptation
+      - path_resolution
+      - import_statement_updating
+
+# ============================================================================
+# ASSET MANAGEMENT & ZERO WASTE
+# ============================================================================
+
+asset_management:
+  asset_types:
+    components:
+      - react_components
+      - vue_components
+      - angular_components
+      - web_components
+      
+    configurations:
+      - package_json_dependencies
+      - typescript_configs
+      - build_configurations
+      - deployment_scripts
+      
+    documentation:
+      - readme_files
+      - api_documentation
+      - setup_guides
+      - deployment_instructions
+      
+    prompts_and_templates:
+      - agent_prompts
+      - code_templates
+      - configuration_templates
+      - workflow_definitions
+
+  deduplication_engine:
+    similarity_detection:
+      algorithm: "semantic_similarity"
+      threshold: 85
+      
+    consolidation_strategy:
+      - merge_similar_components
+      - create_base_abstractions
+      - establish_inheritance_patterns
+      - generate_configuration_variants
+      
+    recycling_protocols:
+      - prompt_template_reuse
+      - component_pattern_library
+      - configuration_inheritance
+      - asset_version_control
+
+# ============================================================================
+# INTELLIGENT CHERRY PICKING
+# ============================================================================
+
+cherry_picking_intelligence:
+  pattern_recognition:
+    code_patterns:
+      - component_architectures
+      - api_endpoint_patterns
+      - database_schema_patterns
+      - authentication_flows
+      - deployment_configurations
+      
+    success_indicators:
+      - build_success_rate
+      - test_pass_rate
+      - deployment_success
+      - performance_metrics
+      - user_adoption_rate
+      
+  selection_algorithms:
+    quality_scoring:
+      factors:
+        - code_complexity: 20
+        - test_coverage: 25
+        - documentation: 15
+        - performance: 20
+        - reusability: 20
+        
+    compatibility_analysis:
+      - dependency_compatibility
+      - version_alignment
+      - architecture_fit
+      - integration_complexity
+      - migration_effort
+      
+  extraction_optimization:
+    minimal_footprint:
+      - extract_only_necessary_files
+      - resolve_minimal_dependencies
+      - optimize_import_statements
+      - remove_unused_code
+      
+    adaptation_engine:
+      - path_normalization
+      - configuration_adaptation
+      - environment_variable_mapping
+      - dependency_version_alignment
+
+# ============================================================================
+# DEPLOYMENT COORDINATION
+# ============================================================================
+
+deployment_coordination:
+  pre_deployment_validation:
+    compatibility_checks:
+      - dependency_conflict_detection
+      - version_compatibility_validation
+      - environment_requirement_verification
+      - resource_availability_check
+      
+    integration_testing:
+      - component_integration_tests
+      - api_endpoint_validation
+      - database_migration_testing
+      - performance_impact_assessment
+      
+  deployment_orchestration:
+    staging_strategy:
+      - isolated_environment_testing
+      - gradual_feature_rollout
+      - canary_deployment_support
+      - rollback_preparation
+      
+    success_monitoring:
+      - real_time_health_checks
+      - performance_monitoring
+      - error_rate_tracking
+      - user_experience_validation
+      
+  post_deployment_optimization:
+    performance_tuning:
+      - resource_usage_optimization
+      - caching_strategy_implementation
+      - database_query_optimization
+      - api_response_time_improvement
+      
+    continuous_improvement:
+      - usage_pattern_analysis
+      - performance_bottleneck_identification
+      - optimization_opportunity_detection
+      - automated_enhancement_suggestions
+
+# ============================================================================
+# ZERO WASTE OPTIMIZATION
+# ============================================================================
+
+zero_waste_optimization:
+  asset_lifecycle_management:
+    creation_phase:
+      - template_based_generation
+      - pattern_reuse_maximization
+      - configuration_inheritance
+      - component_composition
+      
+    utilization_phase:
+      - usage_tracking
+      - performance_monitoring
+      - optimization_opportunities
+      - enhancement_suggestions
+      
+    retirement_phase:
+      - deprecation_planning
+      - migration_path_definition
+      - asset_archival
+      - knowledge_preservation
+      
+  prompt_recycling_system:
+    prompt_categorization:
+      - functional_prompts
+      - creative_prompts
+      - analytical_prompts
+      - instructional_prompts
+      
+    reusability_optimization:
+      - parameterization
+      - template_abstraction
+      - context_adaptation
+      - output_format_standardization
+      
+    quality_improvement:
+      - effectiveness_tracking
+      - success_rate_monitoring
+      - continuous_refinement
+      - best_practice_extraction
+
+# ============================================================================
+# REPOSITORY ANALYSIS ENGINE
+# ============================================================================
+
+repository_analysis_engine:
+  codebase_profiling:
+    structure_analysis:
+      - directory_hierarchy_mapping
+      - file_type_distribution
+      - component_relationship_mapping
+      - dependency_graph_generation
+      
+    quality_assessment:
+      - code_quality_metrics
+      - test_coverage_analysis
+      - documentation_completeness
+      - performance_characteristics
+      
+    pattern_extraction:
+      - architectural_patterns
+      - design_patterns
+      - coding_conventions
+      - configuration_patterns
+      
+  cross_repository_insights:
+    similarity_analysis:
+      - component_similarity_detection
+      - pattern_commonality_identification
+      - configuration_overlap_analysis
+      - functionality_duplication_detection
+      
+    optimization_opportunities:
+      - consolidation_candidates
+      - abstraction_opportunities
+      - standardization_potential
+      - efficiency_improvements
+      
+    risk_assessment:
+      - integration_complexity
+      - compatibility_issues
+      - performance_impact
+      - maintenance_overhead
+
+# ============================================================================
+# AUTOMATION WORKFLOWS
+# ============================================================================
+
+automation_workflows:
+  discovery_workflow:
+    triggers:
+      - new_repository_detection
+      - repository_update_events
+      - scheduled_scans
+      - manual_analysis_requests
+      
+    execution_steps:
+      - repository_scanning
+      - asset_cataloging
+      - pattern_analysis
+      - opportunity_identification
+      
+  cherry_picking_workflow:
+    triggers:
+      - component_request
+      - pattern_match_detection
+      - optimization_opportunity
+      - deployment_requirement
+      
+    execution_steps:
+      - candidate_evaluation
+      - compatibility_verification
+      - extraction_planning
+      - adaptation_execution
+      - integration_testing
+      
+  deployment_workflow:
+    triggers:
+      - cherry_pick_completion
+      - integration_validation
+      - deployment_approval
+      - scheduled_deployment
+      
+    execution_steps:
+      - pre_deployment_checks
+      - staging_deployment
+      - validation_testing
+      - production_deployment
+      - post_deployment_monitoring
+
+# ============================================================================
+# INTEGRATION POINTS
+# ============================================================================
+
+integration_points:
+  version_control_systems:
+    git_integration:
+      - repository_cloning
+      - branch_management
+      - commit_analysis
+      - merge_conflict_resolution
+      
+    platforms:
+      - github
+      - gitlab
+      - azure_devops
+      - bitbucket
+      
+  ci_cd_pipelines:
+    integration_types:
+      - github_actions
+      - azure_pipelines
+      - jenkins
+      - gitlab_ci
+      
+    automation_capabilities:
+      - automated_cherry_picking
+      - integration_testing
+      - deployment_orchestration
+      - rollback_automation
+      
+  monitoring_systems:
+    performance_monitoring:
+      - application_performance
+      - resource_utilization
+      - error_tracking
+      - user_experience_metrics
+      
+    business_intelligence:
+      - usage_analytics
+      - adoption_metrics
+      - roi_tracking
+      - optimization_impact
+
+# ============================================================================
+# QUALITY ASSURANCE
+# ============================================================================
+
+quality_assurance:
+  validation_framework:
+    code_quality_checks:
+      - syntax_validation
+      - style_guide_compliance
+      - security_vulnerability_scanning
+      - performance_impact_assessment
+      
+    integration_testing:
+      - component_compatibility_testing
+      - api_integration_validation
+      - database_integration_testing
+      - end_to_end_workflow_testing
+      
+    deployment_validation:
+      - environment_compatibility
+      - resource_requirement_verification
+      - performance_benchmark_validation
+      - rollback_capability_testing
+      
+  continuous_improvement:
+    feedback_collection:
+      - user_experience_feedback
+      - performance_metrics_analysis
+      - error_pattern_identification
+      - optimization_opportunity_detection
+      
+    iterative_enhancement:
+      - algorithm_refinement
+      - pattern_recognition_improvement
+      - automation_optimization
+      - user_interface_enhancement
+
+# ============================================================================
+# REPORTING & ANALYTICS
+# ============================================================================
+
+reporting_analytics:
+  dashboard_metrics:
+    repository_health:
+      - code_quality_trends
+      - asset_utilization_rates
+      - deployment_success_rates
+      - optimization_impact_metrics
+      
+    cross_repository_insights:
+      - pattern_commonality_analysis
+      - duplication_reduction_metrics
+      - consolidation_opportunities
+      - efficiency_improvements
+      
+    zero_waste_tracking:
+      - asset_reuse_rates
+      - prompt_recycling_effectiveness
+      - resource_optimization_impact
+      - waste_reduction_metrics
+      
+  automated_reporting:
+    report_types:
+      - daily_activity_summaries
+      - weekly_optimization_reports
+      - monthly_trend_analysis
+      - quarterly_impact_assessments
+      
+    distribution_channels:
+      - email_notifications
+      - dashboard_updates
+      - slack_integrations
+      - api_endpoints
+
+# ============================================================================
+# CONFIGURATION TEMPLATES
+# ============================================================================
+
+configuration_templates:
+  repository_scanning_config:
+    scan_frequency: "daily"
+    depth_level: "comprehensive"
+    exclusion_patterns: ["node_modules", ".git", "dist", "build"]
+    inclusion_patterns: ["src", "components", "lib", "docs"]
+    
+  cherry_picking_config:
+    quality_threshold: 80
+    compatibility_requirement: "strict"
+    testing_requirement: "mandatory"
+    documentation_requirement: "recommended"
+    
+  deployment_config:
+    staging_required: true
+    rollback_enabled: true
+    monitoring_enabled: true
+    notification_enabled: true
+
+# ============================================================================
+# API ENDPOINTS
+# ============================================================================
+
+api_endpoints:
+  repository_management:
+    - GET /repo/scan
+    - POST /repo/analyze
+    - GET /repo/assets
+    - POST /repo/cherry-pick
+    
+  deployment_coordination:
+    - POST /repo/deploy
+    - GET /repo/deployment-status
+    - POST /repo/rollback
+    - GET /repo/health-check
+    
+  optimization:
+    - GET /repo/optimization-opportunities
+    - POST /repo/optimize
+    - GET /repo/waste-analysis
+    - POST /repo/consolidate
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  created_by: "Scout Agent Orchestration System"
+  created_date: "2025-06-17"
+  version: "1.0.0"
+  last_updated: "2025-06-17T13:52:00Z"
+  compatibility: "Scout v3.3.1+"
+  dependencies: ["git", "mcp-protocol", "ci-cd-integration", "monitoring"]
+  
+validation:
+  schema_version: "1.0"
+  required_fields: ["cross_repository_framework", "asset_management", "deployment_coordination"]
+  optional_fields: ["zero_waste_optimization", "automation_workflows"]
+  
+deployment:
+  target_environment: "multi_repository"
+  scope: "cross_codebase"
+  automation_level: "high"
+  monitoring_required: true

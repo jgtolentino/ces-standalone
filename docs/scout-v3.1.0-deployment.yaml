@@ -1,0 +1,527 @@
+# Scout Analytics Dashboard v3.1.0 - Client Delivery Deployment Specification
+# Clean Build from v2.1 with Production-Ready Features
+
+version: "3.1.0-client-delivery"
+deployment_target: "production"
+base_version: "v2.1"
+target_url: "https://scout-mvp.vercel.app"
+deployment_date: "2025-06-17"
+
+# ============================================================================
+# DASHBOARD CONFIGURATION
+# ============================================================================
+
+dashboard:
+  name: "Scout Analytics"
+  version: "3.1.0"
+  
+  branding:
+    remove_pulser: true
+    remove_insightpulseai: true
+    client_mode: true
+    clean_build: true
+    
+  performance_targets:
+    page_load: "3s"
+    chart_render: "5s"
+    ai_response: "2s"
+    filter_response: "1s"
+
+# ============================================================================
+# NAVIGATION STRUCTURE
+# ============================================================================
+
+navigation:
+  layout: "sidebar_left"
+  width: "256px"
+  collapsible: true
+  persistent_tooltips: true
+  
+  branding:
+    title: "Scout Analytics"
+    version: "v3.1.0"
+    logo: "📊"
+    
+  pages:
+    overview:
+      route: "/"
+      icon: "📊"
+      label: "Overview"
+      description: "Executive dashboard"
+      
+    trends:
+      route: "/trends"
+      icon: "📈"
+      label: "Trends"
+      description: "Regional analytics with drill-down"
+      
+    products:
+      route: "/products"
+      icon: "🛒"
+      label: "Product Mix"
+      description: "Basket share and substitution analysis"
+      
+    consumers:
+      route: "/consumers"
+      icon: "👥"
+      label: "Consumers"
+      description: "Demographics and behavior"
+      
+    retailbot:
+      route: "/retailbot"
+      icon: "🤖"
+      label: "RetailBot"
+      description: "AI assistant and insights"
+
+# ============================================================================
+# FILTER SYSTEM
+# ============================================================================
+
+filters:
+  layout: "top_horizontal_bar"
+  context_sensitive: true
+  live_supabase_binding: true
+  
+  global_filters:
+    date_range:
+      default: "Last 30 Days"
+      options: ["Last 7 Days", "Last 30 Days", "Last 90 Days", "Custom"]
+      
+    region:
+      default: "All Regions"
+      source: "regions_table"
+      live_data: true
+      
+  page_specific_filters:
+    trends:
+      - region_selector
+      - time_period
+      - city_filter
+      
+    products:
+      - brand_filter
+      - category_filter
+      - price_range
+      
+    consumers:
+      - demographic_filter
+      - behavior_segment
+      - age_group
+
+# ============================================================================
+# TRENDS PAGE CONFIGURATION
+# ============================================================================
+
+trends_page:
+  regional_analytics:
+    geo_heatmap:
+      type: "GeoHeatMap"
+      component: "components/charts/GeoHeatMap.tsx"
+      data_source: "geo_revenue_view"
+      overlay: "population_weighted_revenue"
+      performance_target: "5s"
+      features:
+        - interactive_tooltips
+        - zoom_functionality
+        - region_highlighting
+        
+    regional_bar_chart:
+      type: "DrillDownBarChart"
+      component: "components/charts/RegionalBarChart.tsx"
+      data: "top_5_cities"
+      drill_down: "city_to_barangay"
+      interaction: "click_to_filter"
+      
+    drill_down_logic:
+      trigger: "region_click"
+      action: "navigate_to_trends_with_filters"
+      auto_apply_filters: true
+      
+  data_sources:
+    - table: "geo_revenue_view"
+      type: "supabase_view"
+      refresh: "real_time"
+      
+    - table: "city_performance"
+      type: "supabase_table"
+      refresh: "hourly"
+
+# ============================================================================
+# PRODUCT MIX PAGE CONFIGURATION
+# ============================================================================
+
+products_page:
+  visual_enhancements:
+    treemaps:
+      type: "CategoryBrandTreemap"
+      component: "components/charts/CategoryTreemap.tsx"
+      sizing: "transaction_volume"
+      coloring: "performance_delta_vs_previous_week"
+      dynamic_grid: true
+      
+    category_revenue_chart:
+      type: "BarChart"
+      component: "components/charts/CategoryRevenueChart.tsx"
+      data: "top_10_categories"
+      source: "category_revenue_summary"
+      
+    sku_combo_network:
+      type: "NetworkVisualization"
+      component: "components/charts/SKUNetwork.tsx"
+      fallback: "components/tables/CoPurchaseTable.tsx"
+      source: "basket_cooccurrence"
+      max_nodes: 20
+      
+    basket_size_distribution:
+      type: "Histogram"
+      component: "components/charts/BasketHistogram.tsx"
+      source: "basket_size_distribution"
+      live_data: true
+      
+  substitution_analysis:
+    sankey_flow:
+      type: "SankeyDiagram"
+      component: "components/charts/SubstitutionSankey.tsx"
+      data: "top_5_substitution_patterns"
+      max_flows: 5
+      
+    fallback_table:
+      component: "components/tables/SubstitutionTable.tsx"
+      columns:
+        - "Original SKU"
+        - "Substituted SKU"
+        - "Frequency"
+      source: "substitution_patterns"
+      
+  data_sources:
+    - table: "category_revenue_summary"
+      type: "supabase_view"
+      refresh: "daily"
+      
+    - table: "basket_cooccurrence"
+      type: "supabase_table"
+      refresh: "real_time"
+      
+    - table: "substitution_patterns"
+      type: "supabase_view"
+      refresh: "weekly"
+
+# ============================================================================
+# AI ASSISTANT CONFIGURATION
+# ============================================================================
+
+ai_assistants:
+  provider: "azure_openai"
+  model: "gpt-4"
+  integration: "live_streaming"
+  
+  production_bots:
+    learnbot:
+      role: "tutorial_education"
+      component: "components/LearnBot.tsx"
+      features:
+        - tooltip_tutorials
+        - section_guidance
+        - interactive_help
+      status: "enabled"
+      
+    retailbot:
+      role: "metrics_validation_context"
+      component: "components/RetailBot.tsx"
+      features:
+        - metric_validation
+        - contextual_insights
+        - data_explanation
+      status: "enabled"
+      
+  dev_only_bots:
+    writebot: "hidden"
+    testbot: "hidden"
+    
+  ai_response_logic:
+    data_source: "streaming_server_data"
+    pipeline: "supabase → sql_view → prompt_template → azure_openai"
+    
+    requirements:
+      derived_from_live_data: true
+      contextual_connection: "chart_page_context"
+      no_generic_responses: true
+      streaming_integration: true
+      
+    cultural_insights:
+      emerging_signals:
+        color_association:
+          analysis: "keyword_color_mapping"
+          example: "red → sale/anger/danger"
+          
+        generational_links:
+          analysis: "demographic_language_patterns"
+          example: "lit → Gen Z vs Boomers"
+          
+        nickname_aliases:
+          analysis: "brand_alias_detection"
+          example: "C2 → Cobra, energy drink"
+          
+        brand_loyalty_signals:
+          analysis: "meme_mentions_sentiment"
+          
+      implementation:
+        placement: "bottom_of_relevant_pages"
+        data_source: "keyword_analysis_engine"
+        update_frequency: "real_time"
+
+# ============================================================================
+# DATA INTEGRATION
+# ============================================================================
+
+data_sources:
+  primary_database:
+    type: "supabase_postgresql"
+    connection: "live"
+    backup: "automated_daily"
+    
+  tables:
+    geo_revenue_view:
+      type: "materialized_view"
+      refresh: "real_time"
+      purpose: "regional_analytics"
+      
+    category_revenue_summary:
+      type: "view"
+      refresh: "daily"
+      purpose: "product_analytics"
+      
+    basket_cooccurrence:
+      type: "table"
+      refresh: "real_time"
+      purpose: "basket_analysis"
+      
+    basket_size_distribution:
+      type: "table"
+      refresh: "real_time"
+      purpose: "distribution_analysis"
+      
+    substitution_patterns:
+      type: "view"
+      refresh: "weekly"
+      purpose: "substitution_analysis"
+      
+  external_integrations:
+    azure_openai:
+      service: "cognitive_services"
+      model: "gpt-4"
+      streaming: true
+      
+    keyword_analysis:
+      service: "custom_nlp_engine"
+      purpose: "cultural_insights"
+
+# ============================================================================
+# COMPONENT LIBRARY
+# ============================================================================
+
+components:
+  charts:
+    GeoHeatMap:
+      file: "components/charts/GeoHeatMap.tsx"
+      purpose: "Regional revenue visualization"
+      features: ["interactive", "drill_down", "population_overlay"]
+      status: "implement_required"
+      
+    RegionalBarChart:
+      file: "components/charts/RegionalBarChart.tsx"
+      purpose: "City performance with drill-down"
+      features: ["click_to_filter", "barangay_drill"]
+      status: "implement_required"
+      
+    CategoryTreemap:
+      file: "components/charts/CategoryTreemap.tsx"
+      purpose: "Category/brand market share"
+      features: ["volume_sizing", "performance_coloring"]
+      status: "implement_required"
+      
+    SubstitutionSankey:
+      file: "components/charts/SubstitutionSankey.tsx"
+      purpose: "Product substitution flow"
+      features: ["max_5_flows", "interactive_tooltips"]
+      status: "implement_required"
+      
+    BasketHistogram:
+      file: "components/charts/BasketHistogram.tsx"
+      purpose: "Basket size distribution"
+      features: ["live_data", "statistical_overlay"]
+      status: "implement_required"
+      
+  existing_charts:
+    LineChart:
+      file: "components/charts/LineChart.tsx"
+      status: "complete"
+      
+    StackedBar:
+      file: "components/charts/StackedBar.tsx"
+      status: "complete"
+      
+    Heatmap:
+      file: "components/charts/Heatmap.tsx"
+      status: "complete"
+
+# ============================================================================
+# QA VALIDATION REQUIREMENTS
+# ============================================================================
+
+qa_validation:
+  required_validations:
+    regional_map_bar_chart:
+      requirement: "Must populate all regions"
+      data_source: "geo_revenue_view"
+      validation_type: "data_completeness"
+      
+    category_revenue_chart:
+      requirement: "Top 10 categories only"
+      data_source: "category_revenue_summary"
+      validation_type: "data_accuracy"
+      
+    sku_combo_substitution:
+      requirement: "Fallback to table if network fails"
+      data_source: "basket_cooccurrence"
+      validation_type: "functionality"
+      
+    basket_size_distribution:
+      requirement: "Live dataset integration"
+      data_source: "basket_size_distribution"
+      validation_type: "real_time_data"
+      
+    sankey_diagram:
+      requirement: "Maximum 5 flows"
+      data_source: "substitution_patterns"
+      validation_type: "performance"
+      
+    ai_assistant_panels:
+      requirement: "Prompt → SQL → Insight pipeline"
+      data_source: "streaming_data"
+      validation_type: "integration"
+      
+    filters:
+      requirement: "Live-bound, not dummy data"
+      data_source: "supabase_live"
+      validation_type: "data_binding"
+      
+    branding_audit:
+      requirement: "Remove all Pulser/InsightPulseAI references"
+      validation_type: "content_audit"
+
+# ============================================================================
+# DEPLOYMENT PIPELINE
+# ============================================================================
+
+deployment:
+  environment: "production"
+  platform: "vercel"
+  url: "https://scout-mvp.vercel.app"
+  
+  build_configuration:
+    framework: "next_js_14"
+    optimization: "production"
+    static_generation: "enabled"
+    
+  performance_monitoring:
+    lighthouse: "enabled"
+    core_web_vitals: "tracked"
+    real_user_monitoring: "enabled"
+    
+  security:
+    https: "enforced"
+    csp: "enabled"
+    data_encryption: "tls_1_3"
+
+# ============================================================================
+# SUCCESS METRICS
+# ============================================================================
+
+success_metrics:
+  performance:
+    page_load_time: "under_3_seconds"
+    chart_render_time: "under_5_seconds"
+    ai_response_time: "under_2_seconds"
+    filter_response_time: "under_1_second"
+    
+  functionality:
+    drill_down_functionality: "100_percent_working"
+    live_data_integration: "real_time_updates"
+    ai_streaming_responses: "contextual_accurate"
+    
+  quality:
+    data_accuracy: "100_percent_live_data"
+    branding_compliance: "zero_pulser_references"
+    user_experience: "intuitive_navigation"
+    
+  business:
+    client_delivery_ready: "production_deployment"
+    qa_validation_complete: "all_widgets_validated"
+    performance_targets_met: "under_target_times"
+
+# ============================================================================
+# IMPLEMENTATION ROADMAP
+# ============================================================================
+
+implementation_phases:
+  phase_1_navigation:
+    duration: "2_days"
+    tasks:
+      - "Convert top navigation to left sidebar"
+      - "Implement collapsible functionality"
+      - "Add persistent tooltips"
+      - "Update routing structure"
+      
+  phase_2_filters:
+    duration: "2_days"
+    tasks:
+      - "Move filters to top horizontal bar"
+      - "Implement context-sensitive filtering"
+      - "Connect to live Supabase queries"
+      - "Add filter state management"
+      
+  phase_3_trends_page:
+    duration: "3_days"
+    tasks:
+      - "Implement GeoHeatMap component"
+      - "Create RegionalBarChart with drill-down"
+      - "Add click-to-filter functionality"
+      - "Connect to geo_revenue_view"
+      
+  phase_4_products_page:
+    duration: "4_days"
+    tasks:
+      - "Implement CategoryTreemap"
+      - "Create SubstitutionSankey diagram"
+      - "Add BasketHistogram"
+      - "Connect to product data sources"
+      
+  phase_5_ai_integration:
+    duration: "3_days"
+    tasks:
+      - "Configure Azure OpenAI streaming"
+      - "Implement cultural insights analysis"
+      - "Hide dev-only bots"
+      - "Add contextual AI responses"
+      
+  phase_6_qa_validation:
+    duration: "2_days"
+    tasks:
+      - "Validate all widgets with live data"
+      - "Remove Pulser branding"
+      - "Test drill-down functionality"
+      - "Performance optimization"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  specification_version: "3.1.0-client-delivery"
+  base_recycled_from: "scout_analytics_v2.1"
+  deployment_methodology: "clean_build_production_ready"
+  validation_framework: "comprehensive_qa_pipeline"
+  last_updated: "2025-06-17T12:45:00Z"
+  approval_status: "ready_for_client_delivery"
+  next_milestone: "production_deployment"

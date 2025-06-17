@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  productionBrowserSourceMaps: true,
+  experimental: {
+    dynamicIO: true
+  },
   transpilePackages: [],
   webpack: (config, { isServer }) => {
     // Exclude problematic packages from build
