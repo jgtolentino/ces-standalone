@@ -1,0 +1,168 @@
+{
+  "version": "1.0.0",
+  "created_at": "2025-01-17T00:00:00Z",
+  "source": "CESAI-RAG-INDEX",
+  "embedding_model": "text-embedding-ada-002",
+  "insights": [
+    {
+      "id": "insight_001",
+      "campaign_id": "camp_facebook_q4_2024",
+      "category": "performance_optimization",
+      "insight_text": "Facebook campaigns show 23% higher ROI when targeting 25-34 demographic with video content during 7-9PM time slots. Historical data suggests this pattern remains consistent across Q4 seasons.",
+      "confidence_score": 0.89,
+      "data_sources": ["facebook_ads_api", "google_analytics", "campaign_performance"],
+      "tags": ["demographic_targeting", "video_content", "timing_optimization", "q4_performance"],
+      "embedding_vector": [0.1234, -0.5678, 0.9012, 0.3456],
+      "related_campaigns": ["camp_instagram_q4_2024", "camp_youtube_q4_2024"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-12-15T14:30:00Z"
+    },
+    {
+      "id": "insight_002", 
+      "campaign_id": "camp_google_ads_beauty",
+      "category": "audience_insights",
+      "insight_text": "Beauty product campaigns achieve 31% higher conversion rates when combined with lifestyle imagery rather than product-only shots. Consumer sentiment analysis shows emotional connection drives purchase decisions.",
+      "confidence_score": 0.92,
+      "data_sources": ["google_ads", "consumer_surveys", "sentiment_analysis"],
+      "tags": ["beauty_products", "creative_optimization", "lifestyle_imagery", "emotional_connection"],
+      "embedding_vector": [0.2345, -0.6789, 0.1234, 0.4567],
+      "related_campaigns": ["camp_skincare_spring", "camp_makeup_holiday"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-11-28T10:15:00Z"
+    },
+    {
+      "id": "insight_003",
+      "campaign_id": "camp_holiday_retail_2024",
+      "category": "seasonal_trends",
+      "insight_text": "Holiday retail campaigns require 3-week pre-launch content seeding to achieve optimal engagement. Early November start dates outperform December-only campaigns by 45% in total reach.",
+      "confidence_score": 0.87,
+      "data_sources": ["retail_analytics", "engagement_metrics", "historical_campaigns"],
+      "tags": ["holiday_marketing", "timing_strategy", "content_seeding", "retail_optimization"],
+      "embedding_vector": [0.3456, -0.7890, 0.2345, 0.5678],
+      "related_campaigns": ["camp_black_friday_2024", "camp_cyber_monday_2024"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-10-20T16:45:00Z"
+    },
+    {
+      "id": "insight_004",
+      "campaign_id": "camp_b2b_saas_leadgen",
+      "category": "lead_generation",
+      "insight_text": "B2B SaaS lead generation campaigns show 67% higher qualification rates when using interactive demo CTAs versus traditional 'Learn More' buttons. Decision makers prefer hands-on evaluation.",
+      "confidence_score": 0.94,
+      "data_sources": ["linkedin_ads", "salesforce_crm", "demo_analytics"],
+      "tags": ["b2b_marketing", "saas_products", "interactive_demos", "lead_qualification"],
+      "embedding_vector": [0.4567, -0.8901, 0.3456, 0.6789],
+      "related_campaigns": ["camp_enterprise_sales", "camp_software_trials"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-12-02T09:20:00Z"
+    },
+    {
+      "id": "insight_005",
+      "campaign_id": "camp_mobile_app_install",
+      "category": "app_marketing",
+      "insight_text": "Mobile app install campaigns achieve 28% lower cost-per-install when targeting users who have engaged with competitor apps in the past 30 days. Competitive intelligence drives efficient acquisition.",
+      "confidence_score": 0.85,
+      "data_sources": ["app_store_connect", "mobile_attribution", "competitor_analysis"],
+      "tags": ["mobile_marketing", "app_installs", "competitive_targeting", "cost_optimization"],
+      "embedding_vector": [0.5678, -0.9012, 0.4567, 0.7890],
+      "related_campaigns": ["camp_app_retention", "camp_in_app_purchases"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-11-15T13:10:00Z"
+    },
+    {
+      "id": "insight_006",
+      "campaign_id": "camp_video_streaming_promo",
+      "category": "content_strategy",
+      "insight_text": "Video streaming promotion campaigns see 42% higher subscription rates when featuring user-generated content and authentic testimonials. Authentic voices outperform celebrity endorsements for streaming services.",
+      "confidence_score": 0.91,
+      "data_sources": ["youtube_analytics", "subscription_data", "content_engagement"],
+      "tags": ["video_streaming", "user_generated_content", "testimonials", "authenticity"],
+      "embedding_vector": [0.6789, -0.1234, 0.5678, 0.8901],
+      "related_campaigns": ["camp_streaming_retention", "camp_premium_upgrades"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-12-08T11:30:00Z"
+    },
+    {
+      "id": "insight_007",
+      "campaign_id": "camp_ecommerce_retargeting",
+      "category": "retargeting_optimization",
+      "insight_text": "E-commerce retargeting campaigns show 56% higher conversion rates when personalized product recommendations are based on browsing behavior rather than purchase history alone. Behavioral signals predict intent more accurately.",
+      "confidence_score": 0.88,
+      "data_sources": ["google_analytics", "ecommerce_platform", "user_behavior"],
+      "tags": ["ecommerce", "retargeting", "personalization", "behavioral_targeting"],
+      "embedding_vector": [0.7890, -0.2345, 0.6789, 0.9012],
+      "related_campaigns": ["camp_abandoned_cart", "camp_cross_sell"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-11-22T15:45:00Z"
+    },
+    {
+      "id": "insight_008",
+      "campaign_id": "camp_financial_services_trust",
+      "category": "trust_building",
+      "insight_text": "Financial services campaigns require 4x more social proof elements than other industries to achieve similar conversion rates. Security badges, certifications, and customer testimonials are critical trust signals.",
+      "confidence_score": 0.93,
+      "data_sources": ["financial_analytics", "trust_signals", "conversion_tracking"],
+      "tags": ["financial_services", "trust_building", "social_proof", "security"],
+      "embedding_vector": [0.8901, -0.3456, 0.7890, 0.1234],
+      "related_campaigns": ["camp_banking_security", "camp_investment_platform"],
+      "created_by": "cesai_agent",
+      "last_updated": "2024-12-01T08:20:00Z"
+    }
+  ],
+  "campaign_correlations": [
+    {
+      "correlation_id": "corr_001",
+      "primary_campaign": "camp_facebook_q4_2024",
+      "related_campaigns": ["camp_instagram_q4_2024", "camp_youtube_q4_2024"],
+      "correlation_strength": 0.78,
+      "correlation_type": "cross_platform_synergy",
+      "insight_summary": "Multi-platform campaigns in Q4 show amplified performance when messaging is consistent but platform-optimized"
+    },
+    {
+      "correlation_id": "corr_002", 
+      "primary_campaign": "camp_holiday_retail_2024",
+      "related_campaigns": ["camp_black_friday_2024", "camp_cyber_monday_2024"],
+      "correlation_strength": 0.82,
+      "correlation_type": "seasonal_sequence",
+      "insight_summary": "Sequential holiday campaigns build momentum when audience overlap is managed strategically"
+    }
+  ],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "entity_id": "demo_25_34",
+        "entity_type": "demographic",
+        "properties": {
+          "age_range": "25-34",
+          "high_performing_platforms": ["facebook", "instagram"],
+          "optimal_content_types": ["video", "carousel"],
+          "peak_engagement_times": ["7-9PM", "12-1PM"]
+        }
+      },
+      {
+        "entity_id": "beauty_vertical",
+        "entity_type": "industry",
+        "properties": {
+          "key_success_factors": ["lifestyle_imagery", "emotional_connection", "influencer_partnerships"],
+          "seasonal_peaks": ["spring", "holiday"],
+          "conversion_drivers": ["authenticity", "social_proof", "user_reviews"]
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "source": "demo_25_34",
+        "target": "beauty_vertical", 
+        "relationship_type": "high_affinity",
+        "strength": 0.89
+      }
+    ]
+  },
+  "metadata": {
+    "total_insights": 8,
+    "last_updated": "2025-01-17T00:00:00Z",
+    "coverage_period": "2024-01-01 to 2024-12-31",
+    "data_sources_count": 15,
+    "embedding_dimensions": 4
+  }
+}

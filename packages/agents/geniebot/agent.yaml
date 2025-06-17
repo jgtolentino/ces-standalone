@@ -1,0 +1,69 @@
+name: GenieBot
+codename: geniebot
+description: >
+  AI-powered insight memory and retrieval agent that correlates historical campaign data
+  with current performance metrics. Provides contextual recommendations based on RAG
+  (Retrieval-Augmented Generation) from CESAI insight index.
+model: gpt-4-turbo
+version: 1.0.0
+capabilities:
+  - rag_retrieval
+  - insight_correlation
+  - campaign_memory
+  - contextual_recommendations
+  - historical_analysis
+data_sources:
+  - cesai_rag_index
+  - campaign_performance
+  - historical_insights
+  - knowledge_graph
+functions:
+  - name: search_insights
+    description: Search RAG index for relevant historical insights based on query
+    parameters:
+      - query: string
+      - filters: object
+      - limit: number
+      - similarity_threshold: number
+  - name: correlate_campaigns
+    description: Find correlations between current and historical campaigns
+    parameters:
+      - current_campaign_id: string
+      - correlation_types: array
+      - confidence_threshold: number
+  - name: generate_recommendations
+    description: Generate actionable recommendations based on retrieved insights
+    parameters:
+      - context: object
+      - insight_ids: array
+      - recommendation_type: string
+  - name: update_insight_index
+    description: Add new insights to the RAG index based on current performance
+    parameters:
+      - insight: object
+      - embedding_vector: array
+      - metadata: object
+rag_configuration:
+  index_path: "insights/ces_rag.json"
+  embedding_model: "text-embedding-ada-002"
+  similarity_metric: "cosine"
+  retrieval_k: 5
+  confidence_threshold: 0.7
+memory_system:
+  type: "vector_database"
+  dimensions: 1536
+  update_frequency: "real_time"
+  retention_policy: "indefinite"
+security:
+  jwt_required: true
+  keykey_service: dal
+  data_classification: "business_intelligence"
+output_format:
+  insights: "structured_json"
+  recommendations: "markdown"
+  correlations: "graph_format"
+integration:
+  scout_analytics: true
+  ces_chat: true
+  forecast_panel: true
+  learbot_tutorials: true

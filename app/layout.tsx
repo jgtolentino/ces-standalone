@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import LearnBot from "../components/LearnBot";
+import InsightMemoryPanel from "../components/InsightMemoryPanel";
 
 export const metadata = { title: "Scout Analytics 3.3" };
 
@@ -75,6 +76,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         {/* LearnBot Tutorial Assistant */}
         <LearnBot />
+        
+        {/* GenieBot Insight Memory Assistant */}
+        <InsightMemoryPanel />
       </body>
     </html>
   );
