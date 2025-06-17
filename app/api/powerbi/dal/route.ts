@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { executeQuery } from '../../../../lib/database';
+import { verifyDalJwt } from '../../../../packages/agents/keykey/jwt';
 
 // Dataset registry mapping
 const DATASET_REGISTRY = {
@@ -200,23 +201,15 @@ const DATASET_REGISTRY = {
 
 export async function POST(request: NextRequest) {
   try {
-    // Verify bearer token authentication
-    const authHeader = request.headers.get('authorization');
-    const powerbiToken = process.env.POWERBI_TOKEN;
-    
-    if (!authHeader || !authHeader.startsWith('Bearer ') || !powerbiToken) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Invalid or missing bearer token' },
-        { status: 401 }
-      );
+    // Verify JWT token authentication
+    const auth = request.headers.get("authorization") ?? "";
+    if (!auth.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "missing token" }, { status: 401 });
     }
-    
-    const token = authHeader.substring(7);
-    if (token !== powerbiToken) {
-      return NextResponse.json(
-        { error: 'Unauthorized - Invalid token' },
-        { status: 401 }
-      );
+    try {
+      await verifyDalJwt(auth.slice(7));
+    } catch {
+      return NextResponse.json({ error: "invalid token" }, { status: 401 });
     }
 
     const body = await request.json();
