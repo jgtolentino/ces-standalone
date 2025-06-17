@@ -1,0 +1,199 @@
+scout_v2.1_inventory:
+  pages:
+    count: 8
+    list:
+      - "app/page.tsx (Overview Dashboard)"
+      - "app/scout/page.tsx (Enhanced Scout Dashboard)"
+      - "app/trends/page.tsx (Revenue Trends)"
+      - "app/products/page.tsx (Product Mix / Channel Analytics)"
+      - "app/consumers/page.tsx (Consumer Insights)"
+      - "app/ces/page.tsx (CES Chat)"
+      - "app/creative-analyzer/page.tsx (Creative Analyzer)"
+      - "app/real-campaigns/page.tsx (Real Campaign Analysis)"
+      
+  components:
+    count: 20
+    list:
+      - "components/Overview.tsx"
+      - "components/KpiCard.tsx"
+      - "components/Trends.tsx"
+      - "components/ProductMix.tsx"
+      - "components/Consumers.tsx"
+      - "components/CesChat.tsx"
+      - "components/AskCES.tsx"
+      - "components/CreativeInsightsComponent.tsx"
+      - "components/scout/enhanced-scout-dashboard.tsx"
+      - "components/charts/LineChart.tsx"
+      - "components/charts/StackedBar.tsx"
+      - "components/charts/Heatmap.tsx"
+      - "components/ces/RoleSelector.tsx"
+      - "components/ces/QueryInput.tsx"
+      - "components/ces/InsightPanel.tsx"
+      - "components/ces/FeedbackBar.tsx"
+      - "components/ui/button.tsx"
+      - "components/ui/card.tsx"
+      - "components/ui/input.tsx"
+      - "components/ui/badge.tsx"
+      
+  widgets:
+    count: 15
+    list:
+      - "Executive Summary Section (enhanced-scout-dashboard)"
+      - "Ask Scout AI Interface (enhanced-scout-dashboard)"
+      - "Recent AI Insights Display (enhanced-scout-dashboard)"
+      - "Revenue KPI Card"
+      - "Orders KPI Card"
+      - "AOV KPI Card"
+      - "ROI KPI Card"
+      - "Revenue Trends Line Chart"
+      - "Channel Analytics Stacked Bar Chart"
+      - "Channel Performance Cards"
+      - "Consumer Insights Heatmap"
+      - "Campaign List Grid (real-campaigns)"
+      - "Campaign Deep Analysis Modal"
+      - "Business Effectiveness Score Display"
+      - "Creative Feature Scoring Panel"
+      
+  kpi_cards:
+    count: 12
+    list:
+      - "Total Revenue Card (₱3.84M)"
+      - "Market Share Card (23.4%)"
+      - "Campaign ROI Card (287%)"
+      - "AI Confidence Card (94%)"
+      - "Orders Count Card"
+      - "Average Order Value Card"
+      - "Total Campaigns Card"
+      - "Creative Assets Card"
+      - "Performance Records Card"
+      - "Business Outcomes Card"
+      - "Business Effectiveness Score Card"
+      - "Channel ROI Cards (per channel)"
+      
+  tabs:
+    count: 4
+    list:
+      - "Campaign Objective Selector (conversion/brand/engagement/efficiency)"
+      - "Role Selector Tabs (Executive/Strategist/Creative/Analyst)"
+      - "Dashboard Section Toggles (Executive/Regional/Products/AI)"
+      - "Scout Role Selector (brand_manager/category_manager/regional_director)"
+      
+  filters:
+    count: 10
+    list:
+      - "Search Filter (campaigns/brands)"
+      - "Industry Filter Dropdown"
+      - "Region Filter Dropdown"
+      - "Role Context Filter"
+      - "Date Range Filter (implicit)"
+      - "Campaign Type Filter"
+      - "Brand Filter (context-based)"
+      - "Channel Filter (implicit)"
+      - "Business Priority Sliders (9 priorities)"
+      - "Creative Feature Score Sliders (14 features)"
+      
+  functions:
+    count: 25
+    list:
+      - "handleAskScout (AI query handler)"
+      - "handleInsightFeedback (feedback collection)"
+      - "fetchKPIData (real-time KPI updates)"
+      - "toggleSection (expand/collapse sections)"
+      - "analyzeCreative (creative analysis)"
+      - "loadData (campaign data loader)"
+      - "analyzeCampaign (deep campaign analysis)"
+      - "handleSubmit (form submissions)"
+      - "handleSuggestedQuery (query suggestions)"
+      - "handleRoleChange (role switching)"
+      - "handleScoreChange (score updates)"
+      - "handlePriorityChange (priority updates)"
+      - "getGradeColor (visual feedback)"
+      - "getScoreColor (score visualization)"
+      - "getConfidenceColor (confidence visualization)"
+      - "formatTimestamp (time formatting)"
+      - "fetchDAL (data access layer)"
+      - "executeQuery (database queries)"
+      - "checkDatabaseConnection (health check)"
+      - "cn (className utility)"
+      - "getColorClasses (dynamic styling)"
+      - "getScoreBackground (score styling)"
+      - "validateInsight (insight validation)"
+      - "generatePrompt (AI prompting)"
+      - "getRelevantWidgets (widget recommendations)"
+      
+  api_endpoints:
+    count: 11
+    list:
+      - "/api/analytics (KPI data)"
+      - "/api/ask-scout (Scout AI queries)"
+      - "/api/ask-ces (CES AI queries)"
+      - "/api/campaign-analysis (campaign analytics)"
+      - "/api/campaign-analytics (alternative endpoint)"
+      - "/api/campaigns (campaign data)"
+      - "/api/creative-analysis (creative scoring)"
+      - "/api/ces/chat (CES chat interface)"
+      - "/api/kpi/overview (overview metrics)"
+      - "/api/powerbi/dal (PowerBI data access)"
+      - "/api/health (health check)"
+      
+  interactive_elements:
+    count: 28
+    list:
+      - "Ask Scout Input Field"
+      - "Ask Scout Submit Button"
+      - "Ask CES Input Field"
+      - "Ask CES Submit Button"
+      - "Suggested Query Buttons (5 per widget)"
+      - "Role Selector Buttons (4 roles)"
+      - "Campaign Type Buttons (4 types)"
+      - "Insight Feedback Buttons (thumbs up/down)"
+      - "Section Toggle Buttons"
+      - "Refresh Analysis Button"
+      - "Deep Analysis Button"
+      - "Ask Another Question Button"
+      - "Search Input Field"
+      - "Industry Filter Select"
+      - "Region Filter Select"
+      - "Creative Feature Sliders (14)"
+      - "Business Priority Sliders (9)"
+      - "Analyze Business Effectiveness Button"
+      - "Modal Close Button"
+      - "Scout Role Select Dropdown"
+      - "Export/Download Button (implied)"
+      - "Pagination Controls (implied)"
+      - "Sort Controls (implied)"
+      - "Date Range Picker (implied)"
+      - "Tooltip Hover Areas"
+      - "Expandable Cards"
+      - "Loading Spinners"
+      - "Error Retry Buttons"
+      
+  data_visualizations:
+    count: 8
+    list:
+      - "Revenue Trends Line Chart"
+      - "Channel Performance Stacked Bar Chart"
+      - "Consumer Demographics Heatmap"
+      - "KPI Trend Indicators (+/- percentages)"
+      - "Business Score Progress Bars"
+      - "Confidence Level Meters"
+      - "ROI Comparison Bars"
+      - "Campaign Performance Grid"
+      
+  ai_features:
+    count: 6
+    list:
+      - "Ask Scout AI Assistant"
+      - "Ask CES AI Assistant"
+      - "Role-based Prompt Engineering"
+      - "Insight Validation System"
+      - "Business Outcome Prediction"
+      - "Creative Effectiveness Scoring"
+      
+  realtime_features:
+    count: 4
+    list:
+      - "30-second KPI refresh interval"
+      - "Live campaign status updates"
+      - "Real-time AI confidence scoring"
+      - "Dynamic insight generation"

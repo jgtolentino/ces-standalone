@@ -1,0 +1,58 @@
+name: Repository Summary Workflow
+description: Generate comprehensive repository documentation
+version: 1.0.0
+
+triggers:
+  - command: "summarize"
+  - command: "repo summary"
+  - command: "document project"
+
+steps:
+  - name: "Scan Structure"
+    type: "analyze"
+    description: "Scan and analyze repository file structure"
+    prompt: "Analyze the repository structure, identify main directories, and understand the project organization."
+    timeout: 30
+
+  - name: "Identify Technologies"
+    type: "analyze"
+    description: "Identify technologies and frameworks used"
+    prompt: "Identify all technologies, frameworks, languages, and tools used in this project based on files and dependencies."
+    timeout: 30
+
+  - name: "Extract Features"
+    type: "analyze"
+    description: "Extract main features and functionality"
+    prompt: "Analyze the codebase to extract and describe the main features, functionality, and capabilities of this project."
+    timeout: 45
+
+  - name: "Document API"
+    type: "analyze"
+    description: "Document API endpoints and interfaces"
+    prompt: "Identify and document any API endpoints, public interfaces, or key functions that other developers would need to know about."
+    timeout: 30
+
+  - name: "Generate README"
+    type: "generate"
+    description: "Generate comprehensive README documentation"
+    prompt: "Generate a comprehensive README.md file with project description, setup instructions, usage examples, and developer documentation."
+    timeout: 60
+
+  - name: "Create Architecture Diagram"
+    type: "generate"
+    description: "Create project architecture overview"
+    prompt: "Generate a textual description of the project architecture that could be used to create diagrams or visual representations."
+    timeout: 30
+
+outputs:
+  - type: "documentation"
+    filename: "README.md"
+  - type: "architecture"
+    filename: "ARCHITECTURE.md"
+  - type: "api-docs"
+    filename: "API.md"
+
+settings:
+  parallel: false
+  continueOnError: true
+  saveResults: true

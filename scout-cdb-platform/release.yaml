@@ -1,0 +1,111 @@
+# Scout Analytics Power BI Integration Release Configuration
+# Version: 3.3.0
+
+release:
+  version: "3.3.0"
+  name: "Scout Advisor UI Integration"
+  date: "2025-06-17"
+  type: "major"
+  
+metadata:
+  title: "Power BI Integration with Scout Advisor UI Theme"
+  description: "Complete Power BI integration featuring Scout Advisor UI theme matching, DAL connectivity, and enterprise deployment automation"
+  author: "Scout Analytics Team"
+  
+components:
+  powerbi_theme:
+    version: "3.3.0"
+    file: "themes/pbix_config_scout_advisor.json"
+    features:
+      - "Navigation bar blue (#1D4ED8) matching Scout Advisor UI"
+      - "KPI highlight cards with semantic colors"
+      - "Inter font family integration"
+      - "Professional card styling and spacing"
+    
+  dal_integration:
+    version: "1.0.0"
+    endpoint: "api/powerbi/dal/route.ts"
+    datasets:
+      - "kpi_revenue_2024"
+      - "campaign_performance" 
+      - "audience_insights"
+      - "channel_analytics"
+      - "qa_validation_logs"
+    features:
+      - "Bearer token authentication"
+      - "Dynamic filtering support"
+      - "Multi-query type support"
+      - "Error handling and validation"
+    
+  powerbi_functions:
+    dynamic_function: "powerbi/FetchFromDAL.m"
+    static_connector: "powerbi/DataSource.m"
+    features:
+      - "Environment variable injection"
+      - "Comprehensive documentation"
+      - "Error handling"
+      - "Multi-dataset support"
+    
+  deployment:
+    script: "static_deploy/generate_pbix_connected.sh"
+    features:
+      - "Automated file generation"
+      - "Environment validation"
+      - "Theme application"
+      - "Deployment instructions"
+      - "File preservation"
+
+breaking_changes:
+  - "New theme file format (Scout Advisor specific)"
+  - "Updated DAL endpoint structure"
+  - "Environment variable requirements"
+
+migration_guide:
+  from: "3.2.0"
+  to: "3.3.0"
+  steps:
+    - "Place original .pbix file in static_deploy/"
+    - "Set DAL_ENDPOINT and POWERBI_TOKEN environment variables"
+    - "Run generate_pbix_connected.sh script"
+    - "Import Scout Advisor theme in Power BI Desktop"
+    - "Configure FetchFromDAL function"
+
+compatibility:
+  power_bi_desktop: ">=2.0"
+  power_bi_service: ">=1.0"
+  browsers: ["Chrome", "Firefox", "Safari", "Edge"]
+  
+security:
+  authentication: "Bearer token"
+  encryption: "HTTPS only"
+  data_protection: "Environment variable isolation"
+  
+testing:
+  unit_tests: "Passed"
+  integration_tests: "Passed"
+  theme_validation: "Passed"
+  dal_connectivity: "Passed"
+  
+deployment_targets:
+  development: "localhost:3000"
+  staging: "staging.scout-analytics.com"
+  production: "scout-analytics.vercel.app"
+  
+rollback_plan:
+  strategy: "File-based rollback"
+  steps:
+    - "Restore original .pbix files"
+    - "Revert to previous theme"
+    - "Update environment variables"
+  
+monitoring:
+  metrics:
+    - "DAL endpoint response times"
+    - "Power BI refresh success rates"
+    - "Theme application success"
+    - "User adoption rates"
+  
+support:
+  documentation: "static_deploy/README.md"
+  troubleshooting: "DEPLOYMENT_INSTRUCTIONS.md"
+  contact: "Scout Analytics Team"

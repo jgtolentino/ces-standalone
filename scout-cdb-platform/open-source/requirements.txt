@@ -1,0 +1,9 @@
+# Scout Analytics v3.3.0 - Open Source Dashboard Dependencies
+# Streamlit-based alternative to Power BI
+
+streamlit>=1.28.0
+pandas>=2.0.0
+plotly>=5.15.0
+requests>=2.31.0
+numpy>=1.24.0
+python-dotenv>=1.0.0

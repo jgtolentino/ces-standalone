@@ -1,0 +1,16 @@
+# ScoutAnalytics_v3.2.0.pbix Placeholder
+
+This file represents where your original Power BI file should be placed.
+
+To use the final package:
+1. Copy your existing ScoutAnalytics_v3.2.0.pbix file to this directory
+2. Rename it to exactly: ScoutAnalytics_v3.2.0.pbix
+3. Run: ./generate_pbix_connected.sh
+
+The script will:
+- Copy your original .pbix to ScoutAnalytics_v3.3.0.pbix
+- Apply Scout Advisor theme
+- Configure DAL connectivity
+- Generate deployment instructions
+
+Your original v3.2.0 file will remain unchanged.
