@@ -9,5 +9,16 @@
     "SYSTEM_ID": "scout-analytics-v3.1.0",
     "SYSTEM_NAME": "Scout Analytics v3.1.0",
     "DEPLOYMENT_TIMESTAMP": "2025-06-17T07:30:00Z"
-  }
+  },
+  "headers": [
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
