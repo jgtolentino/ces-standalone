@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import MarketShareChart from './MarketShareChart';
 import RegionalMap from './RegionalMap';
+import DatabankSection from './DatabankSection';
 
 interface DashboardSection {
   id: string;
@@ -17,7 +18,7 @@ const sections: DashboardSection[] = [
   { id: 'trends', name: 'Trends', icon: '📈', path: '/scout/trends' },
   { id: 'product-mix', name: 'Product Mix', icon: '🛒', path: '/scout/products' },
   { id: 'consumers', name: 'Consumers', icon: '👥', path: '/scout/consumers' },
-  { id: 'databank', name: 'Databank', icon: '🗄️', path: '/databank' },
+  { id: 'databank', name: 'Databank', icon: '🗄️', path: '#databank' },
   { id: 'retailbot', name: 'RetailBot', icon: '🤖', path: '/scout/retailbot' }
 ];
 
@@ -41,6 +42,8 @@ function FilterBar({ currentSection }: FilterBarProps) {
         return ['dateRange', 'brand', 'category'];
       case 'consumers':
         return ['dateRange', 'region'];
+      case 'databank':
+        return []; // Databank has its own filter bar
       default:
         return ['dateRange'];
     }
@@ -496,6 +499,8 @@ export default function ScoutDashboardV3() {
         return <ProductMixSection />;
       case 'consumers':
         return <ConsumersSection />;
+      case 'databank':
+        return <DatabankSection />;
       case 'retailbot':
         return <RetailBotSection />;
       default:
@@ -513,7 +518,7 @@ export default function ScoutDashboardV3() {
       />
       
       <div className="flex-1 flex flex-col overflow-hidden">
-        <FilterBar currentSection={currentSection} />
+        {currentSection !== 'databank' && <FilterBar currentSection={currentSection} />}
         
         <main className="flex-1 overflow-y-auto">
           <div className="p-6">
