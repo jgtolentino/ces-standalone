@@ -19,8 +19,8 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
 export async function getKPIData() {
   try {
     const { data, error } = await supabaseAdmin
-      .from('transactions')
-      .select('revenue, quantity')
+      .from('scout_transactions')
+      .select('transaction_id, total_amount, transaction_date')
       .gte('transaction_date', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()) // Last 30 days
     
     if (error) throw error
@@ -34,14 +34,14 @@ export async function getKPIData() {
       }
     }
     
-    const totalRevenue = data.reduce((sum, row) => sum + (row.revenue || 0), 0)
+    const totalRevenue = data.reduce((sum, row) => sum + (row.total_amount || 0), 0)
     const totalOrders = data.length
     const aov = totalOrders > 0 ? totalRevenue / totalOrders : 0
     
     return {
-      revenue: totalRevenue,
+      revenue: Math.round(totalRevenue),
       orders: totalOrders,
-      aov: aov,
+      aov: Math.round(aov),
       roi: 287 // Mock ROI for now
     }
   } catch (error) {
