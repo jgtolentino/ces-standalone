@@ -1,0 +1,294 @@
+# Scout Analytics Edge Functions Map
+# Auto-generated mapping for Pulser and GitHub documentation
+
+version: "2.0"
+generated: "2025-01-25"
+project: "tbwa-databank"
+
+functions:
+  # Core AI Functions
+  retailbot:
+    module: "RetailBot NLP Interface"
+    agent: "RetailBot"
+    description: "Natural language analytics queries"
+    input:
+      prompt: string
+      context?: object
+      date_range?: object
+    output:
+      results: object[]
+      insights: string[]
+      sql_generated?: string
+    rate_limit: 100/min
+    cache_ttl: 300
+    
+  adsbot:
+    module: "Brand Comparison"
+    agent: "AdsBot"
+    description: "Campaign performance and SKU attribution"
+    input:
+      campaign_id?: string
+      brand?: string
+      date_range?: object
+    output:
+      performance: object
+      attribution: object[]
+      roi_metrics: object
+    rate_limit: 75/min
+    
+  ai-categorize:
+    module: "Product Mix Analysis"
+    agent: "Categorizer"
+    description: "ML-based category and sentiment classification"
+    input:
+      text: string
+      type: "category" | "sentiment" | "both"
+      confidence_threshold?: number
+    output:
+      category: string
+      sentiment?: string
+      confidence: number
+      alternatives: object[]
+    rate_limit: 200/min
+    
+  ocr-parser:
+    module: "Receipt Processing"
+    agent: "OCR Agent"
+    description: "Extract structured data from receipts"
+    input:
+      image_url?: string
+      base64?: string
+      enhance?: boolean
+    output:
+      items: object[]
+      total: number
+      store_info: object
+      timestamp: string
+    rate_limit: 50/min
+    
+  parse-files:
+    module: "Data Import Pipeline"
+    agent: "Parser"
+    description: "Multi-format document parsing"
+    input:
+      file_url: string
+      type: "csv" | "excel" | "json" | "pdf"
+      schema?: object
+    output:
+      data: object[]
+      metadata: object
+      errors: string[]
+    rate_limit: 25/min
+    
+  suki-bot:
+    module: "Market Simulation"
+    agent: "Suki"
+    description: "Sari-sari store ecosystem simulator"
+    input:
+      scenario: object
+      parameters: object
+      iterations?: number
+    output:
+      simulation: object
+      predictions: object[]
+      recommendations: string[]
+    rate_limit: 10/min
+
+  # Geospatial Functions
+  municipalities-geojson:
+    module: "Choropleth Map"
+    agent: "Basher"
+    description: "Generate GeoJSON for Philippine municipalities"
+    input:
+      region?: string
+      metric?: string
+      simplify?: boolean
+    output: "GeoJSON FeatureCollection"
+    cache_ttl: 3600
+    
+  sari-sari-expert:
+    module: "Location Intelligence"
+    agent: "Basher"
+    description: "Barangay-level retail insights"
+    input:
+      barangay_id?: string
+      query: string
+      include_demographics?: boolean
+    output:
+      insights: object
+      recommendations: string[]
+      nearby_stores: object[]
+    rate_limit: 50/min
+    
+  enhanced-sari-sari-expert:
+    module: "Consumer Profiling Geo"
+    agent: "Basher"
+    description: "Enriched location data with demographics"
+    input:
+      location: object
+      demographics: boolean
+      overlay_skus?: boolean
+    output:
+      enriched_data: object
+      overlays: object[]
+      spend_per_capita: number
+      store_density: number
+    rate_limit: 30/min
+
+  # Utility Functions
+  sql-certifier:
+    module: "Security Layer"
+    agent: "Guardian"
+    description: "Validate SQL queries before execution"
+    input:
+      query: string
+      allowed_tables?: string[]
+      max_rows?: number
+    output:
+      validated: boolean
+      sanitized_query?: string
+      risks: string[]
+    rate_limit: 500/min
+    
+  aladdin:
+    module: "Agent Orchestration"
+    agent: "Aladdin"
+    description: "Transform and route agent requests"
+    input:
+      agent_request: object
+      target_agent: string
+      transform_rules?: object
+    output:
+      transformed_request: object
+      routing_path: string[]
+    rate_limit: 100/min
+    
+  make-server-anthropic:
+    module: "Claude Integration"
+    agent: "Claude Proxy"
+    description: "Claude API wrapper with context"
+    input:
+      messages: object[]
+      model?: string
+      max_tokens?: number
+    output:
+      response: string
+      usage: object
+    rate_limit: 20/min
+    
+  make-server-groq:
+    module: "Groq Integration"
+    agent: "Groq Proxy"
+    description: "Groq LLM API wrapper"
+    input:
+      prompt: string
+      model?: string
+      temperature?: number
+    output:
+      completion: string
+      metadata: object
+    rate_limit: 30/min
+    
+  geojson:
+    module: "Data Transformation"
+    agent: "Transformer"
+    description: "Convert data to GeoJSON format"
+    input:
+      data: object[]
+      geometry_field: string
+      properties?: string[]
+    output: "GeoJSON object"
+    rate_limit: 200/min
+    
+  jsonify:
+    module: "Response Formatter"
+    agent: "Formatter"
+    description: "Standardize API responses"
+    input:
+      data: any
+      format?: string
+      compress?: boolean
+    output:
+      formatted: object
+      metadata: object
+    rate_limit: 1000/min
+
+# SQL Functions (Database-resident)
+sql_functions:
+  get_scout_demographics:
+    module: "Demographics API"
+    description: "Aggregate customer demographics"
+    parameters:
+      - date_from: date
+      - date_to: date
+    returns:
+      - demographic_type: text
+      - demographic_value: text
+      - customer_count: integer
+      - transaction_count: integer
+      - total_spend: decimal
+      - avg_spend: decimal
+
+# Module Definitions
+modules:
+  retailbot_nlp:
+    name: "RetailBot NLP Interface"
+    functions: ["retailbot", "ai-categorize"]
+    routes: ["/retailbot", "/api/retailbot/chat"]
+    
+  geographic_analytics:
+    name: "Geographic Analytics Suite"
+    functions: ["municipalities-geojson", "sari-sari-expert", "enhanced-sari-sari-expert"]
+    routes: ["/geographic-analysis", "/api/scout/regional-performance"]
+    
+  data_pipeline:
+    name: "Data Import & Processing"
+    functions: ["parse-files", "ocr-parser", "jsonify", "sql-certifier"]
+    routes: ["/databank", "/api/scout/databank"]
+    
+  market_intelligence:
+    name: "Market Intelligence Engine"
+    functions: ["adsbot", "suki-bot", "ai-categorize"]
+    routes: ["/brand-comparison", "/api/scout/market-share"]
+
+# Orchestration Rules
+orchestration:
+  retailbot_flow:
+    trigger: "retailbot"
+    sequence:
+      - sql-certifier
+      - get_scout_demographics
+      - jsonify
+      
+  import_flow:
+    trigger: "parse-files"
+    sequence:
+      - ai-categorize
+      - sql-certifier
+      - jsonify
+      
+  geo_analysis_flow:
+    trigger: "sari-sari-expert"
+    sequence:
+      - municipalities-geojson
+      - enhanced-sari-sari-expert
+      - jsonify
+
+# Monitoring Configuration
+monitoring:
+  critical_functions:
+    - retailbot
+    - parse-files
+    - municipalities-geojson
+    - sql-certifier
+    
+  alerts:
+    error_rate_threshold: 0.05
+    latency_threshold_ms: 3000
+    rate_limit_buffer: 0.8
+    
+  metrics:
+    - function_invocations
+    - error_rates
+    - response_times
+    - cache_hit_rates
