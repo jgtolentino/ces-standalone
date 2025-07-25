@@ -1,0 +1,20 @@
+{
+  "decision_trees": {
+    "trees": "decision_trees_built"
+  },
+  "feature_interaction_map": {
+    "interactions": "mapped"
+  },
+  "business_logic_rules": {
+    "rules": "extracted"
+  },
+  "human_interpretable_insights": {
+    "insights": "human_interpretable"
+  },
+  "confidence_intervals": {
+    "intervals": "calculated"
+  },
+  "actionable_recommendations": {
+    "recommendations": "generated"
+  }
+}

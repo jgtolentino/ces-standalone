@@ -1,0 +1,51 @@
+version: "3.1.0"
+dashboard:
+  name: "Scout Analytics"
+  branding:
+    remove_pulser: true
+    client_mode: true
+  navigation:
+    layout: "side"
+    pages:
+      - Overview
+      - Trends
+      - Product Mix
+      - Consumers
+      - RetailBot
+  filters:
+    layout: "top-bar"
+    live_data: true
+  charts:
+    regional_map:
+      source: "geo_revenue_view"
+      drill_down_enabled: true
+    category_revenue:
+      source: "category_revenue_summary"
+    sku_substitution:
+      type: "sankey"
+      fallback: "substitution_table"
+    basket_distribution:
+      source: "basket_size_distribution"
+    treemap:
+      type: "transaction_share"
+      sizing: "volume"
+      coloring: "performance_delta"
+  ai_insights:
+    provider: "azure-openai"
+    derived_from: "streaming_data"
+    modules:
+      - learnbot
+      - retailbot
+    dev_only:
+      - writebot
+      - testbot
+    context_analysis:
+      - color_association
+      - cultural_nlu_patterns
+      - nickname_alias_detection
+  qa_required:
+    - regional_map
+    - category_revenue
+    - sku_substitution
+    - basket_distribution
+    - ai_response

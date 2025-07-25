@@ -1,0 +1,70 @@
+{
+  "automated_extraction": {
+    "total_campaigns": 500,
+    "total_metrics": 46701,
+    "total_assets": 4427,
+    "data_quality": 96.8
+  },
+  "automated_features": {
+    "sentiment_polarity": {
+      "source": "automated_nlp",
+      "correlation_strength": 0.352,
+      "business_outcomes": [
+        "brand_recall",
+        "roi",
+        "sentiment",
+        "brand_equity"
+      ]
+    },
+    "performance_score": {
+      "source": "automated_calculation",
+      "correlation_strength": 0.352,
+      "business_outcomes": [
+        "all_outcomes"
+      ]
+    },
+    "emotional_intensity": {
+      "source": "automated_emotional_analysis",
+      "correlation_strength": 0.352,
+      "business_outcomes": [
+        "roi",
+        "sentiment",
+        "brand_equity"
+      ]
+    },
+    "platform_adaptation": {
+      "source": "automated_technical_analysis",
+      "correlation_strength": 0.176,
+      "business_outcomes": [
+        "engagement",
+        "conversion_rate",
+        "behavioral_response"
+      ]
+    },
+    "completion_rate": {
+      "source": "automated_performance_metrics",
+      "correlation_strength": 0.176,
+      "business_outcomes": [
+        "engagement",
+        "conversion_rate"
+      ]
+    }
+  },
+  "business_outcome_coverage": [
+    "engagement",
+    "brand_recall",
+    "conversion_rate",
+    "roi",
+    "sentiment",
+    "cac",
+    "media_efficiency",
+    "behavioral_response",
+    "brand_equity"
+  ],
+  "automated_advantages": {
+    "scalability": "500+ campaigns in 5 seconds",
+    "data_quality": "96.8% completeness",
+    "real_time_processing": "ETL pipeline automation",
+    "multi_outcome_analysis": "9 business metrics simultaneously"
+  }
+}

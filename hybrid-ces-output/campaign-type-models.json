@@ -1,0 +1,107 @@
+{
+  "purpose_driven": {
+    "april_performance": {
+      "r_squared": 0.65,
+      "accuracy": "highest_predictability"
+    },
+    "feature_weights": {
+      "cultural_relevance": 0.455,
+      "emotional_impact": 0.428,
+      "narrative_construction": 0.376,
+      "message_clarity": 0.287,
+      "visual_distinctiveness": 0.245
+    },
+    "interaction_effects": {
+      "emotional_x_cultural": 1.27,
+      "message_x_narrative": 0.198
+    },
+    "automated_mapping": {
+      "cultural_relevance": "sentiment_polarity",
+      "emotional_impact": "emotional_intensity",
+      "narrative_construction": "text_readability * brand_integration",
+      "message_clarity": "text_readability",
+      "visual_distinctiveness": "visual_distinctness"
+    },
+    "hybrid_formula": "\n          (sentiment_polarity * 0.455) + \n          (emotional_intensity * 0.428) + \n          ((text_readability * brand_integration) * 0.376) + \n          (text_readability * 0.287) + \n          (visual_distinctness * 0.245) + \n          (emotional_intensity * sentiment_polarity * 1.27)\n        ",
+    "use_cases": [
+      "CSR campaigns",
+      "sustainability",
+      "social purpose",
+      "cause marketing"
+    ]
+  },
+  "brand_building": {
+    "april_performance": {
+      "r_squared": 0.39,
+      "accuracy": "moderate_predictability"
+    },
+    "feature_weights": {
+      "emotional_impact": 0.412,
+      "visual_distinctiveness": 0.387,
+      "brand_assets": 0.341,
+      "narrative_construction": 0.298,
+      "execution_quality": 0.243
+    },
+    "interaction_effects": {
+      "visual_x_brand": 0.225,
+      "emotional_x_narrative": 0.198
+    },
+    "automated_mapping": {
+      "emotional_impact": "emotional_intensity",
+      "visual_distinctiveness": "visual_distinctness",
+      "brand_assets": "brand_integration",
+      "narrative_construction": "text_readability",
+      "execution_quality": "performance_score"
+    },
+    "hybrid_formula": "\n          (emotional_intensity * 0.412) + \n          (visual_distinctness * 0.387) + \n          (brand_integration * 0.341) + \n          (text_readability * 0.298) + \n          (performance_score * 0.243) + \n          (visual_distinctness * brand_integration * 0.225)\n        ",
+    "use_cases": [
+      "brand awareness",
+      "brand positioning",
+      "brand refresh",
+      "corporate branding"
+    ]
+  },
+  "promotional": {
+    "april_performance": {
+      "r_squared": 0.24,
+      "accuracy": "most_variable"
+    },
+    "feature_weights": {
+      "message_clarity": 0.436,
+      "call_to_action": 0.389,
+      "channel_optimization": 0.342,
+      "creative_innovation": 0.257,
+      "brand_assets": 0.219
+    },
+    "interaction_effects": {
+      "message_x_cta": 0.247,
+      "creative_x_channel": 0.176
+    },
+    "automated_mapping": {
+      "message_clarity": "text_readability",
+      "call_to_action": "call_to_action_strength",
+      "channel_optimization": "platform_adaptation",
+      "creative_innovation": "visual_distinctness",
+      "brand_assets": "brand_integration"
+    },
+    "hybrid_formula": "\n          (text_readability * 0.436) + \n          (call_to_action_strength * 0.389) + \n          (platform_adaptation * 0.342) + \n          (visual_distinctness * 0.257) + \n          (brand_integration * 0.219) + \n          (text_readability * call_to_action_strength * 0.247)\n        ",
+    "use_cases": [
+      "sales promotion",
+      "product launch",
+      "seasonal campaigns",
+      "direct response"
+    ]
+  },
+  "model_selection_logic": {
+    "automatic_detection": "Use campaign objectives and content analysis to auto-classify",
+    "manual_override": "Allow creative teams to specify campaign type",
+    "hybrid_campaigns": "Apply weighted combination for multi-objective campaigns",
+    "validation": "A/B test model predictions against actual performance"
+  },
+  "deployment_approach": {
+    "phase_1": "Deploy purpose-driven model (highest April R²)",
+    "phase_2": "Add brand building model with human creative oversight",
+    "phase_3": "Implement promotional model with enhanced CTA detection",
+    "monitoring": "Track model performance by campaign type and adjust weights"
+  }
+}

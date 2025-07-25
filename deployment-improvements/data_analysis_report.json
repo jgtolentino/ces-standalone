@@ -1,0 +1,28 @@
+{
+  "campaignsWithMetrics": 500,
+  "missingSPerformancePercentage": 0,
+  "columnMismatches": {
+    "missing_in_db": [
+      "name",
+      "industry",
+      "type",
+      "region",
+      "start_date",
+      "end_date",
+      "tenant_id",
+      "created_at"
+    ],
+    "missing_in_csv": [
+      "channel",
+      "spent",
+      "roi",
+      "reach",
+      "conversions",
+      "impressions",
+      "clicks",
+      "ctr"
+    ]
+  },
+  "totalCampaigns": 500,
+  "totalMetrics": 46701
+}

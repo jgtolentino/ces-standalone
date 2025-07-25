@@ -1,0 +1,193 @@
+version: 1.3.0
+name: CES Dashboard – Creative Effectiveness System
+description: >
+  Enterprise-grade AI analytics dashboard for campaign scoring, prompt-based insight generation, and demographic breakdowns.
+
+layout:
+  pages:
+    - id: overview
+      path: /ces/overview
+      file: pages/overview.tsx
+      components:
+        - CreativeScoreCard
+        - RadarChart
+        - CampaignPhaseWidget
+        - InsightCard
+    - id: scorecard
+      path: /ces/scorecard
+      file: pages/scorecard.tsx
+      components:
+        - CreativeScoreCard
+        - SHAPChart
+        - InsightCard
+        - TimelineSegmentMap
+    - id: prompts
+      path: /ces/prompts
+      file: pages/prompts.tsx
+      components:
+        - PromptPanel
+        - CESChat
+        - PromptPresetCard
+        - PromptHistoryPanel
+    - id: insights
+      path: /ces/insights
+      file: pages/insights.tsx
+      components:
+        - GlobalSHAPChart
+        - VersionDiffViewer
+        - FeatureDistributionChart
+        - ConfidenceMeter
+    - id: segments
+      path: /ces/segments
+      file: pages/segments.tsx
+      components:
+        - MapRegionDrilldown
+        - SegmentDrilldown
+        - PersonaCard
+        - DeltaChart
+
+filters:
+  shared_state: zustand
+  types:
+    - campaign
+    - format
+    - creative_phase
+    - region
+    - segment
+    - date_range
+
+ai_features:
+  prompt_chat: Ask CES
+  scoring: SHAP Weighted Model
+  fix_recommendations: true
+  insight_cards: true
+  closed_loop_tracking: true
+  copy_suggestions: true
+
+deployment:
+  url: https://ces-mvp.vercel.app/
+  powered_by: Pulser + Vercel + Supabase
+  secured_env: true
+  git_repo: https://github.com/jgtolentino/ces-standalone
+
+authors:
+  - InsightPulseAI
+  - TBWA\SMP
+
+# Component specifications for production alignment
+components:
+  CreativeScoreCard:
+    props:
+      - score: number
+      - metric: string
+      - trend: number
+      - confidence: number
+    features:
+      - hover_tooltip
+      - click_drilldown
+      - trend_sparkline
+
+  RadarChart:
+    props:
+      - data: array
+      - dimensions: array
+      - colors: array
+    features:
+      - interactive_legend
+      - dimension_toggle
+      - export_png
+
+  SHAPChart:
+    props:
+      - features: array
+      - values: array
+      - baseline: number
+    features:
+      - positive_negative_split
+      - feature_importance_sort
+      - explanation_tooltip
+
+  PromptPanel:
+    props:
+      - onSubmit: function
+      - placeholder: string
+      - history: array
+    features:
+      - auto_complete
+      - template_insertion
+      - voice_input
+
+  CESChat:
+    props:
+      - messages: array
+      - onMessage: function
+      - typing: boolean
+    features:
+      - markdown_support
+      - code_highlighting
+      - export_conversation
+
+  MapRegionDrilldown:
+    props:
+      - regions: array
+      - metrics: object
+      - zoom_level: number
+    features:
+      - click_drill_down
+      - hover_metrics
+      - region_selection
+
+# Business logic integration
+business_rules:
+  scoring_methodology: "Hybrid CES model combining April creative insights with automated feature extraction"
+  confidence_thresholds:
+    high: ">= 85%"
+    medium: "70-84%"
+    low: "< 70%"
+  
+  campaign_types:
+    - purpose_driven
+    - brand_building
+    - promotional
+  
+  feature_weights:
+    emotional_x_cultural: 1.27
+    message_x_cta: 0.247
+    visual_x_brand: 0.225
+    sentiment_polarity: 0.352
+    performance_score: 0.352
+    emotional_intensity: 0.352
+
+# API endpoints for CES functionality
+api_endpoints:
+  ces_score: "/api/ces/score"
+  prompt_chat: "/api/ces/chat"
+  insights: "/api/ces/insights"
+  segments: "/api/ces/segments"
+  campaigns: "/api/ces/campaigns"
+
+# Environment requirements
+environment:
+  node_version: ">=18.0.0"
+  next_version: "^14.0.0"
+  react_version: "^18.0.0"
+  dependencies:
+    - zustand
+    - recharts
+    - framer-motion
+    - tailwindcss
+    - lucide-react
+
+# Quality gates for production
+quality_gates:
+  lighthouse_score: ">= 90"
+  test_coverage: ">= 80%"
+  bundle_size: "< 1MB"
+  load_time: "< 3s"
+  
+# Security requirements
+security:
+  env_variables_encrypted: true
+  api_rate_limiting: true
+  cors_configured: true
+  content_security_policy: true

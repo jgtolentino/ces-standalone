@@ -1,0 +1,96 @@
+{
+  "top_interaction_effects": {
+    "emotional_x_cultural": {
+      "importance": 1.27,
+      "description": "Emotional Impact × Cultural Relevance - highest predictor",
+      "methodology": "Human-curated creative ratings with interaction modeling",
+      "campaign_types": [
+        "Brand Building",
+        "Purpose-Driven"
+      ]
+    },
+    "message_x_cta": {
+      "importance": 0.247,
+      "description": "Message Clarity × Call to Action synergy",
+      "methodology": "Manual assessment of message-action alignment",
+      "campaign_types": [
+        "Promotional"
+      ]
+    },
+    "visual_x_brand": {
+      "importance": 0.225,
+      "description": "Visual Distinctiveness × Brand Assets integration",
+      "methodology": "Expert evaluation of visual-brand coherence",
+      "campaign_types": [
+        "Brand Building"
+      ]
+    }
+  },
+  "core_creative_features": {
+    "emotional_impact": {
+      "weight": 0.367,
+      "measurement": "Human expert rating 1-10",
+      "description": "Emotional resonance and connection strength",
+      "validation": "Cross-validated across 329 campaigns"
+    },
+    "visual_distinctiveness": {
+      "weight": 0.287,
+      "measurement": "Visual standout assessment 1-10",
+      "description": "Visual memorability and differentiation",
+      "validation": "Strong predictor across all campaign types"
+    },
+    "message_clarity": {
+      "weight": 0.309,
+      "measurement": "Message comprehension rating 1-10",
+      "description": "Clear communication of key message",
+      "validation": "Particularly important for promotional campaigns"
+    },
+    "cultural_relevance": {
+      "weight": 0.254,
+      "measurement": "Cultural context appropriateness 1-10",
+      "description": "Alignment with cultural moments/values",
+      "validation": "Critical for purpose-driven campaigns"
+    },
+    "brand_assets": {
+      "weight": 0.213,
+      "measurement": "Brand element integration quality 1-10",
+      "description": "Effective use of brand elements",
+      "validation": "Strong across brand building campaigns"
+    }
+  },
+  "campaign_type_insights": {
+    "purpose_driven": {
+      "r_squared": 0.65,
+      "top_features": [
+        "cultural_relevance",
+        "emotional_impact",
+        "message_clarity"
+      ],
+      "insight": "Highest predictability, driven by cultural alignment"
+    },
+    "brand_building": {
+      "r_squared": 0.39,
+      "top_features": [
+        "emotional_impact",
+        "visual_distinctiveness",
+        "brand_assets"
+      ],
+      "insight": "Emphasizes emotional connection and visual standout"
+    },
+    "promotional": {
+      "r_squared": 0.24,
+      "top_features": [
+        "message_clarity",
+        "call_to_action",
+        "cultural_relevance"
+      ],
+      "insight": "Most variable, relies on clear communication"
+    }
+  },
+  "human_creative_framework": {
+    "rating_methodology": "1-10 scale expert evaluation",
+    "interaction_modeling": "Multiplicative effects between key features",
+    "validation_approach": "Cross-validation with train/test split",
+    "interpretability": "Feature importance with business logic explanations"
+  }
+}

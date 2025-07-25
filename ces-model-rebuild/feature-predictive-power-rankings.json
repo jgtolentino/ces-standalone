@@ -1,0 +1,873 @@
+{
+  "ranked_features": [
+    {
+      "feature": "sentiment_polarity",
+      "predictive_power": 0.6666666666666696,
+      "consistency": 0.528595479208971,
+      "composite_score": 0.3523969861393156,
+      "outcome_breakdown": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      }
+    },
+    {
+      "feature": "performance_score",
+      "predictive_power": 0.6666666666666696,
+      "consistency": 0.528595479208971,
+      "composite_score": 0.3523969861393156,
+      "outcome_breakdown": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      }
+    },
+    {
+      "feature": "emotional_intensity",
+      "predictive_power": 0.666666666666669,
+      "consistency": 0.5285954792089698,
+      "composite_score": 0.3523969861393144,
+      "outcome_breakdown": {
+        "engagement": 4.27917250069638e-15,
+        "brand_recall": 1.000000000000002,
+        "conversion_rate": 4.207282552383898e-15,
+        "roi": 1.0000000000000024,
+        "sentiment": 1,
+        "cac": 1.0000000000000016,
+        "media_efficiency": 1.0000000000000024,
+        "behavioral_response": 4.27917250069638e-15,
+        "brand_equity": 0.9999999999999989
+      }
+    },
+    {
+      "feature": "platform_adaptation",
+      "predictive_power": 0.33333333333333637,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.17619849306965846,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.747057685503215e-15,
+        "conversion_rate": 1,
+        "roi": 6.7738058825277315e-15,
+        "sentiment": 4.2559307025829045e-15,
+        "cac": 6.438180780881508e-16,
+        "media_efficiency": 6.7738058825277315e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4823055865585373e-15
+      }
+    },
+    {
+      "feature": "completion_rate",
+      "predictive_power": 0.33333333333333637,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.17619849306965846,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999999,
+        "brand_recall": 7.724066186598868e-15,
+        "conversion_rate": 1,
+        "roi": 6.8180274770592525e-15,
+        "sentiment": 4.207282552383898e-15,
+        "cac": 6.694327501042196e-16,
+        "media_efficiency": 6.8180274770592525e-15,
+        "behavioral_response": 0.9999999999999999,
+        "brand_equity": 1.499553255679675e-15
+      }
+    },
+    {
+      "feature": "engagement_rate",
+      "predictive_power": 0.33333333333333626,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.1761984930696584,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.65456313065258e-15,
+        "conversion_rate": 0.9999999999999999,
+        "roi": 6.792818955788178e-15,
+        "sentiment": 4.27917250069638e-15,
+        "cac": 6.213230537656025e-16,
+        "media_efficiency": 6.792818955788178e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4395425044583534e-15
+      }
+    },
+    {
+      "feature": "visual_distinctness",
+      "predictive_power": 0.017092947635703223,
+      "consistency": 0.9879134608163324,
+      "composite_score": 0.016886353054339918,
+      "outcome_breakdown": {
+        "engagement": 6.569555517949948e-15,
+        "brand_recall": 0.025639421453551508,
+        "conversion_rate": 6.602017156270809e-15,
+        "roi": 0.025639421453551626,
+        "sentiment": 0.02563942145355152,
+        "cac": 0.025639421453551525,
+        "media_efficiency": 0.025639421453551626,
+        "behavioral_response": 6.569555517949948e-15,
+        "brand_equity": 0.02563942145355147
+      }
+    },
+    {
+      "feature": "composition_balance",
+      "predictive_power": 0.017092947635701967,
+      "consistency": 0.9879134608163308,
+      "composite_score": 0.01688635305433865,
+      "outcome_breakdown": {
+        "engagement": 3.10729270727666e-15,
+        "brand_recall": 0.02563942145355134,
+        "conversion_rate": 3.039229999983301e-15,
+        "roi": 0.025639421453551504,
+        "sentiment": 0.02563942145355131,
+        "cac": 0.0256394214535514,
+        "media_efficiency": 0.025639421453551504,
+        "behavioral_response": 3.10729270727666e-15,
+        "brand_equity": 0.025639421453551373
+      }
+    },
+    {
+      "feature": "color_harmony",
+      "predictive_power": 0.008783251643469651,
+      "consistency": 0.993789303202042,
+      "composite_score": 0.008728701530611895,
+      "outcome_breakdown": {
+        "engagement": 1.0245698154639708e-14,
+        "brand_recall": 0.013174877465199384,
+        "conversion_rate": 1.0180693573805618e-14,
+        "roi": 0.013174877465199372,
+        "sentiment": 0.013174877465199348,
+        "cac": 0.01317487746519939,
+        "media_efficiency": 0.013174877465199372,
+        "behavioral_response": 1.0245698154639708e-14,
+        "brand_equity": 0.01317487746519933
+      }
+    },
+    {
+      "feature": "loading_efficiency",
+      "predictive_power": 0.005332233921923791,
+      "consistency": 0.9962295412349388,
+      "composite_score": 0.005312128953795517,
+      "outcome_breakdown": {
+        "engagement": 5.714636557614345e-15,
+        "brand_recall": 0.007998350882882787,
+        "conversion_rate": 5.711570645339637e-15,
+        "roi": 0.007998350882882812,
+        "sentiment": 0.00799835088288286,
+        "cac": 0.007998350882882893,
+        "media_efficiency": 0.007998350882882812,
+        "behavioral_response": 5.714636557614345e-15,
+        "brand_equity": 0.007998350882882817
+      }
+    },
+    {
+      "feature": "emotional_language_score",
+      "predictive_power": 0.005147090440772528,
+      "consistency": 0.9963604574463342,
+      "composite_score": 0.005128357386085769,
+      "outcome_breakdown": {
+        "engagement": 5.442330095393993e-13,
+        "brand_recall": 0.007720635660886582,
+        "conversion_rate": 5.446500479991124e-13,
+        "roi": 0.0077206356608866215,
+        "sentiment": 0.007720635660886631,
+        "cac": 0.007720635660886606,
+        "media_efficiency": 0.0077206356608866215,
+        "behavioral_response": 5.442330095393993e-13,
+        "brand_equity": 0.007720635660886581
+      }
+    },
+    {
+      "feature": "motion_dynamics",
+      "predictive_power": 0.0037726618404566167,
+      "consistency": 0.9973323252294894,
+      "composite_score": 0.0037625976056471625,
+      "outcome_breakdown": {
+        "engagement": 1.4374356616805988e-16,
+        "brand_recall": 0.005658992760684874,
+        "conversion_rate": 2.1345515218629923e-17,
+        "roi": 0.0056589927606848665,
+        "sentiment": 0.005658992760684853,
+        "cac": 0.005658992760684895,
+        "media_efficiency": 0.0056589927606848665,
+        "behavioral_response": 1.4374356616805988e-16,
+        "brand_equity": 0.005658992760684891
+      }
+    },
+    {
+      "feature": "format_optimization",
+      "predictive_power": 0.0036159345970987805,
+      "consistency": 0.9974431481263099,
+      "composite_score": 0.0036066891879490475,
+      "outcome_breakdown": {
+        "engagement": 3.4709496884930214e-13,
+        "brand_recall": 0.005423901895474629,
+        "conversion_rate": 3.4697624676297757e-13,
+        "roi": 0.005423901895474644,
+        "sentiment": 0.005423901895474661,
+        "cac": 0.005423901895474637,
+        "media_efficiency": 0.005423901895474644,
+        "behavioral_response": 3.4709496884930214e-13,
+        "brand_equity": 0.0054239018954746416
+      }
+    },
+    {
+      "feature": "text_readability",
+      "predictive_power": 0.0013303289893827803,
+      "consistency": 0.9990593153504056,
+      "composite_score": 0.0013290775693235576,
+      "outcome_breakdown": {
+        "engagement": 1.0212231009717604e-14,
+        "brand_recall": 0.0019954934840690822,
+        "conversion_rate": 1.0185261254121022e-14,
+        "roi": 0.0019954934840690666,
+        "sentiment": 0.001995493484069064,
+        "cac": 0.0019954934840690735,
+        "media_efficiency": 0.0019954934840690666,
+        "behavioral_response": 1.0212231009717604e-14,
+        "brand_equity": 0.001995493484069061
+      }
+    },
+    {
+      "feature": "message_clarity",
+      "predictive_power": 0.0013303289893817462,
+      "consistency": 0.9990593153504042,
+      "composite_score": 0.0013290775693225224,
+      "outcome_breakdown": {
+        "engagement": 7.0977763635963796e-15,
+        "brand_recall": 0.0019954934840690436,
+        "conversion_rate": 7.0963205194402756e-15,
+        "roi": 0.0019954934840690423,
+        "sentiment": 0.001995493484069094,
+        "cac": 0.001995493484069048,
+        "media_efficiency": 0.0019954934840690423,
+        "behavioral_response": 7.0977763635963796e-15,
+        "brand_equity": 0.0019954934840691538
+      }
+    },
+    {
+      "feature": "brand_consistency",
+      "predictive_power": 0.0007219234490947532,
+      "consistency": 0.9994895230337889,
+      "composite_score": 0.0007215549238026226,
+      "outcome_breakdown": {
+        "engagement": 1.998046488129868e-13,
+        "brand_recall": 0.0010828851735421399,
+        "conversion_rate": 2.0019880913973562e-13,
+        "roi": 0.0010828851735421687,
+        "sentiment": 0.0010828851735421728,
+        "cac": 0.001082885173542156,
+        "media_efficiency": 0.0010828851735421687,
+        "behavioral_response": 1.998046488129868e-13,
+        "brand_equity": 0.001082885173542165
+      }
+    },
+    {
+      "feature": "logo_prominence",
+      "predictive_power": 0.0007219234490786337,
+      "consistency": 0.9994895230337661,
+      "composite_score": 0.000721554923786495,
+      "outcome_breakdown": {
+        "engagement": 1.5135438641887839e-13,
+        "brand_recall": 0.001082885173542143,
+        "conversion_rate": 1.52015585862761e-13,
+        "roi": 0.001082885173542174,
+        "sentiment": 0.001082885173542164,
+        "cac": 0.0010828851735421646,
+        "media_efficiency": 0.001082885173542174,
+        "behavioral_response": 1.5135438641887839e-13,
+        "brand_equity": 0.0010828851735421594
+      }
+    },
+    {
+      "feature": "brand_visibility",
+      "predictive_power": 0.0007219234490529807,
+      "consistency": 0.9994895230337298,
+      "composite_score": 0.0007215549237608289,
+      "outcome_breakdown": {
+        "engagement": 7.478667822710353e-14,
+        "brand_recall": 0.0010828851735421642,
+        "conversion_rate": 7.438044428001248e-14,
+        "roi": 0.0010828851735421416,
+        "sentiment": 0.0010828851735421438,
+        "cac": 0.0010828851735421475,
+        "media_efficiency": 0.0010828851735421416,
+        "behavioral_response": 7.478667822710353e-14,
+        "brand_equity": 0.0010828851735421344
+      }
+    },
+    {
+      "feature": "call_to_action_strength",
+      "predictive_power": 0,
+      "consistency": 1,
+      "composite_score": 0,
+      "outcome_breakdown": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      }
+    },
+    {
+      "feature": "emotional_trigger",
+      "predictive_power": 0,
+      "consistency": 1,
+      "composite_score": 0,
+      "outcome_breakdown": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      }
+    },
+    {
+      "feature": "brand_integration",
+      "predictive_power": 0,
+      "consistency": 1,
+      "composite_score": 0,
+      "outcome_breakdown": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      }
+    }
+  ],
+  "top_10_features": [
+    {
+      "feature": "sentiment_polarity",
+      "predictive_power": 0.6666666666666696,
+      "consistency": 0.528595479208971,
+      "composite_score": 0.3523969861393156,
+      "outcome_breakdown": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      }
+    },
+    {
+      "feature": "performance_score",
+      "predictive_power": 0.6666666666666696,
+      "consistency": 0.528595479208971,
+      "composite_score": 0.3523969861393156,
+      "outcome_breakdown": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      }
+    },
+    {
+      "feature": "emotional_intensity",
+      "predictive_power": 0.666666666666669,
+      "consistency": 0.5285954792089698,
+      "composite_score": 0.3523969861393144,
+      "outcome_breakdown": {
+        "engagement": 4.27917250069638e-15,
+        "brand_recall": 1.000000000000002,
+        "conversion_rate": 4.207282552383898e-15,
+        "roi": 1.0000000000000024,
+        "sentiment": 1,
+        "cac": 1.0000000000000016,
+        "media_efficiency": 1.0000000000000024,
+        "behavioral_response": 4.27917250069638e-15,
+        "brand_equity": 0.9999999999999989
+      }
+    },
+    {
+      "feature": "platform_adaptation",
+      "predictive_power": 0.33333333333333637,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.17619849306965846,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.747057685503215e-15,
+        "conversion_rate": 1,
+        "roi": 6.7738058825277315e-15,
+        "sentiment": 4.2559307025829045e-15,
+        "cac": 6.438180780881508e-16,
+        "media_efficiency": 6.7738058825277315e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4823055865585373e-15
+      }
+    },
+    {
+      "feature": "completion_rate",
+      "predictive_power": 0.33333333333333637,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.17619849306965846,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999999,
+        "brand_recall": 7.724066186598868e-15,
+        "conversion_rate": 1,
+        "roi": 6.8180274770592525e-15,
+        "sentiment": 4.207282552383898e-15,
+        "cac": 6.694327501042196e-16,
+        "media_efficiency": 6.8180274770592525e-15,
+        "behavioral_response": 0.9999999999999999,
+        "brand_equity": 1.499553255679675e-15
+      }
+    },
+    {
+      "feature": "engagement_rate",
+      "predictive_power": 0.33333333333333626,
+      "consistency": 0.5285954792089705,
+      "composite_score": 0.1761984930696584,
+      "outcome_breakdown": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.65456313065258e-15,
+        "conversion_rate": 0.9999999999999999,
+        "roi": 6.792818955788178e-15,
+        "sentiment": 4.27917250069638e-15,
+        "cac": 6.213230537656025e-16,
+        "media_efficiency": 6.792818955788178e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4395425044583534e-15
+      }
+    },
+    {
+      "feature": "visual_distinctness",
+      "predictive_power": 0.017092947635703223,
+      "consistency": 0.9879134608163324,
+      "composite_score": 0.016886353054339918,
+      "outcome_breakdown": {
+        "engagement": 6.569555517949948e-15,
+        "brand_recall": 0.025639421453551508,
+        "conversion_rate": 6.602017156270809e-15,
+        "roi": 0.025639421453551626,
+        "sentiment": 0.02563942145355152,
+        "cac": 0.025639421453551525,
+        "media_efficiency": 0.025639421453551626,
+        "behavioral_response": 6.569555517949948e-15,
+        "brand_equity": 0.02563942145355147
+      }
+    },
+    {
+      "feature": "composition_balance",
+      "predictive_power": 0.017092947635701967,
+      "consistency": 0.9879134608163308,
+      "composite_score": 0.01688635305433865,
+      "outcome_breakdown": {
+        "engagement": 3.10729270727666e-15,
+        "brand_recall": 0.02563942145355134,
+        "conversion_rate": 3.039229999983301e-15,
+        "roi": 0.025639421453551504,
+        "sentiment": 0.02563942145355131,
+        "cac": 0.0256394214535514,
+        "media_efficiency": 0.025639421453551504,
+        "behavioral_response": 3.10729270727666e-15,
+        "brand_equity": 0.025639421453551373
+      }
+    },
+    {
+      "feature": "color_harmony",
+      "predictive_power": 0.008783251643469651,
+      "consistency": 0.993789303202042,
+      "composite_score": 0.008728701530611895,
+      "outcome_breakdown": {
+        "engagement": 1.0245698154639708e-14,
+        "brand_recall": 0.013174877465199384,
+        "conversion_rate": 1.0180693573805618e-14,
+        "roi": 0.013174877465199372,
+        "sentiment": 0.013174877465199348,
+        "cac": 0.01317487746519939,
+        "media_efficiency": 0.013174877465199372,
+        "behavioral_response": 1.0245698154639708e-14,
+        "brand_equity": 0.01317487746519933
+      }
+    },
+    {
+      "feature": "loading_efficiency",
+      "predictive_power": 0.005332233921923791,
+      "consistency": 0.9962295412349388,
+      "composite_score": 0.005312128953795517,
+      "outcome_breakdown": {
+        "engagement": 5.714636557614345e-15,
+        "brand_recall": 0.007998350882882787,
+        "conversion_rate": 5.711570645339637e-15,
+        "roi": 0.007998350882882812,
+        "sentiment": 0.00799835088288286,
+        "cac": 0.007998350882882893,
+        "media_efficiency": 0.007998350882882812,
+        "behavioral_response": 5.714636557614345e-15,
+        "brand_equity": 0.007998350882882817
+      }
+    }
+  ],
+  "feature_scores": {
+    "visual_distinctness": {
+      "total_score": 0.15383652872132902,
+      "outcome_scores": {
+        "engagement": 6.569555517949948e-15,
+        "brand_recall": 0.025639421453551508,
+        "conversion_rate": 6.602017156270809e-15,
+        "roi": 0.025639421453551626,
+        "sentiment": 0.02563942145355152,
+        "cac": 0.025639421453551525,
+        "media_efficiency": 0.025639421453551626,
+        "behavioral_response": 6.569555517949948e-15,
+        "brand_equity": 0.02563942145355147
+      },
+      "average_correlation": 0.017092947635703223,
+      "consistency_score": 0.9879134608163324
+    },
+    "color_harmony": {
+      "total_score": 0.07904926479122686,
+      "outcome_scores": {
+        "engagement": 1.0245698154639708e-14,
+        "brand_recall": 0.013174877465199384,
+        "conversion_rate": 1.0180693573805618e-14,
+        "roi": 0.013174877465199372,
+        "sentiment": 0.013174877465199348,
+        "cac": 0.01317487746519939,
+        "media_efficiency": 0.013174877465199372,
+        "behavioral_response": 1.0245698154639708e-14,
+        "brand_equity": 0.01317487746519933
+      },
+      "average_correlation": 0.008783251643469651,
+      "consistency_score": 0.993789303202042
+    },
+    "composition_balance": {
+      "total_score": 0.1538365287213177,
+      "outcome_scores": {
+        "engagement": 3.10729270727666e-15,
+        "brand_recall": 0.02563942145355134,
+        "conversion_rate": 3.039229999983301e-15,
+        "roi": 0.025639421453551504,
+        "sentiment": 0.02563942145355131,
+        "cac": 0.0256394214535514,
+        "media_efficiency": 0.025639421453551504,
+        "behavioral_response": 3.10729270727666e-15,
+        "brand_equity": 0.025639421453551373
+      },
+      "average_correlation": 0.017092947635701967,
+      "consistency_score": 0.9879134608163308
+    },
+    "brand_visibility": {
+      "total_score": 0.006497311041476827,
+      "outcome_scores": {
+        "engagement": 7.478667822710353e-14,
+        "brand_recall": 0.0010828851735421642,
+        "conversion_rate": 7.438044428001248e-14,
+        "roi": 0.0010828851735421416,
+        "sentiment": 0.0010828851735421438,
+        "cac": 0.0010828851735421475,
+        "media_efficiency": 0.0010828851735421416,
+        "behavioral_response": 7.478667822710353e-14,
+        "brand_equity": 0.0010828851735421344
+      },
+      "average_correlation": 0.0007219234490529807,
+      "consistency_score": 0.9994895230337298
+    },
+    "motion_dynamics": {
+      "total_score": 0.03395395656410955,
+      "outcome_scores": {
+        "engagement": 1.4374356616805988e-16,
+        "brand_recall": 0.005658992760684874,
+        "conversion_rate": 2.1345515218629923e-17,
+        "roi": 0.0056589927606848665,
+        "sentiment": 0.005658992760684853,
+        "cac": 0.005658992760684895,
+        "media_efficiency": 0.0056589927606848665,
+        "behavioral_response": 1.4374356616805988e-16,
+        "brand_equity": 0.005658992760684891
+      },
+      "average_correlation": 0.0037726618404566167,
+      "consistency_score": 0.9973323252294894
+    },
+    "text_readability": {
+      "total_score": 0.011972960904445024,
+      "outcome_scores": {
+        "engagement": 1.0212231009717604e-14,
+        "brand_recall": 0.0019954934840690822,
+        "conversion_rate": 1.0185261254121022e-14,
+        "roi": 0.0019954934840690666,
+        "sentiment": 0.001995493484069064,
+        "cac": 0.0019954934840690735,
+        "media_efficiency": 0.0019954934840690666,
+        "behavioral_response": 1.0212231009717604e-14,
+        "brand_equity": 0.001995493484069061
+      },
+      "average_correlation": 0.0013303289893827803,
+      "consistency_score": 0.9990593153504056
+    },
+    "message_clarity": {
+      "total_score": 0.011972960904435717,
+      "outcome_scores": {
+        "engagement": 7.0977763635963796e-15,
+        "brand_recall": 0.0019954934840690436,
+        "conversion_rate": 7.0963205194402756e-15,
+        "roi": 0.0019954934840690423,
+        "sentiment": 0.001995493484069094,
+        "cac": 0.001995493484069048,
+        "media_efficiency": 0.0019954934840690423,
+        "behavioral_response": 7.0977763635963796e-15,
+        "brand_equity": 0.0019954934840691538
+      },
+      "average_correlation": 0.0013303289893817462,
+      "consistency_score": 0.9990593153504042
+    },
+    "emotional_language_score": {
+      "total_score": 0.04632381396695275,
+      "outcome_scores": {
+        "engagement": 5.442330095393993e-13,
+        "brand_recall": 0.007720635660886582,
+        "conversion_rate": 5.446500479991124e-13,
+        "roi": 0.0077206356608866215,
+        "sentiment": 0.007720635660886631,
+        "cac": 0.007720635660886606,
+        "media_efficiency": 0.0077206356608866215,
+        "behavioral_response": 5.442330095393993e-13,
+        "brand_equity": 0.007720635660886581
+      },
+      "average_correlation": 0.005147090440772528,
+      "consistency_score": 0.9963604574463342
+    },
+    "call_to_action_strength": {
+      "total_score": 0,
+      "outcome_scores": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      },
+      "average_correlation": 0,
+      "consistency_score": 1
+    },
+    "emotional_trigger": {
+      "total_score": 0,
+      "outcome_scores": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      },
+      "average_correlation": 0,
+      "consistency_score": 1
+    },
+    "emotional_intensity": {
+      "total_score": 6.00000000000002,
+      "outcome_scores": {
+        "engagement": 4.27917250069638e-15,
+        "brand_recall": 1.000000000000002,
+        "conversion_rate": 4.207282552383898e-15,
+        "roi": 1.0000000000000024,
+        "sentiment": 1,
+        "cac": 1.0000000000000016,
+        "media_efficiency": 1.0000000000000024,
+        "behavioral_response": 4.27917250069638e-15,
+        "brand_equity": 0.9999999999999989
+      },
+      "average_correlation": 0.666666666666669,
+      "consistency_score": 0.5285954792089698
+    },
+    "sentiment_polarity": {
+      "total_score": 6.000000000000027,
+      "outcome_scores": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      },
+      "average_correlation": 0.6666666666666696,
+      "consistency_score": 0.528595479208971
+    },
+    "brand_integration": {
+      "total_score": 0,
+      "outcome_scores": {
+        "engagement": 0,
+        "brand_recall": 0,
+        "conversion_rate": 0,
+        "roi": 0,
+        "sentiment": 0,
+        "cac": 0,
+        "media_efficiency": 0,
+        "behavioral_response": 0,
+        "brand_equity": 0
+      },
+      "average_correlation": 0,
+      "consistency_score": 1
+    },
+    "brand_consistency": {
+      "total_score": 0.006497311041852779,
+      "outcome_scores": {
+        "engagement": 1.998046488129868e-13,
+        "brand_recall": 0.0010828851735421399,
+        "conversion_rate": 2.0019880913973562e-13,
+        "roi": 0.0010828851735421687,
+        "sentiment": 0.0010828851735421728,
+        "cac": 0.001082885173542156,
+        "media_efficiency": 0.0010828851735421687,
+        "behavioral_response": 1.998046488129868e-13,
+        "brand_equity": 0.001082885173542165
+      },
+      "average_correlation": 0.0007219234490947532,
+      "consistency_score": 0.9994895230337889
+    },
+    "logo_prominence": {
+      "total_score": 0.006497311041707704,
+      "outcome_scores": {
+        "engagement": 1.5135438641887839e-13,
+        "brand_recall": 0.001082885173542143,
+        "conversion_rate": 1.52015585862761e-13,
+        "roi": 0.001082885173542174,
+        "sentiment": 0.001082885173542164,
+        "cac": 0.0010828851735421646,
+        "media_efficiency": 0.001082885173542174,
+        "behavioral_response": 1.5135438641887839e-13,
+        "brand_equity": 0.0010828851735421594
+      },
+      "average_correlation": 0.0007219234490786337,
+      "consistency_score": 0.9994895230337661
+    },
+    "format_optimization": {
+      "total_score": 0.032543411373889025,
+      "outcome_scores": {
+        "engagement": 3.4709496884930214e-13,
+        "brand_recall": 0.005423901895474629,
+        "conversion_rate": 3.4697624676297757e-13,
+        "roi": 0.005423901895474644,
+        "sentiment": 0.005423901895474661,
+        "cac": 0.005423901895474637,
+        "media_efficiency": 0.005423901895474644,
+        "behavioral_response": 3.4709496884930214e-13,
+        "brand_equity": 0.0054239018954746416
+      },
+      "average_correlation": 0.0036159345970987805,
+      "consistency_score": 0.9974431481263099
+    },
+    "loading_efficiency": {
+      "total_score": 0.04799010529731412,
+      "outcome_scores": {
+        "engagement": 5.714636557614345e-15,
+        "brand_recall": 0.007998350882882787,
+        "conversion_rate": 5.711570645339637e-15,
+        "roi": 0.007998350882882812,
+        "sentiment": 0.00799835088288286,
+        "cac": 0.007998350882882893,
+        "media_efficiency": 0.007998350882882812,
+        "behavioral_response": 5.714636557614345e-15,
+        "brand_equity": 0.007998350882882817
+      },
+      "average_correlation": 0.005332233921923791,
+      "consistency_score": 0.9962295412349388
+    },
+    "platform_adaptation": {
+      "total_score": 3.000000000000027,
+      "outcome_scores": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.747057685503215e-15,
+        "conversion_rate": 1,
+        "roi": 6.7738058825277315e-15,
+        "sentiment": 4.2559307025829045e-15,
+        "cac": 6.438180780881508e-16,
+        "media_efficiency": 6.7738058825277315e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4823055865585373e-15
+      },
+      "average_correlation": 0.33333333333333637,
+      "consistency_score": 0.5285954792089705
+    },
+    "performance_score": {
+      "total_score": 6.000000000000027,
+      "outcome_scores": {
+        "engagement": 6.792818955788178e-15,
+        "brand_recall": 1.0000000000000042,
+        "conversion_rate": 6.8180274770592525e-15,
+        "roi": 1,
+        "sentiment": 1.0000000000000024,
+        "cac": 0.9999999999999993,
+        "media_efficiency": 1,
+        "behavioral_response": 6.792818955788178e-15,
+        "brand_equity": 1.0000000000000002
+      },
+      "average_correlation": 0.6666666666666696,
+      "consistency_score": 0.528595479208971
+    },
+    "engagement_rate": {
+      "total_score": 3.000000000000026,
+      "outcome_scores": {
+        "engagement": 0.9999999999999998,
+        "brand_recall": 7.65456313065258e-15,
+        "conversion_rate": 0.9999999999999999,
+        "roi": 6.792818955788178e-15,
+        "sentiment": 4.27917250069638e-15,
+        "cac": 6.213230537656025e-16,
+        "media_efficiency": 6.792818955788178e-15,
+        "behavioral_response": 0.9999999999999998,
+        "brand_equity": 1.4395425044583534e-15
+      },
+      "average_correlation": 0.33333333333333626,
+      "consistency_score": 0.5285954792089705
+    },
+    "completion_rate": {
+      "total_score": 3.000000000000027,
+      "outcome_scores": {
+        "engagement": 0.9999999999999999,
+        "brand_recall": 7.724066186598868e-15,
+        "conversion_rate": 1,
+        "roi": 6.8180274770592525e-15,
+        "sentiment": 4.207282552383898e-15,
+        "cac": 6.694327501042196e-16,
+        "media_efficiency": 6.8180274770592525e-15,
+        "behavioral_response": 0.9999999999999999,
+        "brand_equity": 1.499553255679675e-15
+      },
+      "average_correlation": 0.33333333333333637,
+      "consistency_score": 0.5285954792089705
+    }
+  },
+  "ranking_methodology": "composite_predictive_power_with_consistency",
+  "timestamp": "2025-06-15T23:32:13.752Z"
+}

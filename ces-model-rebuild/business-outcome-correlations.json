@@ -1,0 +1,412 @@
+{
+  "correlation_matrix": {
+    "engagement": {
+      "visual_distinctness": 6.569555517949948e-15,
+      "color_harmony": -1.0245698154639708e-14,
+      "composition_balance": -3.10729270727666e-15,
+      "brand_visibility": 7.478667822710353e-14,
+      "motion_dynamics": -1.4374356616805988e-16,
+      "text_readability": -1.0212231009717604e-14,
+      "message_clarity": 7.0977763635963796e-15,
+      "emotional_language_score": -5.442330095393993e-13,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": -4.27917250069638e-15,
+      "sentiment_polarity": -6.792818955788178e-15,
+      "brand_integration": 0,
+      "brand_consistency": -1.998046488129868e-13,
+      "logo_prominence": 1.5135438641887839e-13,
+      "format_optimization": -3.4709496884930214e-13,
+      "loading_efficiency": 5.714636557614345e-15,
+      "platform_adaptation": 0.9999999999999998,
+      "performance_score": -6.792818955788178e-15,
+      "engagement_rate": 0.9999999999999998,
+      "completion_rate": 0.9999999999999999
+    },
+    "brand_recall": {
+      "visual_distinctness": -0.025639421453551508,
+      "color_harmony": -0.013174877465199384,
+      "composition_balance": -0.02563942145355134,
+      "brand_visibility": -0.0010828851735421642,
+      "motion_dynamics": -0.005658992760684874,
+      "text_readability": -0.0019954934840690822,
+      "message_clarity": -0.0019954934840690436,
+      "emotional_language_score": 0.007720635660886582,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": 1.000000000000002,
+      "sentiment_polarity": 1.0000000000000042,
+      "brand_integration": 0,
+      "brand_consistency": -0.0010828851735421399,
+      "logo_prominence": -0.001082885173542143,
+      "format_optimization": 0.005423901895474629,
+      "loading_efficiency": 0.007998350882882787,
+      "platform_adaptation": -7.747057685503215e-15,
+      "performance_score": 1.0000000000000042,
+      "engagement_rate": -7.65456313065258e-15,
+      "completion_rate": -7.724066186598868e-15
+    },
+    "conversion_rate": {
+      "visual_distinctness": 6.602017156270809e-15,
+      "color_harmony": -1.0180693573805618e-14,
+      "composition_balance": -3.039229999983301e-15,
+      "brand_visibility": 7.438044428001248e-14,
+      "motion_dynamics": -2.1345515218629923e-17,
+      "text_readability": -1.0185261254121022e-14,
+      "message_clarity": 7.0963205194402756e-15,
+      "emotional_language_score": -5.446500479991124e-13,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": -4.207282552383898e-15,
+      "sentiment_polarity": -6.8180274770592525e-15,
+      "brand_integration": 0,
+      "brand_consistency": -2.0019880913973562e-13,
+      "logo_prominence": 1.52015585862761e-13,
+      "format_optimization": -3.4697624676297757e-13,
+      "loading_efficiency": 5.711570645339637e-15,
+      "platform_adaptation": 1,
+      "performance_score": -6.8180274770592525e-15,
+      "engagement_rate": 0.9999999999999999,
+      "completion_rate": 1
+    },
+    "roi": {
+      "visual_distinctness": -0.025639421453551626,
+      "color_harmony": -0.013174877465199372,
+      "composition_balance": -0.025639421453551504,
+      "brand_visibility": -0.0010828851735421416,
+      "motion_dynamics": -0.0056589927606848665,
+      "text_readability": -0.0019954934840690666,
+      "message_clarity": -0.0019954934840690423,
+      "emotional_language_score": 0.0077206356608866215,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": 1.0000000000000024,
+      "sentiment_polarity": 1,
+      "brand_integration": 0,
+      "brand_consistency": -0.0010828851735421687,
+      "logo_prominence": -0.001082885173542174,
+      "format_optimization": 0.005423901895474644,
+      "loading_efficiency": 0.007998350882882812,
+      "platform_adaptation": -6.7738058825277315e-15,
+      "performance_score": 1,
+      "engagement_rate": -6.792818955788178e-15,
+      "completion_rate": -6.8180274770592525e-15
+    },
+    "sentiment": {
+      "visual_distinctness": -0.02563942145355152,
+      "color_harmony": -0.013174877465199348,
+      "composition_balance": -0.02563942145355131,
+      "brand_visibility": -0.0010828851735421438,
+      "motion_dynamics": -0.005658992760684853,
+      "text_readability": -0.001995493484069064,
+      "message_clarity": -0.001995493484069094,
+      "emotional_language_score": 0.007720635660886631,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": 1,
+      "sentiment_polarity": 1.0000000000000024,
+      "brand_integration": 0,
+      "brand_consistency": -0.0010828851735421728,
+      "logo_prominence": -0.001082885173542164,
+      "format_optimization": 0.005423901895474661,
+      "loading_efficiency": 0.00799835088288286,
+      "platform_adaptation": -4.2559307025829045e-15,
+      "performance_score": 1.0000000000000024,
+      "engagement_rate": -4.27917250069638e-15,
+      "completion_rate": -4.207282552383898e-15
+    },
+    "cac": {
+      "visual_distinctness": 0.025639421453551525,
+      "color_harmony": 0.01317487746519939,
+      "composition_balance": 0.0256394214535514,
+      "brand_visibility": 0.0010828851735421475,
+      "motion_dynamics": 0.005658992760684895,
+      "text_readability": 0.0019954934840690735,
+      "message_clarity": 0.001995493484069048,
+      "emotional_language_score": -0.007720635660886606,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": -1.0000000000000016,
+      "sentiment_polarity": -0.9999999999999993,
+      "brand_integration": 0,
+      "brand_consistency": 0.001082885173542156,
+      "logo_prominence": 0.0010828851735421646,
+      "format_optimization": -0.005423901895474637,
+      "loading_efficiency": -0.007998350882882893,
+      "platform_adaptation": -6.438180780881508e-16,
+      "performance_score": -0.9999999999999993,
+      "engagement_rate": -6.213230537656025e-16,
+      "completion_rate": -6.694327501042196e-16
+    },
+    "media_efficiency": {
+      "visual_distinctness": -0.025639421453551626,
+      "color_harmony": -0.013174877465199372,
+      "composition_balance": -0.025639421453551504,
+      "brand_visibility": -0.0010828851735421416,
+      "motion_dynamics": -0.0056589927606848665,
+      "text_readability": -0.0019954934840690666,
+      "message_clarity": -0.0019954934840690423,
+      "emotional_language_score": 0.0077206356608866215,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": 1.0000000000000024,
+      "sentiment_polarity": 1,
+      "brand_integration": 0,
+      "brand_consistency": -0.0010828851735421687,
+      "logo_prominence": -0.001082885173542174,
+      "format_optimization": 0.005423901895474644,
+      "loading_efficiency": 0.007998350882882812,
+      "platform_adaptation": -6.7738058825277315e-15,
+      "performance_score": 1,
+      "engagement_rate": -6.792818955788178e-15,
+      "completion_rate": -6.8180274770592525e-15
+    },
+    "behavioral_response": {
+      "visual_distinctness": 6.569555517949948e-15,
+      "color_harmony": -1.0245698154639708e-14,
+      "composition_balance": -3.10729270727666e-15,
+      "brand_visibility": 7.478667822710353e-14,
+      "motion_dynamics": -1.4374356616805988e-16,
+      "text_readability": -1.0212231009717604e-14,
+      "message_clarity": 7.0977763635963796e-15,
+      "emotional_language_score": -5.442330095393993e-13,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": -4.27917250069638e-15,
+      "sentiment_polarity": -6.792818955788178e-15,
+      "brand_integration": 0,
+      "brand_consistency": -1.998046488129868e-13,
+      "logo_prominence": 1.5135438641887839e-13,
+      "format_optimization": -3.4709496884930214e-13,
+      "loading_efficiency": 5.714636557614345e-15,
+      "platform_adaptation": 0.9999999999999998,
+      "performance_score": -6.792818955788178e-15,
+      "engagement_rate": 0.9999999999999998,
+      "completion_rate": 0.9999999999999999
+    },
+    "brand_equity": {
+      "visual_distinctness": -0.02563942145355147,
+      "color_harmony": -0.01317487746519933,
+      "composition_balance": -0.025639421453551373,
+      "brand_visibility": -0.0010828851735421344,
+      "motion_dynamics": -0.005658992760684891,
+      "text_readability": -0.001995493484069061,
+      "message_clarity": -0.0019954934840691538,
+      "emotional_language_score": 0.007720635660886581,
+      "call_to_action_strength": 0,
+      "emotional_trigger": 0,
+      "emotional_intensity": 0.9999999999999989,
+      "sentiment_polarity": 1.0000000000000002,
+      "brand_integration": 0,
+      "brand_consistency": -0.001082885173542165,
+      "logo_prominence": -0.0010828851735421594,
+      "format_optimization": 0.0054239018954746416,
+      "loading_efficiency": 0.007998350882882817,
+      "platform_adaptation": -1.4823055865585373e-15,
+      "performance_score": 1.0000000000000002,
+      "engagement_rate": -1.4395425044583534e-15,
+      "completion_rate": -1.499553255679675e-15
+    }
+  },
+  "top_features_by_outcome": {
+    "engagement": [
+      [
+        "completion_rate",
+        0.9999999999999999
+      ],
+      [
+        "platform_adaptation",
+        0.9999999999999998
+      ],
+      [
+        "engagement_rate",
+        0.9999999999999998
+      ],
+      [
+        "emotional_language_score",
+        -5.442330095393993e-13
+      ],
+      [
+        "format_optimization",
+        -3.4709496884930214e-13
+      ]
+    ],
+    "brand_recall": [
+      [
+        "sentiment_polarity",
+        1.0000000000000042
+      ],
+      [
+        "performance_score",
+        1.0000000000000042
+      ],
+      [
+        "emotional_intensity",
+        1.000000000000002
+      ],
+      [
+        "visual_distinctness",
+        -0.025639421453551508
+      ],
+      [
+        "composition_balance",
+        -0.02563942145355134
+      ]
+    ],
+    "conversion_rate": [
+      [
+        "platform_adaptation",
+        1
+      ],
+      [
+        "completion_rate",
+        1
+      ],
+      [
+        "engagement_rate",
+        0.9999999999999999
+      ],
+      [
+        "emotional_language_score",
+        -5.446500479991124e-13
+      ],
+      [
+        "format_optimization",
+        -3.4697624676297757e-13
+      ]
+    ],
+    "roi": [
+      [
+        "emotional_intensity",
+        1.0000000000000024
+      ],
+      [
+        "sentiment_polarity",
+        1
+      ],
+      [
+        "performance_score",
+        1
+      ],
+      [
+        "visual_distinctness",
+        -0.025639421453551626
+      ],
+      [
+        "composition_balance",
+        -0.025639421453551504
+      ]
+    ],
+    "sentiment": [
+      [
+        "sentiment_polarity",
+        1.0000000000000024
+      ],
+      [
+        "performance_score",
+        1.0000000000000024
+      ],
+      [
+        "emotional_intensity",
+        1
+      ],
+      [
+        "visual_distinctness",
+        -0.02563942145355152
+      ],
+      [
+        "composition_balance",
+        -0.02563942145355131
+      ]
+    ],
+    "cac": [
+      [
+        "emotional_intensity",
+        -1.0000000000000016
+      ],
+      [
+        "sentiment_polarity",
+        -0.9999999999999993
+      ],
+      [
+        "performance_score",
+        -0.9999999999999993
+      ],
+      [
+        "visual_distinctness",
+        0.025639421453551525
+      ],
+      [
+        "composition_balance",
+        0.0256394214535514
+      ]
+    ],
+    "media_efficiency": [
+      [
+        "emotional_intensity",
+        1.0000000000000024
+      ],
+      [
+        "sentiment_polarity",
+        1
+      ],
+      [
+        "performance_score",
+        1
+      ],
+      [
+        "visual_distinctness",
+        -0.025639421453551626
+      ],
+      [
+        "composition_balance",
+        -0.025639421453551504
+      ]
+    ],
+    "behavioral_response": [
+      [
+        "completion_rate",
+        0.9999999999999999
+      ],
+      [
+        "platform_adaptation",
+        0.9999999999999998
+      ],
+      [
+        "engagement_rate",
+        0.9999999999999998
+      ],
+      [
+        "emotional_language_score",
+        -5.442330095393993e-13
+      ],
+      [
+        "format_optimization",
+        -3.4709496884930214e-13
+      ]
+    ],
+    "brand_equity": [
+      [
+        "sentiment_polarity",
+        1.0000000000000002
+      ],
+      [
+        "performance_score",
+        1.0000000000000002
+      ],
+      [
+        "emotional_intensity",
+        0.9999999999999989
+      ],
+      [
+        "visual_distinctness",
+        -0.02563942145355147
+      ],
+      [
+        "composition_balance",
+        -0.025639421453551373
+      ]
+    ]
+  },
+  "analysis_timestamp": "2025-06-15T23:32:13.745Z"
+}

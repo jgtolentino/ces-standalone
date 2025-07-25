@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-06-15T23:25:39.009Z",
+  "campaigns_migrated": 500,
+  "performance_records": 46701,
+  "creative_assets": 4427,
+  "tables_created": [
+    "campaigns",
+    "campaign_metrics",
+    "creative_assets",
+    "campaign_analytics"
+  ],
+  "indexes_created": 12,
+  "views_created": [
+    "enhanced_campaigns",
+    "campaign_performance_summary"
+  ],
+  "migration_size_kb": 0,
+  "estimated_execution_time_seconds": 5,
+  "deployment_status": "success"
+}
