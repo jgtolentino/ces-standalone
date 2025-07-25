@@ -64,7 +64,7 @@ SELECT
     AVG(sti.unit_price) as avg_unit_price,
     COUNT(DISTINCT st.customer_id) as unique_customers,
     -- JTI performance metrics
-    ROUND(0.75 + (RANDOM() * 0.10), 2) as estimated_handshake_score,
+    ROUND((0.75 + (RANDOM() * 0.10))::numeric, 2) as estimated_handshake_score,
     COUNT(CASE WHEN EXTRACT(hour FROM st.transaction_date) BETWEEN 17 AND 21 THEN 1 END) as evening_sales,
     -- Market penetration
     COUNT(DISTINCT CONCAT(
@@ -210,8 +210,7 @@ $$ LANGUAGE plpgsql;
 -- 8. Create performance indexes
 CREATE INDEX IF NOT EXISTS idx_master_brands_market_segment ON master_brands(market_segment);
 CREATE INDEX IF NOT EXISTS idx_master_brands_jti ON master_brands(is_jti_brand);
-CREATE INDEX IF NOT EXISTS idx_scout_trans_date_360 ON scout_transactions(transaction_date) 
-    WHERE transaction_date >= CURRENT_DATE - INTERVAL '360 days';
+CREATE INDEX IF NOT EXISTS idx_scout_trans_date_360 ON scout_transactions(transaction_date);
 
 -- 9. Verify deployment
 SELECT 'Deployment Summary' as status;

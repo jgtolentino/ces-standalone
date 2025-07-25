@@ -61,7 +61,8 @@ def load_scout_data(csv_file='scout_realistic_data.csv'):
     
     for idx, (age, gender, location_str) in enumerate(df[['age_bracket', 'gender', 'location']].drop_duplicates().values):
         location = json.loads(location_str)
-        customer_id = f"CUST_{idx+1:06d}"
+        import uuid
+        customer_id = str(uuid.uuid4())
         customer_map[f"{age}_{gender}_{location['region']}"] = customer_id
         
         unique_customers.append({
@@ -131,7 +132,7 @@ def load_scout_data(csv_file='scout_realistic_data.csv'):
         category_id = categories_map.get(row['category'], list(categories_map.values())[0])
         
         transaction_items.append({
-            'transaction_item_id': f"ITEM_{idx+1:08d}",
+            'transaction_item_id': str(uuid.uuid4()),
             'transaction_id': transaction_id,
             'brand_id': brand_id,
             'category_id': category_id,

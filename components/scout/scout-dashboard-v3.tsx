@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import MarketShareChart from './MarketShareChart';
+import RegionalMap from './RegionalMap';
 
 interface DashboardSection {
   id: string;
@@ -253,11 +255,18 @@ function OverviewSection() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-        <div className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Regional Performance Overview</h3>
-          <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500">Regional Map Component</span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Market Share Distribution</h3>
+            <MarketShareChart />
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Regional Performance Overview</h3>
+            <RegionalMap />
           </div>
         </div>
       </div>
