@@ -17,6 +17,7 @@ const sections: DashboardSection[] = [
   { id: 'trends', name: 'Trends', icon: '📈', path: '/scout/trends' },
   { id: 'product-mix', name: 'Product Mix', icon: '🛒', path: '/scout/products' },
   { id: 'consumers', name: 'Consumers', icon: '👥', path: '/scout/consumers' },
+  { id: 'databank', name: 'Databank', icon: '🗄️', path: '/databank' },
   { id: 'retailbot', name: 'RetailBot', icon: '🤖', path: '/scout/retailbot' }
 ];
 
