@@ -103,11 +103,11 @@ export default function DatabankSection() {
     }
   };
 
-  const exportData = (format: 'csv' | 'excel') => {
+  const exportData = (exportFormat: 'csv' | 'excel') => {
     const dataToExport = transactions;
     const headers = ['Date', 'Transaction ID', 'Store', 'Region', 'Amount', 'Payment Method'];
     
-    if (format === 'csv') {
+    if (exportFormat === 'csv') {
       const csv = [
         headers.join(','),
         ...dataToExport.map(t => [

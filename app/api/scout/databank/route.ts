@@ -43,6 +43,7 @@ export async function GET(request: Request) {
         transaction_date,
         total_amount,
         payment_method,
+        store_id,
         master_stores!inner(
           store_name,
           region
@@ -93,8 +94,8 @@ export async function GET(request: Request) {
 
     if (error) throw error;
 
-    // Transform data
-    const transactions = data?.map(transaction => ({
+    // Transform data with proper types
+    const transactions = data?.map((transaction: any) => ({
       transaction_id: transaction.transaction_id,
       transaction_date: transaction.transaction_date,
       store_name: transaction.master_stores?.store_name || 'Unknown Store',
@@ -117,7 +118,7 @@ export async function GET(request: Request) {
         t.transaction_id.toLowerCase().includes(searchLower) ||
         t.store_name.toLowerCase().includes(searchLower) ||
         t.region.toLowerCase().includes(searchLower) ||
-        t.items.some(i => i.brand_name.toLowerCase().includes(searchLower))
+        t.items.some((i: any) => i.brand_name.toLowerCase().includes(searchLower))
       );
     }
 
@@ -133,7 +134,7 @@ export async function GET(request: Request) {
       
       if (categoryMap[category]) {
         filteredTransactions = filteredTransactions.filter(t =>
-          t.items.some(i => categoryMap[category].some(cat => 
+          t.items.some((i: any) => categoryMap[category].some(cat => 
             i.category_name.toLowerCase().includes(cat.toLowerCase())
           ))
         );
