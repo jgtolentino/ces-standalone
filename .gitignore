@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Dependencies
 node_modules/
 .pnpm-store/
@@ -179,6 +178,6 @@ tokens.json
 # Test coverage
 test-results/
 playwright-report/
-=======
->>>>>>> 8bb23794511957faae44a351a559e337b994e249
+
+# Vercel
 .vercel
