@@ -229,7 +229,9 @@ CREATE INDEX IF NOT EXISTS idx_scout_trans_date_360 ON scout_transactions(transa
 
 EOF
 
-npx supabase db push --project-ref $PROJECT_ID --file scout_market_schema.sql
+# Apply schema using direct SQL execution
+echo "📥 Applying schema to Supabase..."
+cat scout_market_schema.sql | npx supabase db query --db-url "postgresql://postgres:postgres@db.$PROJECT_ID.supabase.co:5432/postgres"
 
 # Load realistic market share data
 echo "📥 Loading realistic market share data..."
@@ -395,7 +397,9 @@ WHERE week >= CURRENT_DATE - INTERVAL '4 weeks'
 ORDER BY week DESC, market_segment;
 EOF
 
-npx supabase db query --project-ref $PROJECT_ID --file test_market_analytics.sql
+# Test queries
+echo "Running test queries..."
+cat test_market_analytics.sql | npx supabase db query --db-url "postgresql://postgres:postgres@db.$PROJECT_ID.supabase.co:5432/postgres"
 
 # Update MCP configuration for market share analytics
 echo "🔧 Updating MCP for market share analytics..."
