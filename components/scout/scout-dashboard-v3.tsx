@@ -5,6 +5,9 @@ import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import MarketShareChart from './MarketShareChart';
 import RegionalMap from './RegionalMap';
 import DatabankSection from './DatabankSection';
+import GeoHeatMap from './GeoHeatMap';
+import GenderDonut from './GenderDonut';
+import AgeTreeChart from './AgeTreeChart';
 
 interface DashboardSection {
   id: string;
@@ -284,9 +287,7 @@ function TrendsSection() {
       <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
         <div className="p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Regional Revenue Heatmap</h3>
-          <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500">GeoHeatMap Component - Population-weighted revenue overlay</span>
-          </div>
+          <GeoHeatMap height={384} />
         </div>
       </div>
 
@@ -349,11 +350,16 @@ function ProductMixSection() {
 function ConsumersSection() {
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-        <div className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Consumer Demographics</h3>
-          <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500">Demographics Analysis</span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="p-6">
+            <GenderDonut title="Gender Distribution" />
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="p-6">
+            <AgeTreeChart title="Age Group Analysis" />
           </div>
         </div>
       </div>
@@ -365,6 +371,15 @@ function RetailBotSection() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState<Array<{type: 'user' | 'bot', content: string, timestamp: Date}>>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const suggestedQueries = [
+    "Which barangays have the highest spend per capita?",
+    "Show me age group patterns for snack purchases in NCR.",
+    "Break down revenue density across provinces.",
+    "What are the top performing categories by region?",
+    "Analyze consumer demographics for tobacco products.",
+    "Show me store density scores by region."
+  ];
 
   const handleSendMessage = async () => {
     if (!query.trim()) return;
@@ -402,9 +417,25 @@ function RetailBotSection() {
 
           <div className="space-y-4 h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded-lg">
             {messages.length === 0 && (
-              <div className="text-center text-gray-500 py-8">
-                <p>Ask RetailBot about your retail analytics data</p>
-                <p className="text-sm">Try: "What are the top performing regions?" or "Show me category trends"</p>
+              <div className="space-y-4">
+                <div className="text-center text-gray-500 py-4">
+                  <p>Ask RetailBot about your retail analytics data</p>
+                  <p className="text-sm">Powered by advanced analytics on all_transactions_enriched view</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Suggested queries:</p>
+                  <div className="grid grid-cols-1 gap-2">
+                    {suggestedQueries.map((suggestion, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setQuery(suggestion)}
+                        className="text-left px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
             

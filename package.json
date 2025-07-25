@@ -14,7 +14,7 @@
     "qa:full": "node scripts/qa/scout-qa.js full-suite"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.4",
+    "@headlessui/react": "^2.2.6",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-select": "^2.2.5",
@@ -47,6 +47,7 @@
     "recharts": "^2.15.3",
     "swr": "^2.3.3",
     "tailwind-merge": "^3.3.1",
+    "tailwind-variants": "^1.0.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.6.3",
     "zustand": "^5.0.5"
